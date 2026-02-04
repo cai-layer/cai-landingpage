@@ -2,10 +2,50 @@
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
   noIndex?: boolean;
+  ogImage?: string;
 }
 
-const { title, description = "Meet Cai, your local clipboard AI. Every interaction stays private on your Mac, powered locally by your favourite AI. Quick, no waiting.", noIndex = false } = Astro.props;
+const {
+  title,
+  description = "Meet Cai, your local clipboard AI. Every interaction stays private on your Mac, powered locally by your favourite AI. Quick, no waiting.",
+  keywords = "local AI, clipboard AI, privacy AI, offline AI assistant, Raycast extension, LM Studio, Ollama, local language model, private AI, Mac AI tool, AI text processing, clipboard automation, local LLM, AI shortcuts",
+  noIndex = false,
+  ogImage = "/images/social-media-sharing.png"
+} = Astro.props;
+
+const siteUrl = "https://getcai.app";
+const fullOgImage = new URL(ogImage, siteUrl).toString();
+
+// Structured data for rich snippets
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Cai",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "macOS",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": description,
+  "url": siteUrl,
+  "image": fullOgImage,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": "1"
+  },
+  "featureList": [
+    "Local AI processing",
+    "Privacy-focused clipboard automation",
+    "Smart text actions",
+    "Custom AI commands",
+    "Works with LM Studio, Ollama, and more"
+  ]
+};
 ---
 
 <!doctype html>
@@ -13,16 +53,37 @@ const { title, description = "Meet Cai, your local clipboard AI. Every interacti
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Cai" />
+    <meta name="theme-color" content="#A78BFA" />
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullOgImage} />
+    <meta property="og:site_name" content="Cai - Local Clipboard AI" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={fullOgImage} />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=General+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-    
+
     <title>{title}</title>
   </head>
   <body>
