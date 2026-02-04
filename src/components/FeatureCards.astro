@@ -3,22 +3,25 @@ const features = [
   {
     number: "01",
     title: "Highlight",
-    description: "**Select text in any app**. \n\n Whether it's an email, a block of code, or an appointment, just highlight what you need."
+    descriptionBold: "Select text in any app.",
+    descriptionDetail: "Whether it's an email, a block of code, or an appointment, just highlight what you need."
   },
   {
     number: "02",
     title: "Trigger",
-    description: "**Press ⌥C to summon Cai**. \n\n The action menu appears instantly. No tabs, no waiting, no distractions."
+    descriptionBold: "Press ⌥C to summon Cai.",
+    descriptionDetail: "The action menu appears instantly. No tabs, no waiting, no distractions."
   },
   {
     number: "03",
     title: "Transform",
-    description: "**Execute and done**. \n\n Choose a built-in smart action or trigger your own custom prompt."
+    descriptionBold: "Execute and done.",
+    descriptionDetail: "Choose a built-in smart action or trigger your own custom prompt."
   }
 ];
 ---
 
-<section class="features" id="features">
+<section class="features" id="how-it-works">
   <div class="container">
     <h2 class="section-title">Your local intelligence, one shortcut away</h2>
     <p class="section-subtitle">
@@ -30,7 +33,11 @@ const features = [
         <div class="feature-card" style={`animation-delay: ${index * 0.15}s`}>
           <div class="feature-number">{feature.number}</div>
           <h3 class="feature-title">{feature.title}</h3>
-          <p class="feature-description">{feature.description}</p>
+          <p class="feature-description">
+            <strong>{feature.descriptionBold}</strong>
+            <br /><br />
+            {feature.descriptionDetail}
+          </p>
         </div>
       ))}
     </div>
@@ -52,7 +59,10 @@ const features = [
 
   .section-title {
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    color: var(--purple-400);
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-align: center;
     margin-bottom: 1rem;
     font-weight: 700;
@@ -89,15 +99,15 @@ const features = [
 
   .feature-card:hover {
     transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 20px 50px rgba(167, 139, 250, 0.3);
-    border-color: var(--purple-500);
+    box-shadow: 0 20px 50px rgba(211, 128, 195, 0.3);
+    border-color: var(--accent-pink);
     background: rgba(30, 30, 30, 0.9);
   }
 
   .feature-number {
     width: 72px;
     height: 72px;
-    background: linear-gradient(135deg, var(--purple-500) 0%, var(--purple-700) 100%);
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -113,7 +123,7 @@ const features = [
 
   .feature-card:hover .feature-number {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 12px 30px rgba(167, 139, 250, 0.4);
+    box-shadow: 0 12px 30px rgba(247, 133, 149, 0.4);
   }
 
   .feature-title {

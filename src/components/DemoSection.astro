@@ -1,4 +1,6 @@
 ---
+import ActionBadges from './ActionBadges.astro';
+
 interface Props {
   title: string;
   subtitle?: string;
@@ -7,6 +9,7 @@ interface Props {
   mediaAlt?: string;
   backgroundColor?: string;
   id?: string;
+  actions?: Array<{ name: string; description: string }>;
 }
 
 const {
@@ -16,7 +19,8 @@ const {
   mediaSrc,
   mediaAlt = 'Demo screenshot',
   backgroundColor = '#ffffff',
-  id
+  id,
+  actions
 } = Astro.props;
 
 const imageSrc = typeof mediaSrc === 'string' ? mediaSrc : mediaSrc.src;
@@ -27,6 +31,7 @@ const imageSrc = typeof mediaSrc === 'string' ? mediaSrc : mediaSrc.src;
     <div class="demo-content">
       <h2 class="demo-title">{title}</h2>
       {subtitle && <p class="demo-subtitle">{subtitle}</p>}
+      {actions && <ActionBadges actions={actions} />}
     </div>
 
     <div class="demo-media">
@@ -70,7 +75,10 @@ const imageSrc = typeof mediaSrc === 'string' ? mediaSrc : mediaSrc.src;
 
   .demo-title {
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    color: var(--purple-400);
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 1rem;
     font-weight: 700;
     letter-spacing: -0.02em;
