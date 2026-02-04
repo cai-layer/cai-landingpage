@@ -1,0 +1,164 @@
+---
+import githubLogo from '../assets/images/GitHub_Invertocat_White.svg';
+import raycastLogo from '../assets/images/logo-raycast.png';
+---
+
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="logo">
+      <span class="logo-text">Cai</span>
+    </a>
+
+    <div class="nav-menu">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#quick-actions" class="nav-link">How it works</a>
+      <a href="https://www.raycast.com/store" class="nav-link" target="_blank" rel="noopener noreferrer">Raycast Store</a>
+      <a href="https://github.com" class="nav-link" target="_blank" rel="noopener noreferrer">Github</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="https://raycast.com" class="cta-button" target="_blank" rel="noopener noreferrer">
+        <img src={raycastLogo.src} alt="Raycast" class="button-logo" />
+        <span>Download for Raycast</span>
+      </a>
+      <a href="https://github.com" class="github-button" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
+        <img src={githubLogo.src} alt="GitHub" class="github-icon" />
+      </a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.25rem 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(16px) saturate(180%);
+    z-index: 100;
+    border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--purple-400);
+  }
+
+  .logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--purple-400);
+    transition: all 0.3s ease;
+    letter-spacing: -0.02em;
+  }
+
+  .logo:hover {
+    color: var(--purple-300);
+    transform: scale(1.05);
+  }
+
+  .cta-button {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, var(--purple-500) 0%, var(--purple-600) 100%);
+    color: white;
+    padding: 0.85rem 1.75rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 15px rgba(167, 139, 250, 0.3);
+  }
+
+  .cta-button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(167, 139, 250, 0.4);
+  }
+
+  .button-logo {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .github-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.85rem 0.95rem;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .github-button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .github-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 968px) {
+    .nav-menu {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 1rem 0;
+    }
+
+    .cta-button {
+      padding: 0.7rem 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+    }
+  }
+</style>

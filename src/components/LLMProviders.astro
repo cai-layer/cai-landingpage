@@ -1,0 +1,206 @@
+---
+import lmStudioLogo from '../assets/images/logo-lm-studio.png';
+import ollamaLogo from '../assets/images/logo-ollama.png';
+import janAiLogo from '../assets/images/logo-jan-ai.png';
+import localAiLogo from '../assets/images/logo-local-ai.png';
+import vllmLogo from '../assets/images/logo-vllm.png';
+import textGenLogo from '../assets/images/logo-text-generation-web-ui.png';
+import anythingLlmLogo from '../assets/images/logo-anything-llm.png';
+
+const providers = [
+  { name: "LM Studio", logo: lmStudioLogo },
+  { name: "Ollama", logo: ollamaLogo },
+  { name: "Jan AI", logo: janAiLogo },
+  { name: "Local AI", logo: localAiLogo },
+  { name: "vLLM", logo: vllmLogo },
+  { name: "Text Generation Web UI", logo: textGenLogo },
+  { name: "Anything LLM", logo: anythingLlmLogo }
+];
+---
+
+<section class="llm-providers">
+  <div class="container">
+    <h2 class="section-title">Privacy first with your favourite LLMs</h2>
+    <p class="section-subtitle">
+      All AI processing happens locally on your machine using your preferred model. Your clipboard never leaves your computer.
+    </p>
+
+    <div class="provider-grid">
+      {providers.map((provider, index) => (
+        <div class="provider-card" style={`animation-delay: ${index * 0.1}s`}>
+          <div class="provider-logo-wrapper">
+            <img
+              src={provider.logo.src}
+              alt={provider.name}
+              class="provider-logo"
+            />
+          </div>
+          <span class="provider-name">{provider.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .llm-providers {
+    padding: 7rem 0;
+    background: #0F0F0F;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    color: var(--purple-400);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: #909090;
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    max-width: 720px;
+    margin: 0 auto 5rem;
+    line-height: 1.65;
+  }
+
+  .provider-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .provider-card:nth-child(n+5) {
+    grid-column: span 1;
+  }
+
+  .provider-grid::after {
+    content: '';
+    grid-column: 1 / -1;
+    display: block;
+  }
+
+  .provider-card:nth-child(5) {
+    grid-column-start: 1;
+    margin-left: calc(25% + 0.625rem);
+  }
+
+  .provider-card:nth-child(6) {
+    grid-column-start: 2;
+  }
+
+  .provider-card:nth-child(7) {
+    grid-column-start: 3;
+    margin-right: calc(25% + 0.625rem);
+  }
+
+  .provider-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 2rem 1.5rem;
+    background: rgba(25, 25, 25, 0.8);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: scale-in 0.5s ease-out both;
+    border: 2px solid rgba(167, 139, 250, 0.1);
+    min-height: 200px;
+  }
+
+  .provider-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(167, 139, 250, 0.3);
+    border-color: var(--purple-500);
+    background: rgba(30, 30, 30, 0.9);
+  }
+
+  .provider-logo-wrapper {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    padding: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .provider-card:hover .provider-logo-wrapper {
+    background: rgba(255, 255, 255, 1);
+    transform: rotate(-5deg) scale(1.1);
+  }
+
+  .provider-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+  }
+
+  .provider-card:hover .provider-logo {
+    filter: grayscale(0%);
+  }
+
+  .provider-name {
+    color: #E0E0E0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+
+  @media (max-width: 968px) {
+    .provider-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .provider-card:nth-child(5) {
+      grid-column-start: auto;
+    }
+
+    .provider-card:nth-child(7) {
+      grid-column-start: 2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .llm-providers {
+      padding: 5rem 0;
+    }
+
+    .provider-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
+
+    .provider-card {
+      padding: 1.5rem 1rem;
+    }
+
+    .provider-card:nth-child(5),
+    .provider-card:nth-child(7) {
+      grid-column-start: auto;
+    }
+
+    .provider-logo-wrapper {
+      width: 70px;
+      height: 70px;
+    }
+  }
+</style>

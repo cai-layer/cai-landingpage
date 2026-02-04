@@ -1,0 +1,322 @@
+---
+import githubLogo from '../assets/images/GitHub_Invertocat_White.svg';
+import discordLogo from '../assets/images/discord-white-icon.png';
+import raycastLogo from '../assets/images/logo-raycast.png';
+
+const footerLinks = [
+  { name: "Why Us", url: "#" },
+  { name: "Guide", url: "#" },
+  { name: "Community", url: "#" },
+  { name: "Roadmap", url: "#" },
+  { name: "Blog", url: "#" },
+  { name: "Support", url: "#" },
+  { name: "Discord", url: "#" },
+  { name: "Privacy", url: "#" }
+];
+---
+
+<footer class="footer">
+  <div class="container">
+    <!-- CTA Section -->
+    <div class="footer-cta">
+      <h2 class="cta-title">Start using Cai today</h2>
+      <div class="cta-actions">
+        <a href="https://raycast.com" class="cta-button" target="_blank" rel="noopener noreferrer">
+          <img src={raycastLogo.src} alt="Raycast" class="button-logo" />
+          <span>Download for Raycast</span>
+        </a>
+        <a href="https://github.com" class="github-button" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
+          <img src={githubLogo.src} alt="GitHub" class="github-logo" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer Links -->
+    <div class="footer-content">
+      <nav class="footer-nav">
+        {footerLinks.map((link) => (
+          <a href={link.url} class="footer-link">
+            {link.name}
+          </a>
+        ))}
+      </nav>
+
+      <div class="footer-social">
+        <a
+          href="https://github.com"
+          class="social-link"
+          aria-label="GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={githubLogo.src} alt="GitHub" width="20" height="20" />
+        </a>
+
+        <a
+          href="https://discord.com"
+          class="social-link"
+          aria-label="Discord"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={discordLogo.src} alt="Discord" width="20" height="20" />
+        </a>
+      </div>
+
+      <div class="footer-logo">
+        <span class="logo-text">Cai</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background:
+      radial-gradient(ellipse 800px 900px at 30% 50%, rgba(167, 139, 250, 0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 700px 800px at 70% 50%, rgba(255, 105, 180, 0.1) 0%, transparent 70%),
+      linear-gradient(180deg, #0A0A0A 0%, #111111 100%);
+    color: #ffffff;
+    padding: 6rem 0 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(167, 139, 250, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+  }
+
+  .footer::after {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(255, 105, 180, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-cta {
+    text-align: center;
+    margin-bottom: 5rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .cta-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: white;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  .cta-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: white;
+    color: #2A2A2A;
+    padding: 1.15rem 2.5rem;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+  }
+
+  .cta-button:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+    background: #f5f5f5;
+  }
+
+  .button-logo {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+
+  .github-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.15rem 1.25rem;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .github-button:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .github-logo {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    flex: 1;
+  }
+
+  .footer-link {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .footer-link:hover::after {
+    width: 100%;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    backdrop-filter: blur(10px);
+  }
+
+  .social-link img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  .social-link:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-4px) scale(1.1);
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    border: 3px solid white;
+    border-radius: 12px;
+    padding: 0.35rem 1rem;
+    letter-spacing: -0.02em;
+    transition: all 0.3s ease;
+  }
+
+  .logo-text:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+  }
+
+  @media (max-width: 968px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 2.5rem;
+    }
+
+    .footer-nav {
+      justify-content: center;
+      order: 1;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      order: 2;
+    }
+
+    .footer-social {
+      order: 3;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 2.5rem 0;
+    }
+
+    .footer-nav {
+      gap: 1.25rem;
+      font-size: 0.85rem;
+    }
+
+    .logo-text {
+      font-size: 1.75rem;
+      padding: 0.3rem 0.85rem;
+    }
+  }
+</style>

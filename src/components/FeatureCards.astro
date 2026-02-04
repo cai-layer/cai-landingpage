@@ -1,0 +1,151 @@
+---
+const features = [
+  {
+    number: "01",
+    title: "Select Text",
+    description: "Select and copy any text in any app"
+  },
+  {
+    number: "02",
+    title: "Launch Cai",
+    description: "Press \"⌘C\" to launch Cai and prompt actions"
+  },
+  {
+    number: "03",
+    title: "Run Actions",
+    description: "Execute actions or have output be your local AI"
+  }
+];
+---
+
+<section class="features" id="features">
+  <div class="container">
+    <h2 class="section-title">Your local AI, one shortcut away</h2>
+    <p class="section-subtitle">
+      Whenever you want, wherever you are, you can activate Cai instantly
+    </p>
+
+    <div class="feature-grid">
+      {features.map((feature, index) => (
+        <div class="feature-card" style={`animation-delay: ${index * 0.15}s`}>
+          <div class="feature-number">{feature.number}</div>
+          <h3 class="feature-title">{feature.title}</h3>
+          <p class="feature-description">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: 7rem 0;
+    background: linear-gradient(to bottom, #111111 0%, #0F0F0F 100%);
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    color: var(--purple-400);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: #909090;
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    max-width: 620px;
+    margin: 0 auto 5rem;
+    line-height: 1.65;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(25, 25, 25, 0.8);
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: float-up 0.6s ease-out both;
+    border: 2px solid rgba(167, 139, 250, 0.1);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(167, 139, 250, 0.3);
+    border-color: var(--purple-500);
+    background: rgba(30, 30, 30, 0.9);
+  }
+
+  .feature-number {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, var(--purple-500) 0%, var(--purple-700) 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0 auto 1.75rem;
+    font-family: 'Outfit', sans-serif;
+    box-shadow: 0 8px 20px rgba(167, 139, 250, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover .feature-number {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 30px rgba(167, 139, 250, 0.4);
+  }
+
+  .feature-title {
+    font-size: 1.65rem;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .feature-description {
+    color: #A0A0A0;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 768px) {
+    .features {
+      padding: 5rem 0;
+    }
+
+    .feature-grid {
+      gap: 2rem;
+    }
+
+    .feature-card {
+      padding: 2.5rem 1.75rem;
+    }
+
+    .feature-number {
+      width: 64px;
+      height: 64px;
+      font-size: 1.25rem;
+    }
+  }
+</style>
