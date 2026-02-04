@@ -1,25 +1,25 @@
 ---
 import githubLogo from '../assets/images/GitHub_Invertocat_White.svg';
 import raycastLogo from '../assets/images/logo-raycast.png';
+import caiLogoWhite from '../assets/images/cai-logo-fill-white.svg';
 ---
 
 <nav class="navbar">
   <div class="container">
     <a href="/" class="logo">
-      <span class="logo-text">Cai</span>
+      <img src={caiLogoWhite.src} alt="Cai" class="logo-image" />
     </a>
 
     <div class="nav-menu">
-      <a href="#features" class="nav-link">How it works</a>
+      <a href="#how-it-works" class="nav-link">How it works</a>
       <a href="#quick-actions" class="nav-link">Features</a>
       <a href="https://www.raycast.com/store" class="nav-link" target="_blank" rel="noopener noreferrer">Raycast Store</a>
-      <a href="https://github.com/soyasis/cai-clipboard-ai" class="nav-link" target="_blank" rel="noopener noreferrer">Github</a>
+      <a href="https://github.com/soyasis/cai-clipboard-ai#-installation" class="nav-link" target="_blank" rel="noopener noreferrer">Get Started</a>
     </div>
 
     <div class="nav-actions">
-      <a href="https://raycast.com" class="cta-button" target="_blank" rel="noopener noreferrer">
-        <img src={raycastLogo.src} alt="Raycast" class="button-logo" />
-        <span>Download for Raycast</span>
+      <a href="https://raycast.com" class="raycast-button" target="_blank" rel="noopener noreferrer" aria-label="Download for Raycast">
+        <img src={raycastLogo.src} alt="Raycast" class="raycast-icon" />
       </a>
       <a href="https://github.com/soyasis/cai-clipboard-ai" class="github-button" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
         <img src={githubLogo.src} alt="GitHub" class="github-icon" />
@@ -31,33 +31,34 @@ import raycastLogo from '../assets/images/logo-raycast.png';
 <style>
   .navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 1.25rem 0;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(16px) saturate(180%);
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 3rem);
+    max-width: 1200px;
+    padding: 0.75rem 1.5rem;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
     z-index: 100;
-    border-bottom: 1px solid rgba(167, 139, 250, 0.15);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   }
 
   .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
   }
 
   .nav-menu {
     display: flex;
     align-items: center;
     gap: 2rem;
-    flex: 1;
-    justify-content: center;
   }
 
   .nav-link {
@@ -69,45 +70,45 @@ import raycastLogo from '../assets/images/logo-raycast.png';
   }
 
   .nav-link:hover {
-    color: var(--purple-400);
+    color: var(--accent-light);
   }
 
   .logo {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--purple-400);
+    display: flex;
+    align-items: center;
     transition: all 0.3s ease;
-    letter-spacing: -0.02em;
+  }
+
+  .logo-image {
+    height: 32px;
+    width: auto;
   }
 
   .logo:hover {
-    color: var(--purple-300);
     transform: scale(1.05);
   }
 
-  .cta-button {
-    display: flex;
+  .raycast-button {
+    display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    background: linear-gradient(135deg, var(--purple-500) 0%, var(--purple-600) 100%);
-    color: white;
-    padding: 0.85rem 1.75rem;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.85rem 0.95rem;
     border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 4px 15px rgba(167, 139, 250, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
   }
 
-  .cta-button:hover {
+  .raycast-button:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 25px rgba(167, 139, 250, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.15);
   }
 
-  .button-logo {
-    width: 20px;
-    height: 20px;
+  .raycast-icon {
+    width: 22px;
+    height: 22px;
     object-fit: contain;
   }
 
@@ -149,16 +150,23 @@ import raycastLogo from '../assets/images/logo-raycast.png';
 
   @media (max-width: 768px) {
     .navbar {
-      padding: 1rem 0;
+      top: 0.5rem;
+      width: calc(100% - 1.5rem);
+      padding: 0.6rem 1rem;
     }
 
-    .cta-button {
-      padding: 0.7rem 1.25rem;
-      font-size: 0.9rem;
+    .logo-image {
+      height: 28px;
     }
 
-    .logo {
-      font-size: 1.5rem;
+    .raycast-icon,
+    .github-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .container {
+      gap: 1.5rem;
     }
   }
 </style>
