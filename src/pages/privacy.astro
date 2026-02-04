@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 ---
 
-<Layout title="Privacy Policy - Cai">
+<Layout title="Privacy Policy - Cai" noIndex={true}>
   <Navbar />
   <main class="legal-page">
     <div class="container">
@@ -50,9 +50,13 @@ import Navbar from '../components/Navbar.astro';
       <section class="legal-section">
         <h2>4. Local Data Processing</h2>
         <p>
-          When you use Cai, all text processing and AI interactions occur locally on your device. The extension communicates
-          only with your locally installed AI model (LM Studio, Ollama, etc.). No data is sent to our servers or any
-          third-party services.
+          When you use Cai, all text processing occurs on your device through your locally installed AI platform
+          (LM Studio, Ollama, etc.). Cai does not collect, transmit, or store any of your data on our servers.
+        </p>
+        <p>
+          However, if you configure your local AI platform to use cloud-based AI services (such as OpenAI, Anthropic Claude,
+          or similar providers), your data will be transmitted to those third-party services according to their privacy policies.
+          This is your choice and under your control through your AI platform's configuration.
         </p>
       </section>
 

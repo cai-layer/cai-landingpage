@@ -2,9 +2,10 @@
 interface Props {
   title: string;
   description?: string;
+  noIndex?: boolean;
 }
 
-const { title, description = "Meet Cai, your local clipboard AI. Every interaction stays private on your Mac, powered locally by your favourite AI. Quick, no waiting." } = Astro.props;
+const { title, description = "Meet Cai, your local clipboard AI. Every interaction stays private on your Mac, powered locally by your favourite AI. Quick, no waiting.", noIndex = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,6 +14,7 @@ const { title, description = "Meet Cai, your local clipboard AI. Every interacti
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     
