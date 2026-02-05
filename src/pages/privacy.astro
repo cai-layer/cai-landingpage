@@ -97,9 +97,18 @@ import Navbar from '../components/Navbar.astro';
         <h2>7. Contact</h2>
         <p>
           If you have questions about data protection, please contact us at:<br />
-          Email: <a href="mailto:privacy@example.com" class="link">privacy@example.com</a>
+          Email: <span id="email-address"></span>
         </p>
       </section>
+
+      <script>
+        const user = "web";
+        const domain = "getcai.app";
+        const element = document.getElementById("email-address");
+        if (element) {
+          element.innerHTML = `<a href="mailto:${user}@${domain}" class="link">${user}@${domain}</a>`;
+        }
+      </script>
 
       <section class="legal-section">
         <p class="last-updated">Last updated: February 2026</p>

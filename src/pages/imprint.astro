@@ -12,33 +12,34 @@ import Navbar from '../components/Navbar.astro';
       <section class="legal-section">
         <h2>Information pursuant to § 5 TMG</h2>
         <p>
-          [Company Name]<br />
-          [Street Address]<br />
-          [Postal Code, City]<br />
-          [Country]
+          Etc. Holdings UG<br />
+          Nogatstr. 39<br />
+          12051, Berlin<br />
+          Germany
         </p>
       </section>
 
       <section class="legal-section">
         <h2>Represented by</h2>
-        <p>[Name of Representative]</p>
+        <p>Asís Ybarra</p>
       </section>
 
       <section class="legal-section">
         <h2>Contact</h2>
         <p>
-          Email: <a href="mailto:contact@example.com" class="link">contact@example.com</a><br />
-          Website: <a href="https://example.com" class="link" target="_blank" rel="noopener noreferrer">https://example.com</a>
+          Email: <span id="email-address"></span><br />
+          Website: <a href="https://getcai.app" class="link" target="_blank" rel="noopener noreferrer">https://getcai.app</a>
         </p>
       </section>
 
-      <section class="legal-section">
-        <h2>Responsible for content</h2>
-        <p>
-          [Name]<br />
-          [Address]
-        </p>
-      </section>
+      <script>
+        const user = "web";
+        const domain = "getcai.app";
+        const element = document.getElementById("email-address");
+        if (element) {
+          element.innerHTML = `<a href="mailto:${user}@${domain}" class="link">${user}@${domain}</a>`;
+        }
+      </script>
 
       <section class="legal-section">
         <h2>Dispute resolution</h2>
