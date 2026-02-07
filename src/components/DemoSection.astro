@@ -31,7 +31,7 @@ const imageSrc = typeof mediaSrc === 'string' ? mediaSrc : mediaSrc.src;
 <section class="demo-section" style={`background-color: ${backgroundColor};`} id={id}>
   <div class="container">
     <div class="demo-content">
-      <h2 class="demo-title">{title}</h2>
+      <h2 class="demo-title" set:html={title} />
       {subtitle && <p class="demo-subtitle">{subtitle}</p>}
       {actions && <ActionBadges actions={actions} />}
     </div>
@@ -80,13 +80,17 @@ const imageSrc = typeof mediaSrc === 'string' ? mediaSrc : mediaSrc.src;
 
   .demo-title {
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .demo-title :global(.highlight) {
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
   }
 
   .demo-subtitle {

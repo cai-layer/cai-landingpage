@@ -3,8 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import FeatureCards from '../components/FeatureCards.astro';
+import WorksEverywhere from '../components/WorksEverywhere.astro';
 import LLMProviders from '../components/LLMProviders.astro';
 import DemoSection from '../components/DemoSection.astro';
+import FeatureBento from '../components/FeatureBento.astro';
 import Footer from '../components/Footer.astro';
 
 const quickActions = [
@@ -27,12 +29,13 @@ const quickActions = [
   <Navbar />
   <Hero />
   <FeatureCards />
+  <WorksEverywhere />
   <LLMProviders />
 
   <!-- Demo Section 1: Run quick actions -->
   <DemoSection
     id="quick-actions"
-    title="Smart actions, ready-to-use."
+    title='<span class="highlight">Smart actions</span>, ready-to-use.'
     subtitle="Cai instantly identifies text types—like meetings, addresses, JSON, or code—and suggests the best actions for your selection."
     actions={quickActions}
     mediaType="video"
@@ -45,7 +48,7 @@ const quickActions = [
   <!-- Demo Section 2: Execute custom commands -->
   <DemoSection
     id="custom-commands"
-    title="Run custom AI commands"
+    title='Run <span class="highlight">custom AI</span> commands'
     subtitle="Run on-the-fly prompts against any text you highlight for specialized tasks, like 'Create an ingredients list for 2 from this recipe'."
     mediaType="video"
     mediaSrc="/videos/cai-custom-actions.mp4"
@@ -54,17 +57,6 @@ const quickActions = [
     backgroundColor="#0F0F0F"
   />
   
-  <!-- You can easily add more demo sections here:
-  
-  <DemoSection
-    id="another-feature"
-    title="Another Amazing Feature"
-    subtitle="Description of this feature"
-    mediaType="video"
-    mediaSrc="/images/demo-video.mp4"
-    backgroundColor="#f9f9f9"
-  />
-  -->
-  
+  <FeatureBento />
   <Footer />
 </Layout>
