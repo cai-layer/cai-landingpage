@@ -3,20 +3,22 @@
 
 <section class="footer-cta">
   <div class="container">
-    <h2 class="cta-title">Get Cai:</h2>
-    
+    <h2 class="cta-title">Free & Open Source. <span class="highlight">Forever.</span></h2>
+    <p class="cta-subtitle">No subscriptions. No telemetry. No strings attached.</p>
+
     <a href="https://github.com/soyasis/cai/releases/download/v1.0.0/Cai-1.0.0-macos.dmg" class="cta-button" target="_blank" rel="noopener noreferrer">
-      Download for Mac
+      <svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+      <span>Download for Mac</span>
     </a>
   </div>
 </section>
 
 <style>
   .footer-cta {
-    background: linear-gradient(135deg, var(--coral-400) 0%, var(--coral-600) 50%, var(--coral-700) 100%);
+    background: linear-gradient(135deg, #A78BFA 0%, #D380C3 50%, #F78595 100%);
     background-size: 200% 200%;
     animation: gradient-shift 8s ease infinite;
-    padding: 6rem 0;
+    padding: 5rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -43,21 +45,35 @@
   }
 
   .cta-title {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: clamp(2rem, 5vw, 3.25rem);
     color: white;
-    margin-bottom: 2rem;
-    font-weight: 700;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
   }
 
+  .highlight {
+    color: #1A1A1A;
+  }
+
+  .cta-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+  }
+
   .cta-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
     background: white;
-    color: var(--grey);
-    padding: 1.25rem 3rem;
-    border-radius: 16px;
+    color: #1A1A1A;
+    padding: 1rem 2.5rem;
+    border-radius: 14px;
     font-weight: 600;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.15);
   }
@@ -65,21 +81,22 @@
   .cta-button:hover {
     transform: translateY(-5px) scale(1.03);
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3), 0 6px 16px rgba(0, 0, 0, 0.2);
+    background: #F5F5F5;
+  }
+
+  .apple-icon {
+    width: 18px;
+    height: 18px;
   }
 
   @media (max-width: 768px) {
     .footer-cta {
-      padding: 4.5rem 0;
-    }
-
-    .cta-title {
-      margin-bottom: 2rem;
-      font-size: 2rem;
+      padding: 4rem 0;
     }
 
     .cta-button {
-      padding: 1.1rem 2.5rem;
-      font-size: 1.05rem;
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
     }
   }
 </style>
