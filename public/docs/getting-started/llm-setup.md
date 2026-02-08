@@ -20,7 +20,7 @@ Cai works with any OpenAI-compatible local server. AI is optional — system act
 2. Select your **Model Provider** from the dropdown
 3. If using **Custom**, enter your server's full URL
 
-That's it — Cai will use your local LLM for AI-powered actions like Summarize, Translate, Explain, and Custom Actions.
+That's it — Cai will use your local LLM for AI-powered actions like Summarize, Reply, Translate, Explain, and Custom Actions.
 
 ## Verify Your Server
 

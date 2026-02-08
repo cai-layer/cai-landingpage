@@ -14,6 +14,7 @@ Cai is a native macOS menu bar app that detects what's on your clipboard and off
 
 - **Works locally** — connects to local LLM providers like Ollama, LM Studio, and more
 - **Privacy first** — your clipboard data never leaves your machine
+- **Context aware** — detects what app you're in and tailors actions to fit (e.g. Reply in email vs Slack)
 - **Keyboard driven** — trigger with ⌥C, navigate and execute with keyboard shortcuts
 - **No accounts, no cloud, no telemetry**
 

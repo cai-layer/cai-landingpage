@@ -19,14 +19,19 @@ Cai automatically detects what you copied and offers the right actions:
 | **Meeting** | Date/time references | Create Calendar Event, Open in Maps |
 | **Address** | Street patterns, "at [Place Name]" | Open in Maps |
 | **Word** | 1–2 words | Define, Explain, Translate, Search |
-| **Short Text** | Less than 100 characters | Explain, Translate, Search |
-| **Long Text** | 100+ characters | Summarize, Translate, Search |
+| **Short Text** | Less than 100 characters | Explain, Reply, Translate, Search |
+| **Long Text** | 100+ characters | Summarize, Reply, Translate, Search |
 
 All text types also get **Custom Action** (⌘1) for free-form AI prompts.
+
+### Context Awareness
+
+Cai is context-aware — it detects what app you're in (email, Slack, code editor, etc.) and tailors its actions accordingly. For example, **Reply** uses this context to generate an appropriate response based on whether you're replying to an email, a chat message, or a code review comment.
 
 ## Examples
 
 - Select `"serendipity"` → Define, Explain, Translate, Search
+- Select an email body → Reply, Summarize, Translate
 - Select `"Let's meet Tuesday at 3pm at Starbucks"` → Create Calendar Event, Open in Maps
 - Select `"123 Main St, NYC 10001"` → Open in Maps
 - Select `https://github.com/...` → Open in Browser
@@ -43,6 +48,7 @@ All text types also get **Custom Action** (⌘1) for free-form AI prompts.
 
 **AI actions** require a [local LLM server](getting-started/llm-setup.md):
 - Summarize / Explain
+- Reply (context-aware responses)
 - Translate
 - Define
 - Custom Action (your own prompt)
