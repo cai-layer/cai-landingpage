@@ -2,17 +2,17 @@
 import lmStudioLogo from '../assets/images/logo-lm-studio.png';
 import ollamaLogo from '../assets/images/logo-ollama.png';
 import gpt4allLogo from '../assets/images/logo-gpt4all.png';
-import openaiLogo from '../assets/images/logo-openai.png';
-import claudeLogo from '../assets/images/logo-claude.png';
 import janAiLogo from '../assets/images/logo-jan-ai.png';
+import openWebUiLogo from '../assets/images/logo-open-webui.png';
+import mstyAiLogo from '../assets/images/logo-msty-AI.png';
 
 const providers = [
   { name: "LM Studio", logo: lmStudioLogo },
   { name: "Ollama", logo: ollamaLogo },
   { name: "GPT4All", logo: gpt4allLogo },
-  { name: "OpenAI", logo: openaiLogo },
-  { name: "Claude", logo: claudeLogo },
-  { name: "Jan AI", logo: janAiLogo }
+  { name: "Jan AI", logo: janAiLogo },
+  { name: "Open WebUI", logo: openWebUiLogo },
+  { name: "Msty AI", logo: mstyAiLogo }
 ];
 ---
 
@@ -20,8 +20,18 @@ const providers = [
   <div class="container">
     <h2 class="section-title">Bring Your Own <span class="highlight">Brain</span></h2>
     <p class="section-subtitle">
-      Cai doesn't lock you in. It works with the AI tools you already use — local or cloud.
+      Cai doesn't lock you in. It works with the AI tools and models you already use.
     </p>
+
+    <div class="model-badges">
+      <span class="model-badge">Llama</span>
+      <span class="model-badge">Mistral</span>
+      <span class="model-badge">Qwen</span>
+      <span class="model-badge">Gemma</span>
+      <span class="model-badge">Phi</span>
+      <span class="model-badge">DeepSeek</span>
+      <span class="model-badge more">...</span>
+    </div>
 
     <div class="provider-grid">
       {providers.map((provider, index) => (
@@ -37,8 +47,6 @@ const providers = [
         </div>
       ))}
     </div>
-
-    <p class="provider-more">+ any OpenAI-compatible model</p>
   </div>
 </section>
 
@@ -93,21 +101,14 @@ const providers = [
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.25rem;
-    padding: 2rem 1.5rem;
-    background: rgba(25, 25, 25, 0.8);
-    border-radius: 20px;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+    transition: all 0.3s ease;
     animation: scale-in 0.5s ease-out both;
-    border: 2px solid rgba(167, 139, 250, 0.1);
-    min-height: 220px;
   }
 
   .provider-card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(211, 128, 195, 0.3);
-    border-color: var(--accent-pink);
-    background: rgba(30, 30, 30, 0.9);
+    transform: translateY(-4px);
   }
 
   .provider-logo-wrapper {
@@ -124,7 +125,8 @@ const providers = [
 
   .provider-card:hover .provider-logo-wrapper {
     background: rgba(255, 255, 255, 1);
-    transform: rotate(-5deg) scale(1.1);
+    transform: scale(1.08);
+    box-shadow: 0 8px 25px rgba(167, 139, 250, 0.2);
   }
 
   .provider-logo {
@@ -148,13 +150,26 @@ const providers = [
     word-wrap: break-word;
   }
 
-  .provider-more {
-    text-align: center;
-    color: #606060;
-    font-size: 0.95rem;
-    margin-top: 2rem;
+  .model-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .model-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: #B0B0B0;
+    font-size: 0.85rem;
     font-weight: 500;
-    letter-spacing: 0.01em;
+  }
+
+  .model-badge.more {
+    color: #707070;
   }
 
   @media (max-width: 768px) {
@@ -168,8 +183,7 @@ const providers = [
     }
 
     .provider-card {
-      padding: 1.5rem 1rem;
-      min-height: 180px;
+      padding: 1rem 0.5rem;
     }
 
     .provider-logo-wrapper {

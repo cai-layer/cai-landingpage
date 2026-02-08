@@ -1,18 +1,35 @@
 ---
 interface Props {
-  actions: Array<{ name: string; description: string; highlight?: boolean }>;
+  actions: Array<{ name: string; description: string; highlight?: boolean; secondary?: boolean }>;
 }
 
 const { actions } = Astro.props;
 ---
 
-<div class="action-badges">
-  {actions.map((action) => (
-    <div class:list={["action-badge", { "action-badge--highlight": action.highlight }]} title={action.description}>
-      <span class="action-name">{action.name}</span>
-    </div>
-  ))}
-</div>
+{() => {
+  const mainActions = actions.filter(a => !a.secondary);
+  const secondaryActions = actions.filter(a => a.secondary);
+  return (
+    <>
+      <div class="action-badges">
+        {mainActions.map((action) => (
+          <div class:list={["action-badge", { "action-badge--highlight": action.highlight }]} title={action.description}>
+            <span class="action-name">{action.name}</span>
+          </div>
+        ))}
+      </div>
+      {secondaryActions.length > 0 && (
+        <div class="action-badges action-badges--secondary">
+          {secondaryActions.map((action) => (
+            <div class:list={["action-badge", { "action-badge--highlight": action.highlight }]} title={action.description}>
+              <span class="action-name">{action.name}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </>
+  );
+}}
 
 <style>
   .action-badges {
@@ -22,6 +39,15 @@ const { actions } = Astro.props;
     justify-content: center;
     margin: 2.5rem auto 3rem;
     max-width: 900px;
+  }
+
+  .action-badges--secondary {
+    margin-top: -2rem;
+  }
+
+  .action-badges--secondary .action-name {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    letter-spacing: 0.01em;
   }
 
   .action-badge {
