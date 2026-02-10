@@ -22,6 +22,10 @@ Cai works with any OpenAI-compatible local server. AI is optional — system act
 
 That's it — Cai will use your local LLM for AI-powered actions like Summarize, Reply, Translate, Explain, and Custom Actions.
 
+## Recommended Models
+
+Not sure which model to use? See our [recommended models](https://github.com/soyasis/cai#recommended-models) for tested suggestions based on your hardware and use case.
+
 ## Verify Your Server
 
 You can confirm your LLM server is running by opening Terminal and running:

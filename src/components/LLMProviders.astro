@@ -23,16 +23,6 @@ const providers = [
       Cai doesn't lock you in. It works with the AI tools and models you already use.
     </p>
 
-    <div class="model-badges">
-      <span class="model-badge">Llama</span>
-      <span class="model-badge">Mistral</span>
-      <span class="model-badge">Qwen</span>
-      <span class="model-badge">Gemma</span>
-      <span class="model-badge">Phi</span>
-      <span class="model-badge">DeepSeek</span>
-      <span class="model-badge more">...</span>
-    </div>
-
     <div class="provider-grid">
       {providers.map((provider, index) => (
         <div class="provider-card" style={`animation-delay: ${index * 0.1}s`}>
@@ -47,6 +37,20 @@ const providers = [
         </div>
       ))}
     </div>
+
+    <div class="model-badges">
+      <span class="model-badge">Llama</span>
+      <span class="model-badge">Mistral</span>
+      <span class="model-badge">Qwen</span>
+      <span class="model-badge">Gemma</span>
+      <span class="model-badge">Phi</span>
+      <span class="model-badge">DeepSeek</span>
+      <span class="model-badge more">...</span>
+    </div>
+
+    <a href="https://github.com/soyasis/cai#recommended-models" class="models-link" target="_blank" rel="noopener noreferrer">
+      Which model should I use? →
+    </a>
   </div>
 </section>
 
@@ -83,7 +87,7 @@ const providers = [
     color: #909090;
     font-size: clamp(1.05rem, 2vw, 1.2rem);
     max-width: 720px;
-    margin: 0 auto 5rem;
+    margin: 0 auto 4rem;
     line-height: 1.65;
   }
 
@@ -155,7 +159,7 @@ const providers = [
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-bottom: 3rem;
+    margin-top: 2.5rem;
   }
 
   .model-badge {
@@ -170,6 +174,20 @@ const providers = [
 
   .model-badge.more {
     color: #707070;
+  }
+
+  .models-link {
+    display: block;
+    text-align: center;
+    margin-top: 2.5rem;
+    color: #909090;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .models-link:hover {
+    color: var(--accent-light);
   }
 
   @media (max-width: 768px) {
