@@ -1,15 +1,5 @@
 # Common Issues
 
-## macOS blocks Cai from opening
-
-This is expected for open-source apps not distributed through the App Store. See the [First Launch Setup](getting-started/installation.md#first-launch-setup) guide.
-
-Alternatively, remove the quarantine flag via Terminal:
-
-```bash
-xattr -cr /Applications/Cai.app
-```
-
 ## Global shortcut ⌥C doesn't work
 
 - Open **System Settings → Privacy & Security → Accessibility** and make sure Cai is listed and **enabled**

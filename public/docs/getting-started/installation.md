@@ -4,7 +4,7 @@
 
 1. Download the `.dmg` from the [latest release](https://github.com/soyasis/cai/releases/latest)
 2. Open the DMG and drag **Cai.app** to your Applications folder
-3. Open the app — macOS will show a warning (see [First Launch Setup](#first-launch-setup) below)
+3. Open the app and grant Accessibility permission (see [First Launch Setup](#first-launch-setup) below)
 4. Configure your LLM server in Preferences (left-click the menu bar icon)
 
 ## Requirements
@@ -15,24 +15,13 @@
 
 ## First Launch Setup
 
-Cai is free and open source. Since it's not distributed through the App Store or notarized with a paid Apple Developer account, macOS Gatekeeper will block it on first launch. This is normal for any open-source Mac app distributed outside the App Store.
+On first launch, Cai will ask for Accessibility permission. This is required so Cai can use the global hotkey (⌥C) and simulate ⌘C to copy your selection — it's what allows Cai to work seamlessly across all apps.
 
-**Step 1** — Open Cai. macOS will block it. Click **Done**.
+**Step 1** — Click **Open System Settings** when prompted.
 
-**Step 2** — Go to **System Settings → Privacy & Security**, scroll down, and click **Open Anyway**.
-
-**Step 3** — Click **Open Anyway** in the confirmation dialog.
-
-**Step 4** — Authenticate with Touch ID or your password.
-
-**Step 5** — Cai needs Accessibility permission to use the global hotkey (⌥C) and simulate ⌘C to copy your selection. Click **Open System Settings**.
-
-**Step 6** — Toggle Cai **on** in the Accessibility list.
+**Step 2** — Toggle Cai **on** in the Accessibility list. macOS will ask for your password or Touch ID to confirm.
 
 You're all set! Press **⌥C** with any text selected to start using Cai.
-
-> [!TIP]
-> You can also remove the quarantine flag via Terminal instead: `xattr -cr /Applications/Cai.app`
 
 ## Build from Source
 
