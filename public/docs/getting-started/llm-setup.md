@@ -6,6 +6,16 @@ Cai ships with a built-in model (**Ministral 3B**) that downloads automatically 
 
 The built-in model handles all AI-powered actions out of the box: Summarize, Reply, Proofread, Translate, Explain, and Custom Actions.
 
+### Custom Models
+
+You can also run your own GGUF models with the built-in provider. Drop any `.gguf` file into:
+
+```
+~/Library/Application Support/Cai/models/
+```
+
+Then select it from the model picker in **Settings**, or click the **chip icon** in the action view. Cai will restart the built-in server with your chosen model.
+
 ## Using an External Provider
 
 Want to use a different or larger model? Cai works with any OpenAI-compatible server — local or remote. Just switch the provider in settings.
