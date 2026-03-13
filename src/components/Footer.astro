@@ -1,15 +1,33 @@
 ---
 import caiLogoBorder from '../assets/images/cai-logo-border.svg';
 
-const footerLinks = [
-  { name: "Docs", url: "/docs/" },
-  { name: "Releases", url: "https://github.com/clipboard-ai/cai/releases/latest" },
-  { name: "GitHub", url: "https://github.com/clipboard-ai/cai" },
-  { name: "Models", url: "https://github.com/clipboard-ai/cai#recommended-models" },
-  { name: "Report Issues", url: "https://github.com/clipboard-ai/cai/issues" },
-  { name: "Imprint", url: "/imprint" },
-  { name: "Privacy", url: "/privacy" },
-  { name: "Terms of Service", url: "/terms" }
+const footerGroups = [
+  {
+    label: "Product",
+    links: [
+      { name: "Docs", url: "/docs/" },
+      { name: "Releases", url: "https://github.com/clipboard-ai/cai/releases/latest" },
+      { name: "Models", url: "https://github.com/clipboard-ai/cai#recommended-models" },
+      { name: "Extensions", url: "https://github.com/clipboard-ai/cai-extensions" },
+    ]
+  },
+  {
+    label: "Community",
+    links: [
+      { name: "GitHub", url: "https://github.com/clipboard-ai/cai" },
+      { name: "Discussions", url: "https://github.com/clipboard-ai/cai/discussions" },
+      { name: "Report Issues", url: "https://github.com/clipboard-ai/cai/issues" },
+      { name: "LinkedIn", url: "https://www.linkedin.com/company/clipboard-ai" },
+    ]
+  },
+  {
+    label: "Legal",
+    links: [
+      { name: "Imprint", url: "/imprint" },
+      { name: "Privacy", url: "/privacy" },
+      { name: "Terms of Service", url: "/terms" },
+    ]
+  }
 ];
 ---
 
@@ -28,13 +46,20 @@ const footerLinks = [
 
     <!-- Footer Links -->
     <div class="footer-content">
-      <nav class="footer-nav">
-        {footerLinks.map((link) => (
-          <a href={link.url} class="footer-link" target={link.url.startsWith('/') ? undefined : '_blank'} rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}>
-            {link.name}
-          </a>
+      <div class="footer-groups">
+        {footerGroups.map((group) => (
+          <div class="footer-group">
+            <span class="footer-group-label">{group.label}</span>
+            <nav class="footer-group-links">
+              {group.links.map((link) => (
+                <a href={link.url} class="footer-link" target={link.url.startsWith('/') ? undefined : '_blank'} rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}>
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+          </div>
         ))}
-      </nav>
+      </div>
 
       <div class="footer-logo">
         <img src={caiLogoBorder.src} alt="Cai" class="logo-image" />
@@ -131,15 +156,34 @@ const footerLinks = [
   .footer-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 2rem;
   }
 
-  .footer-nav {
+  .footer-groups {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+    gap: 4rem;
     flex: 1;
+  }
+
+  .footer-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-group-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .footer-group-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .footer-link {
@@ -193,10 +237,13 @@ const footerLinks = [
       gap: 2.5rem;
     }
 
-    .footer-nav {
+    .footer-groups {
       justify-content: center;
       order: 1;
-      gap: 1.5rem;
+    }
+
+    .footer-group {
+      align-items: center;
     }
 
     .footer-logo {
@@ -219,13 +266,23 @@ const footerLinks = [
       font-size: 1rem;
     }
 
-    .footer-nav {
-      gap: 1.25rem;
+    .footer-groups {
+      gap: 2.5rem;
+    }
+
+    .footer-link {
       font-size: 0.85rem;
     }
 
     .logo-image {
       height: 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-groups {
+      flex-direction: column;
+      gap: 2rem;
     }
   }
 </style>

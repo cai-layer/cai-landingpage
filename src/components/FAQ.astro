@@ -6,7 +6,7 @@ const faqs = [
   },
   {
     question: "How is Cai different from clipboard managers?",
-    answer: "<p>Clipboard managers are built to store and organize what you copy. Cai is built to act on it — summarize, reply, translate, or run any AI prompt on your selected text, right where you are. It's a text action layer, not a clipboard organizer.</p>"
+    answer: "<p>Clipboard managers are built to store and organize what you copy. Cai is built to act on it — summarize, reply, translate, extract text from images, or run any AI prompt on your clipboard content, right where you are. It's a text action layer, not a clipboard organizer.</p>"
   },
   {
     question: "How is Cai different from ChatGPT or other AI tools?",
@@ -21,8 +21,12 @@ const faqs = [
     answer: "<p>No — Cai ships with a built-in model (Ministral 3B) that you can download on first launch. It works out of the box with no setup needed.</p><p>You can also add your own GGUF models — just drop them into <code>~/Library/Application Support/Cai/models/</code>.</p><p>If you want to use a different provider, you can connect a local server (LM Studio, Ollama, etc.) or a cloud provider (OpenAI, Gemini, Mistral, OpenRouter, etc.) in settings.</p>"
   },
   {
+    question: "Does Cai work with Apple Intelligence?",
+    answer: "<p>Yes. Cai supports Apple Intelligence as a built-in model provider on Macs with an M1 chip or later running macOS 26+. If Apple Intelligence is active on your Mac, Cai will suggest it automatically after install.</p><p>You can also enable it manually in <strong>Settings → Model → Apple Intelligence</strong>. Make sure Apple Intelligence is enabled on your Mac under <strong>System Settings → Apple Intelligence & Siri</strong>.</p>"
+  },
+  {
     question: "How do I create custom actions?",
-    answer: "<p>Open Cai's settings from the menu bar icon and go to Custom Actions. You can create prompt shortcuts (saved AI instructions) or URL shortcuts (templates with %s for your selected text). Once saved, they appear in your action list for one-tap access.</p>"
+    answer: "<p>Open Cai's settings from the menu bar icon and go to Custom Actions. You can create prompt shortcuts (saved AI instructions) or URL shortcuts (templates with %s for your selected text). Once saved, they appear in your action list for one-tap access.</p><p>You can also browse and install actions shared by the community at <a href='https://github.com/clipboard-ai/cai-extensions' target='_blank' rel='noopener noreferrer'>cai-extensions</a>.</p>"
   }
 ];
 ---
@@ -148,6 +152,16 @@ const faqs = [
 
   .faq-answer :global(p + p) {
     margin-top: 0.75rem;
+  }
+
+  .faq-answer :global(a) {
+    color: #C4B5FD;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .faq-answer :global(a:hover) {
+    color: #F78595;
   }
 
   .faq-answer :global(strong) {

@@ -13,15 +13,16 @@ import Footer from '../components/Footer.astro';
 const quickActions = [
   { name: "Explain", description: "Get a clear explanation of selected text" },
   { name: "Reply", description: "Context-aware reply for emails, messages, and more" },
-  { name: "Proofread", description: "Fix grammar, spelling, and punctuation" },
+  { name: "Fix Grammar", description: "Fix grammar, spelling, and punctuation" },
   { name: "Summarize", description: "Create a concise summary" },
   { name: "Define", description: "Define a word" },
   { name: "Translate", description: "Translate text to another language" },
   { name: "Open in Maps", description: "Open address in Maps app" },
   { name: "Create Calendar Event", description: "Create calendar event from text" },
-  { name: "Beautify JSON", description: "Format and beautify JSON data" },  // { name: "Code", description: "Explain a code snippets" },
+  { name: "Image to Text (OCR)", description: "Extract text from images and screenshots" },
   { name: "Search the Web", description: "Search something on the web" },
   { name: "Custom Action", description: "Execute a custom prompt" },
+  { name: "...", description: "And more" },
 ];
 
 const customFeatures = [
@@ -58,13 +59,15 @@ const customFeatures = [
   <DemoSection
     id="custom-commands"
     title='Make it <span class="highlight">yours</span>'
-    subtitle="Run on-the-fly AI prompts, or save your own shortcuts for prompts and URLs."
+    subtitle="Run on-the-fly AI prompts, save your own shortcuts for prompts and URLs, and create custom destinations."
     actions={customFeatures}
     mediaType="video"
     mediaSrc="/videos/cai-custom-actions.mp4"
     posterSrc="/videos/cai-custom-actions-poster.webp"
     mediaAlt="Custom commands and shortcuts demo"
     backgroundColor="#0F0F0F"
+    linkHref="https://github.com/clipboard-ai/cai-extensions"
+    linkText="Browse community extensions →"
   />
   
   <FeatureBento />

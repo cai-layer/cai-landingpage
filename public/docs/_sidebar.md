@@ -11,6 +11,7 @@
   - [Custom Actions](usage/custom-actions.md)
   - [Custom Shortcuts](usage/shortcuts.md)
   - [Output Destinations](usage/destinations.md)
+  - [Community Extensions](usage/extensions.md)
 
 - **Troubleshooting**
 

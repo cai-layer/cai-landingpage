@@ -11,6 +11,8 @@ interface Props {
   backgroundColor?: string;
   id?: string;
   actions?: Array<{ name: string; description: string; highlight?: boolean; secondary?: boolean }>;
+  linkHref?: string;
+  linkText?: string;
 }
 
 const {
@@ -22,7 +24,9 @@ const {
   mediaAlt = 'Demo screenshot',
   backgroundColor = '#ffffff',
   id,
-  actions
+  actions,
+  linkHref,
+  linkText
 } = Astro.props;
 
 const imageSrc = typeof mediaSrc === 'string' ? mediaSrc : mediaSrc.src;
@@ -34,6 +38,11 @@ const imageSrc = typeof mediaSrc === 'string' ? mediaSrc : mediaSrc.src;
       <h2 class="demo-title" set:html={title} />
       {subtitle && <p class="demo-subtitle">{subtitle}</p>}
       {actions && <ActionBadges actions={actions} />}
+      {linkHref && linkText && (
+        <a href={linkHref} class="section-link" target="_blank" rel="noopener noreferrer">
+          {linkText}
+        </a>
+      )}
     </div>
 
     <div class="demo-media">
@@ -99,6 +108,20 @@ const imageSrc = typeof mediaSrc === 'string' ? mediaSrc : mediaSrc.src;
     max-width: 720px;
     margin: 0 auto;
     line-height: 1.65;
+  }
+
+  .section-link {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    color: #909090;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .section-link:hover {
+    color: var(--accent-light);
   }
 
   .demo-media {

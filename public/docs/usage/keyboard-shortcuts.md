@@ -15,7 +15,8 @@ Cai is designed to be used entirely from the keyboard.
 | **↑ ↓** | Navigate between actions |
 | **↵** (Enter) | Execute selected action |
 | **⌘1–9** | Jump directly to an action by number |
-| **⌘0** | Open clipboard history (last 9 items) |
+| **⌘N** | New chat (ask anything, without clipboard content) |
+| **⌘0** | Open clipboard history (searchable, with pinning) |
 | **Esc** | Go back / Dismiss the window |
 
 ## Custom Prompt
@@ -24,6 +25,7 @@ Cai is designed to be used entirely from the keyboard.
 |---|---|
 | **⌘↵** | Submit your custom prompt |
 | **⌘↵** | Copy result (when viewing a result) |
+| **Tab** | Ask a follow-up question on the result |
 | **Esc** | Back to action list |
 
 ## Menu Bar

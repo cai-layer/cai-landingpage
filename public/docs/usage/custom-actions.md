@@ -1,6 +1,6 @@
 # Custom Actions
 
-Custom Action is Cai's most flexible feature — it lets you run any prompt against your clipboard content using your local LLM.
+Custom Action is Cai's most flexible feature — it lets you run any prompt against your clipboard content using your local LLM. You can also press **⌘N** in the action window to start a new chat without clipboard content — useful for asking the LLM anything directly.
 
 ## How to Use
 

@@ -19,8 +19,9 @@ Cai automatically detects what you copied and offers the right actions:
 | **Meeting** | Date/time references | Create Calendar Event, Open in Maps |
 | **Address** | Street patterns, "at [Place Name]" | Open in Maps |
 | **Word** | 1–2 words | Define, Explain, Translate, Search |
-| **Short Text** | Less than 100 characters | Explain, Reply, Proofread, Translate, Search |
-| **Long Text** | 100+ characters | Summarize, Reply, Proofread, Translate, Search |
+| **Short Text** | Less than 100 characters | Explain, Reply, Fix Grammar, Translate, Search |
+| **Long Text** | 100+ characters | Summarize, Reply, Fix Grammar, Translate, Search |
+| **Image** | Clipboard image or screenshot | Extract Text (OCR), then all text actions |
 
 All text types also get **Custom Action** (⌘1) for free-form AI prompts.
 
@@ -45,14 +46,27 @@ Cai is context-aware — it detects what app you're in (email, Slack, code edito
 - Create calendar event (via ICS file — works with any calendar app)
 - Web search
 - Pretty print JSON
+- Extract text from images (OCR via Apple Vision)
 
 **AI actions** use the [built-in model](getting-started/llm-setup.md) by default, or a connected external provider:
 - Summarize / Explain
 - Reply (context-aware responses)
-- Proofread
+- Fix Grammar
 - Translate
 - Define
 - Custom Action (your own prompt)
+
+### Follow-up Questions
+
+After any AI action returns a result, press **Tab** to ask a follow-up question. The full conversation history is sent to the LLM, so it has context from the previous result. You can chain multiple follow-ups in a single session.
+
+## Clipboard History
+
+Press **⌘0** in the action window to open clipboard history. Features include:
+
+- **Search** — type to filter your history
+- **Pinning** — pin important items so they stay at the top
+- **Configurable size** — adjust the history limit in settings
 
 ## Settings
 
@@ -64,4 +78,5 @@ Left-click the Cai menu bar icon to access Preferences:
 | **Search URL** | Base URL for web searches | Brave Search |
 | **Maps Provider** | Apple Maps or Google Maps | Apple Maps |
 | **Model Provider** | Built-in, LM Studio, Ollama, Cloud, or Custom | Built-in |
+| **About You** | Personal context for AI responses (e.g. profession, tone) | Empty |
 | **Launch at Login** | Start Cai automatically | On |
