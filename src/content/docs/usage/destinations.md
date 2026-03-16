@@ -1,24 +1,24 @@
 ---
-title: "Output Destinations"
+title: "Custom Destinations"
 description: "Send Cai results to any app or service. Configure webhooks, AppleScript, URL schemes, and shell commands for automated workflows."
 ---
 
-# Output Destinations
+# Custom Destinations
 
-By default, Cai copies results to your clipboard. Output destinations let you send text to any app or service instead — post to Slack, save to Bear, create a GitHub issue, and more.
+By default, Cai copies results to your clipboard. Custom destinations let you send text to any app or service instead — post to Slack, save to Bear, create a GitHub issue, and more.
 
 Destinations can receive AI-processed text (after an action runs) or your raw clipboard text directly.
 
-> **Caution:** Shell Command and AppleScript destinations execute code on your Mac with your user-level permissions. They can modify files, send network requests, and control other applications. Only create these destinations if you understand exactly what the script does. Never paste commands from untrusted sources. The authors of Cai are not responsible for any damage or data loss caused by user-created scripts.
-
 ## Destination Types
 
-| Type | Use Case | Example |
-|---|---|---|
-| **Webhook** | Send to any API via HTTP POST/PUT/PATCH | Post to a Slack channel, create a Notion page |
-| **AppleScript** | Control any macOS app | Add to Things, create an OmniFocus task |
-| **URL Scheme** | Open deep links with your text | Save to Bear, open in Obsidian |
-| **Shell Command** | Run terminal commands | `gh issue create`, pipe to a script |
+| Type              | Use Case                                | Example                                       |
+| ----------------- | --------------------------------------- | --------------------------------------------- |
+| **Webhook**       | Send to any API via HTTP POST/PUT/PATCH | Post to a Slack channel, create a Notion page |
+| **AppleScript**   | Control any macOS app                   | Add to Things, create an OmniFocus task       |
+| **URL Scheme**    | Open deep links with your text          | Save to Bear, open in Obsidian                |
+| **Shell Command** | Run terminal commands                   | `gh issue create`, pipe to a script           |
+
+> **Caution:** Shell Command and AppleScript destinations execute code on your Mac with your user-level permissions. They can modify files, send network requests, and control other applications. Only create these destinations if you understand exactly what the script does. Never paste commands from untrusted sources. The authors of Cai are not responsible for any damage or data loss caused by user-created scripts.
 
 ## Template Placeholders
 
@@ -42,7 +42,7 @@ Enable **"Show in action list"** to make a destination appear as a direct action
 ## Creating a Destination
 
 1. Left-click the **Cai menu bar icon** to open Preferences
-2. Go to **Output Destinations**
+2. Go to **Custom Destinations**
 3. Click **+** to add a new destination
 4. Choose a **type** (Webhook, AppleScript, URL Scheme, or Shell Command)
 5. Give it a **name** and configure the template
@@ -52,6 +52,16 @@ Enable **"Show in action list"** to make a destination appear as a direct action
 
 ## Examples
 
+### Create a GitHub Issue
+
+- **Type:** Shell Command
+- **Command:** `gh issue create --title "From Cai" --body "{{result}}"`
+
+### Save to Bear
+
+- **Type:** URL Scheme
+- **URL:** `bear://x-callback-url/create?text={{result}}`
+
 ### Post to Slack via Webhook
 
 - **Type:** Webhook
@@ -59,16 +69,6 @@ Enable **"Show in action list"** to make a destination appear as a direct action
 - **URL:** `https://hooks.slack.com/services/{{webhook_url}}`
 - **Body:**
   ```json
-  {"text": "{{result}}"}
+  { "text": "{{result}}" }
   ```
 - **Setup field:** `webhook_url` → your Slack webhook path
-
-### Save to Bear
-
-- **Type:** URL Scheme
-- **URL:** `bear://x-callback-url/create?text={{result}}`
-
-### Create a GitHub Issue
-
-- **Type:** Shell Command
-- **Command:** `gh issue create --title "From Cai" --body "{{result}}"`

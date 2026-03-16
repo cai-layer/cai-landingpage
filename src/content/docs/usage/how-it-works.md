@@ -65,6 +65,8 @@ Cai is context-aware — it detects what app you're in (email, Slack, code edito
 
 After any AI action returns a result, press **Tab** to ask a follow-up question. The full conversation history is sent to the LLM, so it has context from the previous result. You can chain multiple follow-ups in a single session.
 
+Press **⌘N** to start a new chat — ask anything without clipboard content.
+
 ## Clipboard History
 
 Press **⌘0** in the action window to open clipboard history. Features include:

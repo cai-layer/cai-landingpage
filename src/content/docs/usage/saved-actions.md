@@ -7,7 +7,7 @@ description: "Save frequently-used AI prompts and URL templates as custom action
 
 Custom actions let you save frequently-used prompts and URL templates for instant access. Type to filter your actions and custom actions appear inline — no menus, no setup each time.
 
-## Two Types of Custom Actions
+## Three Types of Custom Actions
 
 ### Prompt Actions
 
@@ -31,14 +31,26 @@ Save a URL template with `%s` as a placeholder. When triggered, Cai replaces `%s
 
 > **Tip:** The clipboard text is automatically URL-encoded, so spaces and special characters are handled for you.
 
+### Shell Actions
+
+Save a shell command that runs with your clipboard text. Use this to automate workflows, trigger scripts, or pipe text to command-line tools.
+
+**Examples:**
+- `echo "%s" | pbcopy` — transform and re-copy
+- `gh issue create --title "%s"` — create a GitHub issue
+- `say "%s"` — read clipboard text aloud
+- `open "https://google.com/search?q=%s"` — open a URL from the terminal
+
+> **Caution:** Shell actions execute with your user-level permissions and can modify files, send network requests, and control other applications. Only create shell actions if you understand exactly what the command does. Never paste commands from untrusted sources.
+
 ## Creating Custom Actions
 
 1. Left-click the **Cai menu bar icon** to open Preferences
 2. Click **Custom Actions**
 3. Click the add button and fill in:
    - **Name** — what you'll see in the action list
-   - **Type** — Prompt or URL
-   - **Value** — the prompt instruction or URL template (use `%s` for the clipboard text)
+   - **Type** — Prompt, URL, or Shell
+   - **Value** — the prompt instruction, URL template (use `%s` for the clipboard text), or shell command
 4. Click **Save**
 
 You can edit or delete existing custom actions from the same screen.
@@ -58,3 +70,4 @@ Custom actions appear when you **type to filter** in the action window:
 
 - **Prompt actions** require a running [local LLM server](/docs/getting-started/llm-setup/)
 - **URL actions** work without any LLM — they just open your browser
+- **Shell actions** work without any LLM — they execute the command directly

@@ -17,16 +17,11 @@ Ask AI is Cai's most flexible feature — it lets you run any prompt against you
 
 ## Example Prompts
 
-- `Translate to French`
-- `Summarize in 2 sentences`
-- `Rewrite this more professionally`
 - `Extract all dates mentioned`
 - `Create a bullet-point list from this`
-- `Fix the grammar and spelling`
 - `Reply to this email politely declining`
 - `Convert this to a markdown table`
-- `Count the words`
-- `Explain this like I'm 5`
+- ...
 
 ## Requirements
 
