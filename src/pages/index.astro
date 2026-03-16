@@ -11,23 +11,20 @@ import FAQ from '../components/FAQ.astro';
 import Footer from '../components/Footer.astro';
 
 const quickActions = [
-  { name: "Explain", description: "Get a clear explanation of selected text" },
-  { name: "Reply", description: "Context-aware reply for emails, messages, and more" },
-  { name: "Fix Grammar", description: "Fix grammar, spelling, and punctuation" },
+  { name: "Reply", description: "Context-aware reply for emails, messages, and more", highlight: true },
+  { name: "Image to Text (OCR)", description: "Extract text from images and screenshots", highlight: true },
+  { name: "Create Calendar Event", description: "Create calendar event from text", highlight: true },
+  { name: "Run Shell Command", description: "Execute shell commands from your clipboard", highlight: true },
   { name: "Summarize", description: "Create a concise summary" },
-  { name: "Define", description: "Define a word" },
+  { name: "Fix Grammar", description: "Fix grammar, spelling, and punctuation" },
   { name: "Translate", description: "Translate text to another language" },
-  { name: "Open in Maps", description: "Open address in Maps app" },
-  { name: "Create Calendar Event", description: "Create calendar event from text" },
-  { name: "Image to Text (OCR)", description: "Extract text from images and screenshots" },
-  { name: "Search the Web", description: "Search something on the web" },
   { name: "Custom Action", description: "Execute a custom prompt" },
   { name: "...", description: "And more" },
 ];
 
 const customFeatures = [
   { name: "On-the-fly Prompts", description: "Run any AI instruction against your clipboard text", highlight: true },
-  { name: "Saved Prompt Shortcuts", description: "Save prompts you use often for one-tap access", highlight: true },
+  { name: "Save Prompts", description: "Save prompts you use often for one-tap access", highlight: true },
   { name: "URL Shortcuts", description: "Create URL templates with %s — search Reddit, Google Translate, Wikipedia, and more", highlight: true },
   { name: "Custom Destinations", description: "Send results to Slack, Bear, Notion, or any app via webhooks, AppleScript, URL schemes, and shell commands", highlight: true },
   { name: "Type to Filter", description: "Just start typing to find your shortcuts instantly", secondary: true },
@@ -59,7 +56,7 @@ const customFeatures = [
   <DemoSection
     id="custom-commands"
     title='Make it <span class="highlight">yours</span>'
-    subtitle="Run on-the-fly AI prompts, save your own shortcuts for prompts and URLs, and create custom destinations."
+    subtitle="Run on-the-fly AI prompts, execute shell commands, save your own shortcuts, and create custom destinations."
     actions={customFeatures}
     mediaType="video"
     mediaSrc="/videos/cai-custom-actions.mp4"
