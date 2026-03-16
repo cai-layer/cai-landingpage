@@ -39,14 +39,12 @@ const customFeatures = [
   <Navbar />
   <Hero />
   <FeatureCards />
-  <WorksEverywhere />
-  <LLMProviders />
 
   <!-- Demo Section 1: Run quick actions -->
   <DemoSection
     id="quick-actions"
     title='<span class="highlight">Smart actions</span>, ready-to-use.'
-    subtitle="Cai instantly identifies text types—like meetings, addresses, JSON, or code—and suggests the best actions for your selection."
+    subtitle="Cai detects what you selected — meetings, addresses, code, images — and shows the right actions automatically."
     actions={quickActions}
     mediaType="video"
     mediaSrc="/videos/cai-builtin-actions.mp4"
@@ -54,6 +52,8 @@ const customFeatures = [
     mediaAlt="Run quick actions demo"
     backgroundColor="#111111"
   />
+
+  <WorksEverywhere />
 
   <!-- Demo Section 2: Custom commands & shortcuts -->
   <DemoSection
@@ -69,8 +69,9 @@ const customFeatures = [
     linkHref="https://github.com/clipboard-ai/cai-extensions"
     linkText="Browse community extensions →"
   />
-  
+
   <FeatureBento />
+  <LLMProviders />
   <FAQ />
   <Footer />
 </Layout>

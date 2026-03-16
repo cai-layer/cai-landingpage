@@ -1,4 +1,5 @@
 ---
+import aiLogo from '../assets/images/apple-intelligence-purple.png';
 ---
 
 <section class="hero" id="hero">
@@ -9,8 +10,8 @@
         the <span class="highlight">private</span> clipboard AI
       </h1>
       <p class="hero-subtitle">
-        Select any text or image and run intelligent actions with ⌥C.<br />
-        No more app switching. Powered by your favorite model.
+        Select any text or image, press ⌥C and get instant AI actions. <br />
+        No more app switching.
       </p>
 
       <div class="trust-badges">
@@ -23,8 +24,8 @@
           <span>Open Source</span>
         </div>
         <div class="trust-badge">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          <span>Lightning Fast</span>
+          <img src={aiLogo.src} alt="" width="16" height="16" class="ai-badge-icon" />
+          <span>Apple Intelligence</span>
         </div>
       </div>
 
@@ -157,6 +158,12 @@
     width: 16px;
     height: 16px;
     color: #A78BFA;
+    flex-shrink: 0;
+  }
+
+  .ai-badge-icon {
+    width: 16px;
+    height: 16px;
     flex-shrink: 0;
   }
 
