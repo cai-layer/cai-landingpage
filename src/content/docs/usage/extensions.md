@@ -1,11 +1,11 @@
 ---
 title: "Community Extensions"
-description: "Browse and install community-built extensions for Cai. Pre-built shortcuts and destinations shared by other users."
+description: "Browse and install community-built extensions for Cai. Pre-built custom actions and destinations shared by other users."
 ---
 
 # Community Extensions
 
-Community extensions are pre-built [shortcuts](/docs/usage/shortcuts) and [destinations](/docs/usage/destinations) shared by other Cai users. Browse and install them from the [cai-extensions](https://github.com/clipboard-ai/cai-extensions) repository.
+Community extensions are pre-built [custom actions](/docs/usage/saved-actions) and [destinations](/docs/usage/destinations) shared by other Cai users. Browse and install them from the [cai-extensions](https://github.com/clipboard-ai/cai-extensions) repository.
 
 ## How to Install
 
@@ -14,20 +14,20 @@ Community extensions are pre-built [shortcuts](/docs/usage/shortcuts) and [desti
 3. Cai detects it automatically and shows a trust confirmation dialog
 4. Review the extension details — name, type, author — and click **Install** if you trust it
 
-The extension is added as a shortcut or destination in your Cai settings.
+The extension is added as a custom action or destination in your Cai settings.
 
 ## Extension Types
 
 | Type | What it does | Installs as | Needs LLM? |
 |------|-------------|-------------|------------|
-| `prompt` | Sends clipboard text to the LLM with a custom instruction | Shortcut | Yes |
-| `url` | Opens a URL with `%s` replaced by clipboard text | Shortcut | No |
-| `shell` | Runs a shell command with the text | Shortcut | No |
+| `prompt` | Sends clipboard text to the LLM with a custom instruction | Action | Yes |
+| `url` | Opens a URL with `%s` replaced by clipboard text | Action | No |
+| `shell` | Runs a shell command with the text | Action | No |
 | `webhook` | Sends text to an HTTP endpoint | Destination | No |
 | `deeplink` | Opens a URL scheme / deep link | Destination | No |
 | `applescript` | Runs an AppleScript with the text | Destination | No |
 
-**Shortcuts** appear as actions in the Cai action window — you trigger them just like built-in actions. **Destinations** are output targets that receive text after an action runs (or directly from clipboard).
+**Custom actions** appear in the Cai action window — you trigger them just like built-in actions. **Destinations** are output targets that receive text after an action runs (or directly from clipboard).
 
 ## Security
 
@@ -59,7 +59,7 @@ Every `extension.yaml` must start with `# cai-extension` on the first line and i
 | `icon` | [SF Symbol](https://developer.apple.com/sf-symbols/) name (e.g. `envelope.fill`) |
 | `type` | `prompt`, `url`, `webhook`, or `deeplink` |
 
-### Prompt Shortcut
+### Prompt Action
 
 Sends clipboard text to the LLM with your instruction:
 
@@ -87,7 +87,7 @@ prompt: |
 - Don't include `{{text}}` or `{{clipboard}}` placeholders — text is passed automatically
 - Cai's system prompt already says "Output ONLY the processed text" — don't repeat that
 
-### URL Shortcut
+### URL Action
 
 Opens a URL with `%s` replaced by the clipboard text:
 
@@ -152,7 +152,7 @@ deeplink: "bear://x-callback-url/create?text={{result}}"
 
 | Placeholder | Used in | Description |
 |-------------|---------|-------------|
-| `%s` | URL shortcuts | Replaced with clipboard text (URL-encoded) |
+| `%s` | URL actions | Replaced with clipboard text (URL-encoded) |
 | `{{result}}` | Destinations | Replaced with the text to send (auto-escaped per destination type) |
 | `{{field_key}}` | Destinations | Replaced with user-configured setup field value |
 
@@ -178,10 +178,10 @@ Reference them in your templates with `{{key_name}}`.
 
 ### Share from Cai (recommended)
 
-The easiest way to share a shortcut or destination you've built:
+The easiest way to share a custom action or destination you've built:
 
-1. Open **Settings > Custom Shortcuts** (or **Output Destinations**)
-2. Click the **share icon** (↗) on the shortcut or destination you want to share
+1. Open **Settings > Custom Actions** (or **Output Destinations**)
+2. Click the **share icon** (↗) on the custom action or destination you want to share
 3. Cai copies the extension YAML to your clipboard and opens the community repo
 4. Fork the repo, create a folder under `extensions/` with a kebab-case name (e.g. `professional-email`)
 5. Paste the YAML as `extension.yaml` and open a pull request

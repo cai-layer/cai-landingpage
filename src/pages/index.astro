@@ -18,17 +18,17 @@ const quickActions = [
   { name: "Summarize", description: "Create a concise summary" },
   { name: "Fix Grammar", description: "Fix grammar, spelling, and punctuation" },
   { name: "Translate", description: "Translate text to another language" },
-  { name: "Custom Action", description: "Execute a custom prompt" },
+  { name: "Ask AI", description: "Run any prompt on your clipboard content" },
   { name: "...", description: "And more" },
 ];
 
 const customFeatures = [
   { name: "On-the-fly Prompts", description: "Run any AI instruction against your clipboard text", highlight: true },
   { name: "Save Prompts", description: "Save prompts you use often for one-tap access", highlight: true },
-  { name: "URL Shortcuts", description: "Create URL templates with %s — search Reddit, Google Translate, Wikipedia, and more", highlight: true },
+  { name: "URL Actions", description: "Create URL templates with %s — search Reddit, Google Translate, Wikipedia, and more", highlight: true },
   { name: "Custom Destinations", description: "Send results to Slack, Bear, Notion, or any app via webhooks, AppleScript, URL schemes, and shell commands", highlight: true },
-  { name: "Type to Filter", description: "Just start typing to find your shortcuts instantly", secondary: true },
-  { name: "⌘1–9 to Execute", description: "Launch any shortcut by number, no mouse needed", secondary: true },
+  { name: "Type to Filter", description: "Just start typing to find your actions instantly", secondary: true },
+  { name: "⌘1–9 to Execute", description: "Launch any action by number, no mouse needed", secondary: true },
 ];
 ---
 
@@ -52,16 +52,16 @@ const customFeatures = [
 
   <WorksEverywhere />
 
-  <!-- Demo Section 2: Custom commands & shortcuts -->
+  <!-- Demo Section 2: Custom commands & actions -->
   <DemoSection
     id="custom-commands"
     title='Make it <span class="highlight">yours</span>'
-    subtitle="Run on-the-fly AI prompts, execute shell commands, save your own shortcuts, and create custom destinations."
+    subtitle="Run on-the-fly AI prompts, execute shell commands, save your own actions, and create custom destinations."
     actions={customFeatures}
     mediaType="video"
     mediaSrc="/videos/cai-custom-actions.mp4"
     posterSrc="/videos/cai-custom-actions-poster.webp"
-    mediaAlt="Custom commands and shortcuts demo"
+    mediaAlt="Custom commands and actions demo"
     backgroundColor="#0F0F0F"
     linkHref="https://github.com/clipboard-ai/cai-extensions"
     linkText="Browse community extensions →"

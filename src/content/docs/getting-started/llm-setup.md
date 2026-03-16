@@ -9,7 +9,7 @@ description: "Set up AI models for Cai. Use the built-in Ministral 3B, Apple Int
 
 Cai ships with a built-in model (**Ministral 3B**) that downloads automatically on first launch (~2.15 GB). It runs locally via Metal GPU acceleration — no external server or configuration needed.
 
-The built-in model handles all AI-powered actions out of the box: Summarize, Reply, Fix Grammar, Translate, Explain, and Custom Actions.
+The built-in model handles all AI-powered actions out of the box: Summarize, Reply, Fix Grammar, Translate, Explain, and Ask AI.
 
 ### Custom Models
 

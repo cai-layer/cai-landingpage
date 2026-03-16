@@ -28,7 +28,7 @@ Cai automatically detects what you copied and offers the right actions:
 | **Long Text** | 100+ characters | Summarize, Reply, Fix Grammar, Translate, Search |
 | **Image** | Clipboard image or screenshot | Extract Text (OCR), then all text actions |
 
-All text types also get **Custom Action** (⌘1) for free-form AI prompts.
+All text types also get **Ask AI** (⌘1) for free-form AI prompts.
 
 ### Context Awareness
 
@@ -59,7 +59,7 @@ Cai is context-aware — it detects what app you're in (email, Slack, code edito
 - Fix Grammar
 - Translate
 - Define
-- Custom Action (your own prompt)
+- Ask AI (your own prompt)
 
 ### Follow-up Questions
 

@@ -27,6 +27,6 @@ Cai is a native macOS menu bar app that detects what's on your clipboard and off
 
 - **[How It Works](/docs/usage/how-it-works/)** — content detection, actions, and settings
 - **[Keyboard Shortcuts](/docs/usage/keyboard-shortcuts/)** — full shortcut reference
-- **[Custom Actions](/docs/usage/custom-actions/)** — run any AI prompt on your clipboard
-- **[Custom Shortcuts](/docs/usage/shortcuts/)** — save prompt and URL shortcuts for instant access
+- **[Ask AI](/docs/usage/custom-actions/)** — run any AI prompt on your clipboard
+- **[Custom Actions](/docs/usage/saved-actions/)** — save prompt and URL actions for instant access
 - **[Troubleshooting](/docs/troubleshooting/common-issues/)** — common issues and fixes
