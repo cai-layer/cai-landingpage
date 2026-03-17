@@ -11,5 +11,28 @@
            ./bin/sign_update Cai-X.Y.Z-macos.dmg
          Then fill in the enclosure attributes below. -->
 
+    <item>
+      <title>Version 1.2.0</title>
+      <description><![CDATA[
+        - Apple Intelligence compatibility
+        - OCR: Image to text extraction
+        - Follow-up conversations with AI
+        - Create New Chats to ask AI anything (Cmd+N)
+        - Clipboard history improvements (pin, search, up to 100 entries)
+        - Shell-compatible custom actions
+        - Community extensions (share via YAML, clipboard install)
+        - Dark mode improvements
+        - UI improvements and bug fixes
+      ]]></description>
+      <pubDate>Mon, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <enclosure
+        url="https://github.com/soyasis/cai/releases/download/v1.2.0/Cai-1.2.0-macos.dmg"
+        sparkle:version="4"
+        sparkle:shortVersionString="1.2.0"
+        length="11774807"
+        type="application/octet-stream"
+        sparkle:edSignature="NQjZ25EcM8/V+Ldd+Ekxt1mapbEHDeY1CcCzH2uGBaJiLZhaJV1DYEmW/Gl09yT46Llrz1+BFYrDa4DjLepfBA==" />
+    </item>
+
   </channel>
 </rss>
