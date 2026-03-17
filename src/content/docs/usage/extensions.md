@@ -5,16 +5,18 @@ description: "Browse and install community-built extensions for Cai. Pre-built c
 
 # Community Extensions
 
-Community extensions are pre-built [custom actions](/docs/usage/saved-actions) and [destinations](/docs/usage/destinations) shared by other Cai users. Browse and install them from the [cai-extensions](https://github.com/clipboard-ai/cai-extensions) repository.
+Community extensions are pre-built [custom actions](/docs/usage/saved-actions) and [destinations](/docs/usage/destinations) shared by other Cai users. Browse and install them directly from the in-app extension browser, or from the [cai-extensions](https://github.com/clipboard-ai/cai-extensions) repository on GitHub.
 
 ## How to Install
 
-1. Find an extension in the [community repository](https://github.com/clipboard-ai/cai-extensions)
-2. Copy the extension block (a `# cai-extension` YAML snippet) to your clipboard
-3. Cai detects it automatically and shows a trust confirmation dialog
-4. Review the extension details — name, type, author — and click **Install** if you trust it
+1. Open **Settings > Community Extensions**
+2. Browse available extensions
+3. Click **Install** on the extension you want
+4. The extension is added as a custom action or destination in your Cai settings
 
-The extension is added as a custom action or destination in your Cai settings.
+To uninstall, go back to Community Extensions and click the extension again.
+
+> **Tip:** You can also install extensions by copying a `# cai-extension` YAML snippet to your clipboard. Cai detects it automatically and shows a trust confirmation dialog. This is useful for installing extensions shared outside the community repository.
 
 ## Extension Types
 
@@ -33,7 +35,7 @@ The extension is added as a custom action or destination in your Cai settings.
 
 Cai takes a cautious approach to community extensions:
 
-- **Trust confirmation** — Every extension shows a Gatekeeper-style dialog before installation. You always see what it does before it's added.
+- **Trust confirmation** — Every extension shows a confirmation dialog before installation, whether installed from the in-app browser or via clipboard. You always see what it does before it's added.
 - **AppleScript and shell types cannot be installed via clipboard** — These types are blocked from clipboard install for safety. You can install them through the in-app extension browser or create them manually in Settings.
 - **No auto-execution** — Extensions are never run automatically. You must explicitly trigger them like any other action.
 
