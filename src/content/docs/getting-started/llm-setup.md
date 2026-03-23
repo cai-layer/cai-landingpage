@@ -1,13 +1,19 @@
 ---
 title: "LLM Setup"
-description: "Set up AI models for Cai. Use the built-in Ministral 3B, Apple Intelligence, LM Studio, Ollama, or any OpenAI-compatible provider."
+description: "Set up AI models for Cai. Use Apple Intelligence (recommended on macOS 26+), the built-in Ministral 3B, LM Studio, Ollama, or any OpenAI-compatible provider."
 ---
 
 # LLM Setup
 
-## Built-in Model
+## Apple Intelligence (Recommended)
 
-Cai ships with a built-in model (**Ministral 3B**) that downloads automatically on first launch (~2.15 GB). It runs locally via Metal GPU acceleration — no external server or configuration needed.
+On Macs with an M1 chip or later running **macOS 26+**, Cai uses Apple Intelligence as the default model provider — no download needed, no setup required. If available, Cai will offer it during first launch setup.
+
+Apple Intelligence handles all AI-powered actions: Summarize, Reply, Fix Grammar, Translate, Explain, and Ask AI.
+
+## Built-in Model (Fallback)
+
+On older macOS versions, Cai ships with a built-in model (**Ministral 3B**) that downloads automatically on first launch (~2.15 GB). It runs locally via Metal GPU acceleration — no external server or configuration needed.
 
 The built-in model handles all AI-powered actions out of the box: Summarize, Reply, Fix Grammar, Translate, Explain, and Ask AI.
 

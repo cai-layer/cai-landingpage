@@ -10,7 +10,7 @@ description: "Download and install Cai on macOS. Requirements, first launch setu
 1. Download the `.dmg` from the [latest release](https://github.com/clipboard-ai/cai/releases/latest)
 2. Open the DMG and drag **Cai.app** to your Applications folder
 3. Open the app and grant Accessibility permission (see [First Launch Setup](#first-launch-setup) below)
-4. Cai's built-in model downloads automatically — or configure your own LLM server in Preferences
+4. On macOS 26+, Cai uses Apple Intelligence automatically. On older versions, a built-in model downloads on first launch — or configure your own LLM server in Preferences
 
 ## Requirements
 
