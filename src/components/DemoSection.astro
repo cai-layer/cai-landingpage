@@ -36,7 +36,7 @@ const imageSrc = typeof mediaSrc === 'string' ? mediaSrc : mediaSrc.src;
   <div class="container">
     <div class="demo-content">
       <h2 class="demo-title" set:html={title} />
-      {subtitle && <p class="demo-subtitle">{subtitle}</p>}
+      {subtitle && <p class="demo-subtitle" set:html={subtitle} />}
       {actions && <ActionBadges actions={actions} />}
       {linkHref && linkText && (
         <a href={linkHref} class="section-link" target="_blank" rel="noopener noreferrer">

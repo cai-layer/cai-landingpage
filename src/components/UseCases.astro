@@ -1,0 +1,144 @@
+---
+const workflows = [
+  {
+    title: "Error → Ticket",
+    description: "Copy a stack trace from Terminal → Cai creates a Linear issue with title, description, and context.",
+    tag: "dev",
+  },
+  {
+    title: "Email → Reply",
+    description: "Copy an email → Cai drafts a reply in your tone. Send via Mail or copy.",
+    tag: "general",
+  },
+  {
+    title: "Screenshot → Text",
+    description: "Copy a screenshot → Cai extracts text via OCR → translate or summarize instantly.",
+    tag: "general",
+  },
+  {
+    title: "Code → Explain",
+    description: "Copy a function → Cai explains it, suggests improvements, or saves it to Notes.",
+    tag: "dev",
+  },
+];
+---
+
+<section class="use-cases">
+  <div class="container">
+    <h2 class="section-title">What you can do with <span class="highlight">Cai</span></h2>
+
+    <div class="workflow-grid">
+      {workflows.map((workflow, index) => (
+        <article class="workflow-card" style={`animation-delay: ${index * 0.1}s`}>
+          <span class={`workflow-tag tag-${workflow.tag}`}>{workflow.tag}</span>
+          <h3 class="workflow-title">{workflow.title}</h3>
+          <p class="workflow-description">{workflow.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .use-cases {
+    padding: 5rem 0;
+    background: #0E0E0E;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .workflow-card {
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    animation: scale-in 0.4s ease-out both;
+  }
+
+  .workflow-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(167, 139, 250, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .workflow-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 100px;
+    margin-bottom: 0.75rem;
+  }
+
+  .tag-dev {
+    background: rgba(167, 139, 250, 0.15);
+    color: #C4B5FD;
+  }
+
+  .tag-general {
+    background: rgba(247, 133, 149, 0.15);
+    color: #F78595;
+  }
+
+  .workflow-title {
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .workflow-description {
+    color: #909090;
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .use-cases {
+      padding: 4rem 0;
+    }
+
+    .workflow-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .workflow-card {
+      padding: 1rem 1.25rem;
+    }
+
+    .workflow-tag {
+      display: none;
+    }
+  }
+</style>

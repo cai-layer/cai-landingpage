@@ -1,0 +1,92 @@
+---
+const items = [
+  "Smart triage — check for duplicate issues before creating new ones",
+  "Slack integration — route results to channels, reply to messages",
+  "Context Snippets — teach Cai your workflow patterns",
+];
+---
+
+<section class="coming-soon">
+  <div class="container">
+    <h2 class="section-title">What's <span class="highlight">next</span></h2>
+
+    <ul class="roadmap-pills">
+      {items.map((item, index) => (
+        <li class="roadmap-pill" style={`animation-delay: ${index * 0.1}s`}>
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .coming-soon {
+    padding: 4rem 0;
+    background: #0E0E0E;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .roadmap-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .roadmap-pill {
+    padding: 0.6rem 1.2rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: #909090;
+    font-weight: 500;
+    transition: border-color 0.2s ease;
+    animation: scale-in 0.4s ease-out both;
+  }
+
+  .roadmap-pill:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .coming-soon {
+      padding: 3rem 0;
+    }
+
+    .roadmap-pills {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .roadmap-pill {
+      text-align: center;
+    }
+  }
+</style>
