@@ -37,6 +37,16 @@ const customFeatures = [
 <Layout title="Cai: Your Clipboard, But With a Brain | Local AI for Mac, Free & Open Source">
   <Navbar />
   <Hero />
+
+  <!-- Definition paragraph for AI citability and SEO -->
+  <section class="definition">
+    <div class="definition-container">
+      <p class="definition-text">
+        <strong>Cai</strong> is a free, open-source clipboard AI assistant for macOS. It lives in your menu bar and lets you select any text or image, press <kbd>⌥C</kbd>, and instantly run AI-powered actions — summarize, translate, extract text from images (OCR), draft replies, create GitHub issues, file Linear tickets, and more. It runs 100% locally with a built-in AI engine, supports Apple Intelligence on macOS 26+, and connects to providers like LM Studio and Ollama. No cloud required.
+      </p>
+    </div>
+  </section>
+
   <FeatureCards />
 
   <!-- Demo Section 1: Run quick actions -->
@@ -74,3 +84,47 @@ const customFeatures = [
   <FAQ />
   <Footer />
 </Layout>
+
+<style>
+  .definition {
+    padding: 0 0 2rem;
+    background: #0A0A0A;
+  }
+
+  .definition-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .definition-text {
+    color: #808080;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    text-align: center;
+  }
+
+  .definition-text strong {
+    color: #B0B0B0;
+    font-weight: 600;
+  }
+
+  .definition-text kbd {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.85em;
+  }
+
+  @media (max-width: 768px) {
+    .definition {
+      padding: 0 0 1.5rem;
+    }
+
+    .definition-text {
+      font-size: 0.88rem;
+    }
+  }
+</style>

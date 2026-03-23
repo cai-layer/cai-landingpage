@@ -1,0 +1,36 @@
+# Cai
+
+> Cai is a free, open-source macOS menu bar app that runs AI actions on your clipboard.
+
+## What is Cai?
+
+Cai is a clipboard AI assistant for Mac. Select any text or image, press ⌥C, and run smart actions — summarize, translate, OCR, create GitHub issues, Linear tickets, and more. It runs 100% locally with a built-in AI model (Ministral 3B), supports Apple Intelligence on macOS 26+, and works with external providers like LM Studio and Ollama. No cloud required.
+
+## Key Features
+
+- Smart context-aware actions on clipboard content
+- Built-in AI model (Ministral 3B) — works offline, no setup needed
+- Apple Intelligence support (macOS 26+, M1 or later)
+- Create GitHub issues and Linear tickets from any app
+- Image to text (OCR) from screenshots and images
+- Custom prompts, shell commands, and URL actions
+- Route results to Slack, Notion, Mail, or any app via custom destinations
+- Clipboard history with search and pin
+- Works with LM Studio, Ollama, Jan AI, and cloud providers (OpenAI, Gemini, Mistral)
+- Community extensions — browse and install actions shared by others
+- Keyboard-first design — type to filter, ⌘1–9 to execute
+- Free and open source forever (MIT license)
+
+## How It Works
+
+1. Copy — Highlight text or an image in any app
+2. Summon — Press ⌥C to open the action menu
+3. Act — Pick an action (summarize, translate, create ticket, run custom prompt, etc.)
+
+## Links
+
+- Homepage: https://getcai.app
+- Documentation: https://getcai.app/docs/
+- GitHub: https://github.com/clipboard-ai/cai
+- Extensions: https://github.com/clipboard-ai/cai-extensions
+- Release Notes: https://github.com/clipboard-ai/cai/releases

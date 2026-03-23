@@ -27,3 +27,7 @@ User-agent: ClaudeBot
 Allow: /
 
 Sitemap: https://getcai.app/sitemap.xml
+
+# AI model context
+# See https://llmstxt.org for specification
+llms.txt: https://getcai.app/llms.txt

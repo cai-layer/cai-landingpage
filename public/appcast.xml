@@ -34,5 +34,24 @@
         sparkle:edSignature="NQjZ25EcM8/V+Ldd+Ekxt1mapbEHDeY1CcCzH2uGBaJiLZhaJV1DYEmW/Gl09yT46Llrz1+BFYrDa4DjLepfBA==" />
     </item>
 
+    <item>
+      <title>Version 1.2.1</title>
+      <description><![CDATA[
+        - New: Connectors (Alpha) — Create GitHub issues and Linear tickets directly from your clipboard
+        - Updated built-in LLM engine (llama-server b8390)
+        - Fixed app icon
+        - Fixed image content detection priority
+        - UI improvements and bug fixes
+      ]]></description>
+      <pubDate>Sun, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <enclosure
+        url="https://github.com/clipboard-ai/cai/releases/download/v1.2.1/Cai-1.2.1-macos.dmg"
+        sparkle:version="5"
+        sparkle:shortVersionString="1.2.1"
+        length="12331268"
+        type="application/octet-stream"
+        sparkle:edSignature="oJRyskMRcOOhOLOEw8ToZ5DzBty1F+uHzeX22W54CW8O0MNvf09qCeSHQAcerkiw6wt1wlakHIx+5qVyb1twAA==" />
+    </item>
+
   </channel>
 </rss>
