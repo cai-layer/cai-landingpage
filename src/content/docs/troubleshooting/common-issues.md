@@ -67,3 +67,7 @@ The built-in model (~2.15 GB) downloads on first launch. If the download fails:
 - Make sure you have enough disk space
 - Try quitting and relaunching Cai — the download resumes where it left off
 - Check the `~/Library/Application Support/Cai/models/` directory for partial downloads
+
+## App freezes or slows down after copying large text
+
+Cai limits clipboard processing to ~10,000 characters (~2,500 words) to prevent performance issues. If you copy very large documents, Cai silently truncates the text. This is by design — Cai is optimized for short-to-medium text selections, not full documents.
