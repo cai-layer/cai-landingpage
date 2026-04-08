@@ -4,11 +4,11 @@
 
 ## What is Cai?
 
-Cai is an AI action layer for Mac that lives in your menu bar. Select any text or image, press ⌥C, and run smart actions — summarize, translate, extract text from images (OCR), create GitHub issues, file Linear tickets, draft replies, and more. It runs 100% locally with a built-in AI model (Ministral 3B), supports Apple Intelligence on macOS 26+, and works with external providers like LM Studio and Ollama. No cloud required.
+Cai is an AI action layer for Mac that lives in your menu bar. Press ⌥C on any text or image and instantly run custom actions — AI prompts, shell scripts, URL shortcuts, summaries, translations, OCR, GitHub issues, Linear tickets, and more. It runs 100% locally with a built-in AI model (Ministral 3B), supports Apple Intelligence on macOS 26+, and works with external providers like LM Studio and Ollama. No cloud required.
 
 ## Key Features
 
-- AI action layer — run AI actions on any selected text or image, in any app
+- AI action layer — run custom actions (AI prompts, shell scripts, URL shortcuts) on any selected text or image, in any app
 - Built-in AI model (Ministral 3B) — works offline, no setup needed
 - Apple Intelligence support (macOS 26+, M1 or later)
 - Create GitHub issues and Linear tickets from any app
