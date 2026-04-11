@@ -67,6 +67,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://getcai.app/docs/usage/context-snippets/</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://getcai.app/docs/troubleshooting/common-issues/</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
