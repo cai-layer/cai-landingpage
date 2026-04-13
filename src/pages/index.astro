@@ -43,7 +43,7 @@ const customFeatures = [
   <section class="definition">
     <div class="definition-container">
       <p class="definition-text">
-        <strong>Cai</strong> is a free, open-source AI action layer for macOS. It lives in your menu bar and lets you select any text or image, press <kbd>⌥C</kbd>, and instantly run AI-powered actions — summarize, translate, extract text from images (OCR), draft replies, create GitHub issues, file Linear tickets, and more. It runs 100% locally with a built-in AI engine, supports Apple Intelligence on macOS 26+, and connects to providers like LM Studio and Ollama. No cloud required.
+        <strong>Cai</strong> is a free, open-source AI action layer for macOS. It lives in your menu bar and lets you select any text or image, press <kbd>⌥C</kbd>, and instantly run custom actions — AI prompts, shell commands, URL shortcuts, summaries, translations, OCR, GitHub issues, Linear tickets, and more. Save any shell command or script as a one-click action and run it on your selected text or on its own. It runs 100% locally with a built-in AI engine, supports Apple Intelligence on macOS 26+, and connects to providers like LM Studio and Ollama. No cloud required.
       </p>
     </div>
   </section>
@@ -63,8 +63,6 @@ const customFeatures = [
     backgroundColor="#111111"
   />
 
-  <WorksEverywhere />
-
   <!-- Demo Section 2: Custom commands & actions -->
   <DemoSection
     id="custom-commands"
@@ -80,8 +78,23 @@ const customFeatures = [
     linkText="Browse community extensions →"
   />
 
+  <!-- Shell callout -->
+  <section class="shell-callout">
+    <div class="shell-container">
+      <p class="shell-eyebrow">For Power Users</p>
+      <h2 class="shell-title">If it runs in <span class="highlight">Terminal</span>, it runs in Cai.</h2>
+      <div class="shell-commands">
+        <code class="shell-code">$ lsof -ti :3000 | xargs kill -9</code>
+        <code class="shell-code">$ gh pr list --search "<span class="shell-var">{'{{selected text}}'}</span>"</code>
+        <code class="shell-code">$ echo -n '<span class="shell-var">{'{{selected text}}'}</span>' | base64</code>
+      </div>
+      <p class="shell-desc">Save any shell command as a custom action and recall it in one click. Use your selected text, OCR output or run fixed commands on their own.</p>
+    </div>
+  </section>
+
   <FeatureBento />
   <LLMProviders />
+  <WorksEverywhere />
   <FAQ />
   <NewsletterCallout />
   <Footer />
@@ -125,6 +138,84 @@ const customFeatures = [
     padding: 0.1em 0.4em;
     font-family: 'SF Mono', 'Fira Code', monospace;
     font-size: 0.85em;
+  }
+
+  /* Shell callout */
+  .shell-callout {
+    background: #111111;
+    padding: 5rem 0;
+    text-align: center;
+  }
+
+  .shell-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .shell-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #808080;
+    margin: 0 0 0.85rem;
+  }
+
+  .shell-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: #FFFFFF;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 2.5rem;
+  }
+
+  .shell-title :global(.highlight) {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shell-commands {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .shell-code {
+    display: inline-block;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: #C0C0C0;
+    padding: 0.6rem 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+  }
+
+  .shell-var {
+    color: #A78BFA;
+  }
+
+  .shell-desc {
+    color: #707070;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 1.5rem auto 0;
+    max-width: 520px;
+  }
+
+  @media (max-width: 640px) {
+    .shell-callout {
+      padding: 3.5rem 0;
+    }
+
+    .shell-code {
+      font-size: 0.75rem;
+      overflow-x: auto;
+    }
   }
 
   @media (max-width: 768px) {
