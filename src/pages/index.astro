@@ -81,8 +81,7 @@ const customFeatures = [
   <!-- Shell callout -->
   <section class="shell-callout">
     <div class="shell-container">
-      <p class="shell-eyebrow">For Power Users</p>
-      <h2 class="shell-title">If it runs in <span class="highlight">Terminal</span>, it runs in Cai.</h2>
+      <p class="shell-eyebrow">For Power Users: if it runs in <span class="highlight">Terminal</span>, it runs in Cai.</p>
       <div class="shell-commands">
         <code class="shell-code">$ lsof -ti :3000 | xargs kill -9</code>
         <code class="shell-code">$ gh pr list --search "<span class="shell-var">{'{{selected text}}'}</span>"</code>
@@ -143,7 +142,7 @@ const customFeatures = [
   /* Shell callout */
   .shell-callout {
     background: #111111;
-    padding: 5rem 0;
+    padding: 3rem 0 5rem;
     text-align: center;
   }
 
@@ -154,23 +153,14 @@ const customFeatures = [
   }
 
   .shell-eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    font-size: 0.88rem;
     font-weight: 600;
     color: #808080;
-    margin: 0 0 0.85rem;
+    margin: 0 0 1.5rem;
   }
 
-  .shell-title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    color: #FFFFFF;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin: 0 0 2.5rem;
-  }
-
-  .shell-title :global(.highlight) {
+  .shell-eyebrow :global(.highlight) {
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
