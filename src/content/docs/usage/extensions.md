@@ -29,17 +29,17 @@ To uninstall, go back to Community Extensions and click the extension again.
 | `deeplink`    | Opens a URL scheme / deep link                            | Destination | No         |
 | `applescript` | Runs an AppleScript with the text                         | Destination | No         |
 
-**Custom actions** appear in the Cai action window — you trigger them just like built-in actions. **Destinations** are output targets that receive text after an action runs (or directly from clipboard).
+**Custom actions** appear in the Cai action window. You trigger them just like built-in actions. **Destinations** are output targets that receive text after an action runs (or directly from clipboard).
 
 ## Security
 
 Cai takes a cautious approach to community extensions:
 
-- **Trust confirmation** — Every extension shows a confirmation dialog before installation, whether installed from the in-app browser or via clipboard. You always see what it does before it's added.
-- **AppleScript and shell types cannot be installed via clipboard** — These types are blocked from clipboard install for safety. You can install them through the in-app extension browser or create them manually in Settings.
-- **No auto-execution** — Extensions are never run automatically. You must explicitly trigger them like any other action.
+- **Trust confirmation**: every extension shows a confirmation dialog before installation, whether installed from the in-app browser or via clipboard. You always see what it does before it's added.
+- **AppleScript and shell types cannot be installed via clipboard**: these types are blocked from clipboard install for safety. You can install them through the in-app extension browser or create them manually in Settings.
+- **No auto-execution**: extensions are never run automatically. You must explicitly trigger them like any other action.
 
-> **Caution:** Only install extensions from sources you trust. While dangerous types are blocked, webhook destinations can still send your text to external servers. Always review the extension details before installing.
+> **Caution:** Only install extensions from sources you trust. Even though dangerous types are blocked, webhook destinations can still send your text to external servers. Always review the extension details before installing.
 
 ---
 
@@ -63,7 +63,7 @@ Every `extension.yaml` must start with `# cai-extension` on the first line and i
 
 ### Prompt Action
 
-Sends clipboard text to the LLM with your instruction:
+Sends your selected text to the LLM with your instruction:
 
 ```yaml
 # cai-extension
@@ -91,7 +91,7 @@ prompt: |
 
 ### URL Action
 
-Opens a URL with `%s` replaced by the clipboard text:
+Opens a URL with `%s` replaced by your selected text:
 
 ```yaml
 # cai-extension
@@ -105,7 +105,7 @@ type: url
 url: "https://stackoverflow.com/search?q=%s"
 ```
 
-The clipboard text is automatically URL-encoded.
+Your selected text is automatically URL-encoded.
 
 ### Webhook Destination
 
@@ -203,12 +203,12 @@ All PRs require review and approval before merging.
 
 ### Guidelines
 
-- **One extension per folder** — keep it focused
+- **One extension per folder**: keep it focused
 - **Test your extension** in Cai before submitting (copy the YAML, press Option+C)
 - **Use [SF Symbol](https://developer.apple.com/sf-symbols/) names** for icons
-- **Write a clear description** — one sentence, no period
-- **No API keys in YAML** — use `setup` fields for secrets
-- **`applescript` and `shell` types require extra review** — these are accepted but will be scrutinized more carefully before merging
+- **Write a clear description**: one sentence, no period
+- **No API keys in YAML**: use `setup` fields for secrets
+- **`applescript` and `shell` types require extra review**: these are accepted but will be scrutinized more carefully before merging
 
 ### What Happens After You Submit
 

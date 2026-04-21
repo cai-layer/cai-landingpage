@@ -7,7 +7,7 @@ description: "Send Cai results to any app or service. Configure webhooks, AppleS
 
 By default, Cai copies results to your clipboard. You can also replace your original selection inline, or send results to any app or service.
 
-Destinations can receive AI-processed text (after an action runs) or your raw clipboard text directly.
+Destinations can receive AI-processed text (after an action runs) or your raw selected text directly.
 
 ## Replace Selection
 
@@ -39,8 +39,8 @@ This is perfect for "fix grammar and replace," "translate in place," or any acti
 
 Use these placeholders in your destination templates:
 
-- **`{{result}}`** — your clipboard or AI-processed text (auto-escaped for the destination type)
-- **`{{field_key}}`** — value from a setup field (e.g. `{{api_key}}` for API tokens)
+- **`{{result}}`**: your selected text or AI-processed text (auto-escaped for the destination type)
+- **`{{field_key}}`**: value from a setup field (e.g. `{{api_key}}` for API tokens)
 
 Text is automatically escaped based on the destination type — JSON encoding for webhooks, percent-encoding for URL schemes, AppleScript string escaping for AppleScript, and raw text for shell commands.
 
@@ -52,7 +52,7 @@ To add a setup field, click **Add Field** when creating a destination. Reference
 
 ## Show in Action List
 
-Enable **"Show in action list"** to make a destination appear as a direct action in the Cai action window. This skips the AI step entirely — useful for quick-send workflows like "Send to Slack" or "Save to Bear" directly from your clipboard.
+Enable **"Show in action list"** to make a destination appear as a direct action in the Cai action window. This skips the AI step entirely. Useful for quick-send workflows like "Send to Slack" or "Save to Bear" directly from your selection.
 
 ## Creating a Destination
 

@@ -7,7 +7,7 @@ description: "Teach Cai per-app context so every AI action gets smarter. Tell Ca
 
 Context Snippets let you teach Cai **per-app context** that gets injected into every AI action. Tell Cai about your workflow once, and every Summarize, Explain, Reply, or Custom Prompt from that app gets automatically smarter.
 
-**The classic example:** when you copy an error from Terminal, you're probably debugging a specific codebase. When you copy from Slack, you want a professional-but-casual reply. Context Snippets make Cai smart enough to know the difference — automatically, based on which app you copied from.
+**The classic example:** when you select an error in Terminal, you're probably debugging a specific codebase. When you select from Slack, you want a professional-but-casual reply. Context Snippets make Cai smart enough to know the difference, automatically, based on which app you selected from.
 
 > **v1 is power-user territory (JSON config).** You edit a config file on disk, Cai reads it at startup, done. A full Settings UI with app picker + inline editor is coming in v1.4. If you want it sooner, [let us know](https://github.com/cai-layer/cai/issues).
 

@@ -5,13 +5,13 @@ description: "Set up AI models for Cai. Use the built-in MLX models, Apple Intel
 
 # LLM Setup
 
-Cai works with three kinds of model providers: the **built-in MLX models** (default, local), **Apple Intelligence** (macOS 26+, on-device), and **external providers** (local servers like LM Studio/Ollama, or cloud APIs like OpenRouter).
+Cai works with three kinds of model providers: the **built-in MLX models** (default, local), **Apple Intelligence** (macOS 26+, on-device), and **external providers** like LM Studio, Ollama, or cloud APIs like OpenRouter.
 
 ---
 
 ## Built-in MLX Models
 
-The default. Cai ships with a small picker of MLX models that run **in-process** on Apple Silicon — no external server, no subprocess, no configuration needed. Models stream tokens progressively, so long responses appear word-by-word instead of waiting for the full reply.
+The default. Cai ships with a small picker of MLX models that run **in-process** on Apple Silicon: no external server, no subprocess, no configuration needed. Models stream tokens progressively, so long responses appear word-by-word instead of waiting for the full reply.
 
 The built-in model handles all AI-powered actions out of the box: Summarize, Reply, Fix Grammar, Translate, Explain, and Ask AI.
 
@@ -28,7 +28,7 @@ Pick one from the model picker in **Settings**, or click the **chip icon** in th
 
 ### Any Model from HuggingFace MLX Community 🤗
 
-Beyond the curated picker, Cai supports **any MLX model** from the [HuggingFace mlx-community](https://huggingface.co/mlx-community) — thousands of open-source models, all optimized for Apple Silicon.
+Beyond the curated picker, Cai supports **any MLX model** from the [HuggingFace mlx-community](https://huggingface.co/mlx-community): thousands of open-source models, all optimized for Apple Silicon.
 
 To load one, open the model picker in **Settings** and paste the HuggingFace repo ID:
 
@@ -39,7 +39,7 @@ mlx-community/Phi-3.5-mini-instruct-4bit
 mlx-community/DeepSeek-R1-Distill-Qwen-7B-4bit
 ```
 
-Cai downloads, converts, and loads the model automatically. Browse the [mlx-community on HuggingFace](https://huggingface.co/mlx-community) for the full catalog — new models are added daily.
+Cai downloads, converts, and loads the model automatically. Browse the [mlx-community on HuggingFace](https://huggingface.co/mlx-community) for the full catalog. New models are added daily.
 
 > **Tip:** Look for `4bit` or `8bit` in the repo name. These are quantized versions that use less RAM and run faster, with minimal quality loss.
 
@@ -47,17 +47,17 @@ Cai downloads, converts, and loads the model automatically. Browse the [mlx-comm
 
 ## Apple Intelligence
 
-Available on Macs with an M1 chip or later running **macOS 26+**. Apple Intelligence runs fully on-device via the Neural Engine and uses ~36 MB of RAM — a great option if you want the absolute lightest footprint.
+Available on Macs with an M1 chip or later running **macOS 26+**. Apple Intelligence runs fully on-device via the Neural Engine and uses ~36 MB of RAM, a great option if you want the absolute lightest footprint.
 
-Apple Intelligence handles all AI-powered actions: Summarize, Reply, Fix Grammar, Translate, Explain, and Ask AI. Select it from the model picker in **Settings** — no download or API key needed.
+Apple Intelligence handles all AI-powered actions: Summarize, Reply, Fix Grammar, Translate, Explain, and Ask AI. Select it from the model picker in **Settings**, no download or API key needed.
 
-> **Trade-off:** Apple Intelligence has a hard **4K token context window** — much smaller than typical local models (8K–32K) or cloud providers (128K+). This means long documents and long follow-up conversations may get truncated. For very long inputs, switch to a built-in MLX model or an external provider with a larger context window.
+> **Trade-off:** Apple Intelligence has a hard **4K token context window**, much smaller than typical local models (8K–32K) or cloud providers (128K+). This means long documents and long follow-up conversations may get truncated. For very long inputs, switch to a built-in MLX model or an external provider with a larger context window.
 
 ---
 
 ## External Providers
 
-Want a different or larger model? Cai works with any OpenAI-compatible server — local or remote. Just switch the provider in settings.
+Want a different or larger model? Cai works with any OpenAI-compatible server, local or remote. Just switch the provider in settings.
 
 ### Supported Providers
 
@@ -76,11 +76,11 @@ Want a different or larger model? Cai works with any OpenAI-compatible server �
 2. Select your **Model Provider** from the dropdown
 3. If using **Custom**, enter your server's full URL
 
-That's it — Cai will use your external LLM instead of the built-in model.
+That's it. Cai will use your external LLM instead of the built-in model.
 
 ### API Key (Optional)
 
-If your server requires authentication (e.g., cloud providers), enter your API key in Cai's settings. The key is stored locally on your Mac and sent only to the server you configure — never to Cai or any third party.
+If your server requires authentication (e.g., cloud providers), enter your API key in Cai's settings. The key is stored locally on your Mac and sent only to the server you configure, never to Cai or any third party.
 
 ### OpenRouter
 
@@ -92,7 +92,7 @@ If your server requires authentication (e.g., cloud providers), enter your API k
 2. Generate an API key at [openrouter.ai/keys](https://openrouter.ai/keys)
 3. Open Cai → **Settings** → **Model Provider** → **OpenRouter**
 4. Paste your key
-5. Pick a model slug in the **Model** field — e.g. `anthropic/claude-opus-4.7` or `openai/gpt-5.4-mini`
+5. Pick a model slug in the **Model** field (e.g. `anthropic/claude-opus-4.7` or `openai/gpt-5.4-mini`)
 
 Once your key is saved, Cai fetches the full model catalog from your account so you can browse and switch models from a picker. You can also paste a slug manually if you know what you want.
 
@@ -108,7 +108,7 @@ Not sure which model to pick? Here's how to think about it.
 
 ### The Trade-offs
 
-Every model has three knobs: **size, speed, and quality**. Bigger models are smarter but slower and use more RAM. Smaller models are faster and lighter but make more mistakes.
+Every model has three knobs: size, speed, and quality. Bigger models are smarter but slower and use more RAM. Smaller models are faster and lighter but make more mistakes.
 
 For Cai's typical workloads (summarize, translate, fix grammar, reply), even small models do really well. You don't need a 70B-parameter model to fix a typo.
 
@@ -123,7 +123,7 @@ For Cai's typical workloads (summarize, translate, fix grammar, reply), even sma
 
 ### Understanding Quantization (4-bit vs 8-bit)
 
-You'll see things like `4bit` or `8bit` in HuggingFace model names. **Quantization** is how the model's weights are stored. Lower bits = smaller files, less RAM, faster — but slightly less accurate.
+You'll see things like `4bit` or `8bit` in HuggingFace model names. **Quantization** is how the model's weights are stored. Lower bits = smaller files, less RAM, faster, with slightly less accuracy.
 
 | Format          | RAM         | Speed   | Quality                  | Use when                                           |
 | --------------- | ----------- | ------- | ------------------------ | -------------------------------------------------- |
@@ -131,7 +131,7 @@ You'll see things like `4bit` or `8bit` in HuggingFace model names. **Quantizati
 | **8-bit**       | 2× of 4-bit | Slower  | Slightly more accurate   | You need maximum quality and have plenty of RAM    |
 | **fp16 / bf16** | 4× of 4-bit | Slowest | Original quality         | Almost never needed for chat/text actions          |
 
-**Concrete example** — Llama 3.2 3B:
+**Concrete example: Llama 3.2 3B**
 
 - `4bit` → ~1.8 GB RAM, fast on M1
 - `8bit` → ~3.5 GB RAM, slightly more nuanced answers
@@ -141,7 +141,7 @@ You'll see things like `4bit` or `8bit` in HuggingFace model names. **Quantizati
 
 - **Start with 4-bit.** It's what 95% of users want. Modern quantization (especially MLX's GPTQ-style) is so good you usually can't tell the difference.
 - **Try 8-bit** if you notice the model making factual errors, getting confused on long context, or you're doing serious coding/reasoning tasks. The quality bump is real but small.
-- **Skip fp16** unless you're benchmarking — the RAM cost isn't worth it for clipboard actions.
+- **Skip fp16** unless you're benchmarking. The RAM cost isn't worth it for short-form actions.
 
 For Cai specifically (short prompts, quick actions), **4-bit is almost always the right choice**.
 

@@ -1,11 +1,11 @@
 ---
 title: "Ask AI"
-description: "Run any AI prompt on your clipboard content with Cai's Ask AI action. Free-form text processing with your local LLM."
+description: "Run any AI prompt on your selected text with Cai's Ask AI action. Free-form text processing with your local LLM."
 ---
 
 # Ask AI
 
-Ask AI is Cai's most flexible feature — it lets you run any prompt against your clipboard content using your local LLM. You can also press **⌘N** in the action window to start a New Chat without clipboard content — useful for asking the LLM anything directly.
+Ask AI is Cai's most flexible feature: run any prompt against your selected text using your local LLM. You can also press **⌘N** in the action window to start a New Chat without any selection, useful for asking the LLM anything directly.
 
 ## How to Use
 
@@ -27,4 +27,4 @@ Ask AI is Cai's most flexible feature — it lets you run any prompt against you
 
 Ask AI requires a running [local LLM server](/docs/getting-started/llm-setup/). If no server is connected, you'll see an error with a hint to check your settings.
 
-> **Tip:** Ask AI appears for **every** content type, so it's always available as ⌘1 regardless of what you copied.
+> **Tip:** Ask AI appears for **every** content type, so it's always available as ⌘1 regardless of what you selected.

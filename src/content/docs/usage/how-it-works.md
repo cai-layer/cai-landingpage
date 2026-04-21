@@ -11,7 +11,7 @@ description: "Learn how Cai detects clipboard content, offers smart actions, and
 2. Press **⌥C** (Option+C)
 3. Cai detects the content type and shows relevant actions
 4. Pick an action with **↑↓** arrows or **⌘1–9**
-5. The result is auto-copied to your clipboard — just **⌘V** to paste. Or press **⌘1** to replace your original selection inline. You can also send it to an [output destination](/docs/usage/destinations/) like Slack, Bear, or a webhook.
+5. The result is auto-copied to your clipboard. Just **⌘V** to paste. Or press **⌘1** to replace your original selection inline. You can also send it to an [output destination](/docs/usage/destinations/) like Slack, Bear, or a webhook.
 
 ## Content Types & Actions
 
@@ -32,11 +32,11 @@ All text types also get **Ask AI** (⌘1) for free-form AI prompts.
 
 ### Context Awareness
 
-Cai is context-aware — it detects what app you're in (email, Slack, code editor, etc.) and tailors its actions accordingly. For example, **Reply** uses this context to generate an appropriate response based on whether you're replying to an email, a chat message, or a code review comment.
+Cai is context-aware: it detects what app you're in (email, Slack, code editor, etc.) and tailors its actions accordingly. For example, **Reply** uses this context to generate an appropriate response based on whether you're replying to an email, a chat message, or a code review comment.
 
 ### Type to Reveal Hidden Actions
 
-The default action list is focused per content type — you won't see Reply on a meeting invite, or Fix Grammar on a single word. When you need an action that isn't shown, just **start typing its name**: filter-to-reveal surfaces every applicable action regardless of detection.
+The default action list is focused per content type. You won't see Reply on a meeting invite, or Fix Grammar on a single word. When you need an action that isn't shown, just **start typing its name**: filter-to-reveal surfaces every applicable action regardless of detection.
 
 ## Examples
 
@@ -75,9 +75,9 @@ Press **⌘N** to start a new chat — ask anything without clipboard content.
 
 Press **⌘0** in the action window to open clipboard history. Features include:
 
-- **Search** — type to filter your history
-- **Pinning** — pin important items so they stay at the top
-- **Configurable size** — adjust the history limit in settings
+- **Search**: type to filter your history
+- **Pinning**: pin important items so they stay at the top
+- **Configurable size**: adjust the history limit in settings
 
 ## Settings
 

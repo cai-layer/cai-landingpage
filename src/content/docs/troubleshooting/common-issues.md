@@ -9,7 +9,7 @@ description: "Troubleshoot common Cai issues. Fix global hotkey problems, LLM co
 
 - Open **System Settings → Privacy & Security → Accessibility** and make sure Cai is listed and **enabled**
 - If it's listed but still not working, remove Cai from the list, then re-add it
-- Check that no other app is using ⌥C (or your custom hotkey) — e.g., Raycast, Alfred, BetterTouchTool
+- Check that no other app is using ⌥C (or your custom hotkey). Common culprits: Raycast, Alfred, BetterTouchTool
 
 ## LLM not connecting
 
@@ -18,7 +18,7 @@ description: "Troubleshoot common Cai issues. Fix global hotkey problems, LLM co
   curl http://127.0.0.1:1234/v1/models
   ```
 - Check that the URL in Preferences matches your server's address and port
-- Ollama uses port `11434`, LM Studio uses `1234` — make sure you selected the right provider
+- Ollama uses port `11434`, LM Studio uses `1234`. Make sure you selected the right provider
 - If using a Custom URL, make sure it includes the full path (e.g., `http://127.0.0.1:1234/v1`)
 
 ## Date/meeting not detected
@@ -33,7 +33,7 @@ Cai generates ICS files from detected text. For best results, include a clear da
 
 ## Built-in model uses too much memory
 
-The built-in MLX model runs in-process and can use ~2 GB of RAM while loaded. To free that memory immediately, switch to **Apple Intelligence** (macOS 26+) or any external provider in Settings — Cai unloads the MLX model and reclaims the RAM as soon as you switch.
+The built-in MLX model runs in-process and can use ~2 GB of RAM while loaded. To free that memory immediately, switch to **Apple Intelligence** (macOS 26+) or any external provider in Settings. Cai unloads the MLX model and reclaims the RAM as soon as you switch.
 
 If you want a model that uses less RAM, the default **Ministral 3B** (~1.8 GB) is already the lightest in the curated picker. On macOS 26+, switching to **Apple Intelligence** uses far less RAM (~36 MB) since it runs on the Neural Engine.
 
@@ -41,9 +41,9 @@ If you want a model that uses less RAM, the default **Ministral 3B** (~1.8 GB) i
 
 If the built-in MLX model feels slow:
 
-- Stick with the default **Ministral 3B** — it's the lightest and fastest in the curated picker
+- Stick with the default **Ministral 3B**. It's the lightest and fastest in the curated picker
 - Make sure no other heavy app is using GPU/Neural Engine resources
-- On macOS 26+ with Apple Silicon, switch to **Apple Intelligence** — it uses ~60× less RAM and runs natively on the Neural Engine
+- On macOS 26+ with Apple Silicon, switch to **Apple Intelligence**. It uses ~60× less RAM and runs natively on the Neural Engine
 
 ## Apple Intelligence not working
 
@@ -72,7 +72,7 @@ The built-in MLX model downloads on first launch (size depends on which model yo
 - Check your internet connection
 - Make sure you have enough disk space
 - Closing Cai during a download is safe — the download continues in the background and resumes if needed
-- The default Ministral 3B is ~1.8 GB — for slower connections, this is already the smaller of the curated options
+- The default Ministral 3B is ~1.8 GB. For slower connections, this is already the smaller of the curated options
 
 ## Long documents get truncated
 
@@ -80,7 +80,7 @@ Cai caps the total input sent to the LLM at **50,000 characters** (system prompt
 
 For very long documents, try splitting them into chunks and processing each separately.
 
-> **Using Apple Intelligence?** Apple's Foundation Model has a hard **4K token context window** — much smaller than Cai's 50K character cap. If you're hitting truncation on long inputs, switch to **Ministral 3B** (built-in MLX) or an external provider with a larger context window.
+> **Using Apple Intelligence?** Apple's Foundation Model has a hard **4K token context window**, much smaller than Cai's 50K character cap. If you're hitting truncation on long inputs, switch to **Ministral 3B** (built-in MLX) or an external provider with a larger context window.
 
 ## App freezes or slows down after copying large text
 
