@@ -2,31 +2,23 @@
 const faqs = [
   {
     question: "Is Cai secure?",
-    answer: "<p>Yes. Cai runs locally on your Mac by default. If you choose to connect a cloud model, your text is sent to that provider — but this is entirely opt-in. By default, everything stays on your machine.</p>"
+    answer: "<p>Yes. By default, Cai runs locally on your Mac and nothing leaves the device. If you connect a cloud model, your selected text is sent only to that provider. The choice is yours.</p>"
   },
   {
     question: "How is Cai different from other tools?",
-    answer: "<p>Clipboard managers store and organize what you copy — Cai acts on it. And unlike ChatGPT or other AI tools that require switching to a separate app, Cai works directly on your selected text in any app, without breaking your flow. It connects to your tools — create GitHub issues or Linear tickets without leaving your workflow. It's an AI action layer that runs locally on your Mac by default.</p>"
+    answer: "<p>Clipboard managers store and organize what you copy; Cai acts on it. And unlike ChatGPT or other AI tools that need you to switch to a separate app, Cai runs directly on your selected text in any app, without breaking your flow. Connect GitHub or Linear, then create issues or tickets without leaving what you're doing. It's a custom-action layer that runs locally on your Mac by default.</p>"
   },
   {
     question: "Why does Cai need Accessibility permissions?",
-    answer: "<p>Cai uses the system hotkey ⌥C to copy your selected text via a simulated ⌘C. macOS requires Accessibility access for apps that interact with system-level keyboard commands. This is what allows Cai to work seamlessly across all apps.</p><p>To enable it: open <strong>System Settings → Privacy & Security → Accessibility</strong> and toggle Cai on.</p>"
+    answer: "<p>Cai uses the system hotkey ⌥C to copy your selected text via a simulated ⌘C. macOS requires Accessibility access for apps that interact with system-level keyboard commands. This is what lets Cai work in every app, from Safari to Slack to Terminal.</p><p>To enable it, open <strong>System Settings → Privacy & Security → Accessibility</strong> and toggle Cai on.</p>"
   },
   {
     question: "What models does Cai support?",
-    answer: "<p>Cai ships with Ministral 3B built in as the default — on par with Apple Intelligence for most actions, no setup needed. The curated picker also includes Qwen 2.5 7B for Macs with 16 GB+ RAM. It also supports Apple Intelligence on macOS 26+ (M1 or later), local servers like LM Studio, Ollama, and Jan AI, OpenAI-compatible cloud providers, and <a href='https://openrouter.ai' target='_blank' rel='noopener noreferrer'>OpenRouter</a> (400+ models through a single API key).</p><p>You can also load any model from the <a href='https://huggingface.co/mlx-community' target='_blank' rel='noopener noreferrer'>HuggingFace mlx-community</a> by entering its repo ID in Settings.</p>"
+    answer: "<p>Cai ships with Ministral 3B built in as the default, on par with Apple Intelligence for most actions, with zero setup. The curated picker also includes Qwen 2.5 7B for Macs with 16 GB+ RAM. Cai supports Apple Intelligence on macOS 26+ (M1 or later), local servers like LM Studio, Ollama, or Jan AI, OpenAI-compatible cloud providers, and <a href='https://openrouter.ai' target='_blank' rel='noopener noreferrer'>OpenRouter</a> (400+ models through a single API key).</p><p>You can also load any model from the <a href='https://huggingface.co/mlx-community' target='_blank' rel='noopener noreferrer'>HuggingFace mlx-community</a> by entering its repo ID in Settings.</p>"
   },
   {
     question: "How do I create custom actions?",
-    answer: "<p>Open Cai's settings and go to Custom Actions. You can create prompt actions (saved AI instructions), URL actions (templates with %s for your selected text), or shell actions that execute commands using your clipboard data. Once saved, they appear in your action list for one-tap access.</p><p>You can also create custom destinations to route AI results anywhere — via webhooks, deeplinks, AppleScript, or shell commands.</p><p>Browse and install actions shared by the community at <a href='https://github.com/cai-layer/cai-extensions' target='_blank' rel='noopener noreferrer'>cai-extensions</a>.</p>"
-  },
-  {
-    question: "Does Cai work offline?",
-    answer: "<p>Yes. Once installed and connected to a local model, Cai works completely offline with no internet connection required.</p>"
-  },
-  {
-    question: "Is Cai really free?",
-    answer: "<p>Yes. Cai is free and open source under the MIT license. No telemetry, no tracking. Some advanced features may be offered as a paid option in the future, but the core app will always remain free and open source.</p>"
+    answer: "<p>Open Cai's settings and go to Custom Actions. You can create prompt actions (saved AI instructions), URL actions (templates with %s for your selected text), or shell actions that run commands on your selected text. Once saved, they appear in your action list for one-tap access.</p><p>You can also create custom destinations to route results anywhere: webhooks, deeplinks, AppleScript, or shell commands.</p><p>Browse and install actions shared by the community at <a href='https://github.com/cai-layer/cai-extensions' target='_blank' rel='noopener noreferrer'>cai-extensions</a>.</p>"
   }
 ];
 
