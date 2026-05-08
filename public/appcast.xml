@@ -35,6 +35,29 @@
     </item>
 
     <item>
+      <title>Version 1.5.0</title>
+      <description><![CDATA[
+        <h3>Highlights</h3>
+        <ul>
+          <li><strong>Action chaining</strong> — build multi-step workflows with custom actions, destinations, Apple Shortcuts, and inline LLM steps</li>
+          <li><strong>Redesigned Actions and Destinations</strong> — tabbed Settings, drag-to-reorder, calmer palette</li>
+          <li><strong>Make Cai yours</strong> — pin custom actions, hide built-ins you don't use</li>
+        </ul>
+        <p>Plus inline LLM transforms, Apple Shortcuts as chain steps, markdown ticket bodies, and several Sentry-reported hang fixes.</p>
+        <p>Big thanks to <a href="https://github.com/akl773">@akl773</a> for the pin / hide built-ins contributions.</p>
+        <p><a href="https://github.com/cai-layer/cai/releases/tag/v1.5.0">Full release notes →</a></p>
+      ]]></description>
+      <pubDate>Fri, 08 May 2026 17:26:46 +0000</pubDate>
+      <enclosure
+        url="https://github.com/cai-layer/cai/releases/download/v1.5.0/Cai-1.5.0-macos.dmg"
+        sparkle:version="8"
+        sparkle:shortVersionString="1.5.0"
+        length="20194842"
+        type="application/octet-stream"
+        sparkle:edSignature="PjFu7ndkGHrdo7zisjZe9oavZLmfu5vFJEB9aosbeCXz89uUOIN4D7niR0HHR9a+wvRV2nkckqCA9+dSct7uBA==" />
+    </item>
+
+    <item>
       <title>Version 1.4.0</title>
       <description><![CDATA[
         <h3>Highlights</h3>
