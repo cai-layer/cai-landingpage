@@ -26,6 +26,7 @@ const data = {
     { name: "Extension authoring", cai: "YAML (any editor, no build)", competitor: "React/TypeScript + build step" },
     { name: "Extension ecosystem", cai: "Small, growing (YAML)", competitor: "~2,000 extensions" },
     { name: "Custom output destinations (webhook, deeplink, AppleScript, shell)", cai: true, competitor: "Via per-script code only" },
+    { name: "Action chains (selection → AI → script → destination, one keystroke)", cai: true, competitor: "Per-extension code only (no native chaining)" },
     { name: "Replace selection inline", cai: true, competitor: false },
     { name: "Launcher / Spotlight replacement", cai: false, competitor: true },
     { name: "Window management", cai: false, competitor: true },
@@ -51,6 +52,7 @@ const data = {
       "You want GitHub and Linear as zero-config built-in actions, not per-server MCP setup",
       "You want to author extensions in plain YAML, not ship a TypeScript build",
       "You want to route results anywhere (webhook, AppleScript, deeplink, shell) via a first-class destinations layer",
+      "You want to chain actions: selection → AI prompt → script → Slack or webhook, saved as one ⌥C action",
     ]
   },
   relatedComparisons: [

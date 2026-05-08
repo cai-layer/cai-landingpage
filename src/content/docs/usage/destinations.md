@@ -74,9 +74,7 @@ Enable **"Show in action list"** to make a destination appear as a direct action
 
 ## Then Run (Chaining)
 
-Destinations have a **"Then run"** field, just like custom actions. After the destination fires, Cai pipes its output into the next step — another action, another destination, an inline LLM directive, or an Apple Shortcut. See [Chaining Actions](/docs/usage/saved-actions/#chaining-actions) for the full syntax and step types.
-
-A destination's output is what its template produced (or, for webhooks/AppleScript, the response/return value). For most destinations the input passes through unchanged, so you can chain them like Unix pipes: **Selection → "Save to Bear" → "Append to journal" → "Slack ping"**, all in one trigger.
+Destinations have a **"Then run"** field, just like custom actions. After the destination fires, Cai pipes its output into the next step. See [Action Chains](/docs/usage/action-chains/) for the full syntax, step types, and recipes.
 
 ## Creating a Destination
 
@@ -87,7 +85,7 @@ A destination's output is what its template produced (or, for webhooks/AppleScri
 5. Give it a **name** and configure the template
 6. Optionally add **setup fields** for API keys or tokens
 7. Optionally enable **"Show in action list"** for direct access
-8. Optionally add steps under **"Then run"** to chain into another action or destination
+8. Optionally add steps under **"Then run"** to chain into another action or destination ([details](/docs/usage/action-chains/))
 9. Click **Save**
 
 ## Examples

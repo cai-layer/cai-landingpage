@@ -1,11 +1,11 @@
 ---
 title: "Custom Actions"
-description: "Save frequently-used AI prompts, scripts and URL templates as custom actions in Cai. Chain steps together. Pin, hide and reorder to make Cai yours."
+description: "Save frequently-used AI prompts, scripts and URL templates as custom actions in Cai. Pin, hide and reorder to make Cai yours."
 ---
 
 # Custom Actions
 
-Custom actions let you save frequently-used prompts, scripts and URL templates for instant access. Type to filter your actions and custom actions appear inline: no menus, no setup each time. Chain them together to build multi-step workflows that pipe results from step to step.
+Custom actions let you save frequently-used prompts, scripts and URL templates for instant access. Type to filter your actions and custom actions appear inline: no menus, no setup each time. Combine them with [action chains](/docs/usage/action-chains/) to build multi-step workflows.
 
 ## Three Types of Custom Actions
 
@@ -98,29 +98,6 @@ This skips the result view entirely. Perfect for actions like "Fix Grammar," "Tr
 
 ---
 
-## Chaining Actions
-
-Every custom action has a **"Then run"** field that lets you append more steps. Each step receives the previous step's output as input — so a chain pipes results from action to destination to LLM to Apple Shortcut, in any order you like.
-
-Three kinds of step:
-
-| Step | What it is |
-|---|---|
-| **Action** | Another custom action or destination by name. Reuse the building blocks you already have. |
-| **Inline LLM** | A one-off LLM transform with a directive (e.g. "summarize as 3 bullets, no preamble"). No saved action needed. |
-| **Apple Shortcut** | Any shortcut from your Shortcuts.app library, run via `shortcuts run`. Cai pipes the chain value via stdin; stdout flows back. |
-
-**Examples**
-
-- **Translate → Replace Selection.** "Translate to German" prompt action, then "Replace Selection" destination. One keystroke replaces the source text with the translation in place.
-- **Selection → Summarize → Slack.** Inline LLM step ("summarize in 2 sentences"), then a Slack webhook destination. Long messages turn into digest pings.
-- **Selection → Save to Things.** Apple Shortcut step that creates a Things to-do from text input. Cai becomes a launcher for your existing automations.
-- **Bug report → GitHub issue → Linear ticket.** Two MCP destinations chained: file the same context to both trackers in one trigger.
-
-**Safety rails:** Cai enforces a max chain depth of 10 and detects cycles (e.g. action A → action B → action A). The chain stops with a toast rather than looping forever.
-
----
-
 ## Creating Custom Actions
 
 1. Left-click the **Cai menu bar icon** to open Preferences
@@ -129,7 +106,7 @@ Three kinds of step:
    - **Name**: what you'll see in the action list
    - **Type**: Prompt, URL, or Shell
    - **Value**: the prompt instruction, URL template (use `%s` for your selected text, auto-encoded), or shell command (just use `{{result}}` — see [Shell Actions](#shell-actions--scripts) above)
-4. **Then run** (optional): add chain steps to pipe the result into another action, destination, inline LLM step, or Apple Shortcut
+4. **Then run** (optional): add chain steps to pipe the result into another action, destination, inline LLM step, or Apple Shortcut. See [Action Chains](/docs/usage/action-chains/) for the full syntax
 5. For Prompt actions, optionally enable **"Auto replace selection"** to replace the selected text inline
 6. For Shell actions, optionally enable **"Run in background"** for slower tasks
 7. Click **Save**
@@ -166,4 +143,4 @@ Custom actions appear when you **type to filter** in the action window:
 - **Prompt actions** require a running [local LLM server](/docs/getting-started/llm-setup/)
 - **URL actions** work without any LLM — they just open your browser
 - **Shell actions** work without any LLM — they execute the command directly
-- **Chain steps** with inline LLM directives or actions of type Prompt require an LLM
+- **[Action chain](/docs/usage/action-chains/) steps** with inline LLM directives or actions of type Prompt require an LLM

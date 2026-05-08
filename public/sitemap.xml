@@ -61,6 +61,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://getcai.app/docs/usage/action-chains/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://getcai.app/docs/usage/extensions/</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>

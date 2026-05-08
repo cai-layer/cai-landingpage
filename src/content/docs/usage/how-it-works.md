@@ -75,7 +75,7 @@ Press **⌘N** to start a new chat — ask anything without clipboard content.
 
 ### Action Chaining
 
-Every custom action and destination has a **"Then run"** field that pipes its output into another step: another action, a destination, an inline LLM directive, or an Apple Shortcut. Build multi-step workflows from the building blocks you already have. See [Chaining Actions](/docs/usage/saved-actions/#chaining-actions) for details.
+Every custom action and destination has a **"Then run"** field. Pipe a selection through a sequence of actions, destinations, inline LLM steps, and Apple Shortcuts in one keystroke. See [Action Chains](/docs/usage/action-chains/) for the full syntax and recipes.
 
 ## Clipboard History
 
@@ -90,7 +90,7 @@ Press **⌘0** in the action window to open clipboard history. Features include:
 Left-click the Cai menu bar icon to access Preferences. Top-level screens:
 
 - **General** — translation language, search URL, maps provider, model provider, "About You", launch at login
-- **Actions** — tabbed: **Custom** (your prompts, URLs, shell scripts) and **Built-in** (toggle visibility of Define, Search, etc.). Pin, drag-to-reorder, and chain via "Then run"
+- **Actions** — tabbed: **Custom** (your prompts, URLs, shell scripts) and **Built-in** (toggle visibility of Define, Search, etc.). Pin, drag-to-reorder, and chain via ["Then run"](/docs/usage/action-chains/)
 - **Destinations** — webhooks, AppleScript, URL schemes, shell commands. Same chaining surface as Actions
 - **Connectors** — GitHub, Linear, and other MCP-backed integrations
 - **Context Snippets** — per-app system-prompt overrides
