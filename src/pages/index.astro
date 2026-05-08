@@ -65,8 +65,8 @@ const customFeatures = [
   <!-- Demo Section 2: Custom commands & actions -->
   <DemoSection
     id="custom-commands"
-    title='Make it <span class="highlight">yours</span>'
-    subtitle="Build your own actions with custom prompts, shell scripts, URL searches. Route results anywhere."
+    title='Make it <span class="highlight">yours</span>.' 
+    subtitle="Build your own custom actions, pipe them and route results anywhere."
     actions={customFeatures}
     mediaType="video"
     mediaSrc="/videos/cai-custom-actions.mp4"
@@ -77,42 +77,51 @@ const customFeatures = [
     linkText="Browse community extensions →"
   />
 
-  <!-- Your own action library -->
-  <section class="library-section" id="library">
-    <div class="library-container">
-      <p class="library-eyebrow">Your own action library</p>
-      <h2 class="library-title">Type it once. <span class="highlight">Run it forever.</span></h2>
-      <p class="library-subtitle">
-        Save any AI prompt, shell script, or URL shortcut as a one-keystroke action. Your library grows with you.
+  <!-- Action chains -->
+  <section class="chain-section" id="chains">
+    <div class="chain-container">
+      <p class="chain-eyebrow">Action chains</p>
+      <h2 class="chain-title">Build your own <span class="highlight">pipelines</span>.</h2>
+      <p class="chain-subtitle">
+        Pipe a selection through AI, scripts, destinations, and Apple Shortcuts (in any order). Save the chain once, run it anywhere.
       </p>
 
-      <div class="terminal-window">
-        <div class="terminal-chrome">
-          <span class="terminal-dot dot-red"></span>
-          <span class="terminal-dot dot-yellow"></span>
-          <span class="terminal-dot dot-green"></span>
-          <span class="terminal-label">cai — shell action</span>
-        </div>
-        <div class="terminal-body">
-          <code class="terminal-line">$ lsof -ti :<span class="terminal-var">{'{{selected text}}'}</span> | xargs kill -9</code>
-          <code class="terminal-line">$ gh pr list --search "<span class="terminal-var">{'{{selected text}}'}</span>"</code>
+      <div class="chain-card">
+        <p class="chain-card-title"><span class="chain-trigger">⌥C</span>Translate in place</p>
+        <div class="chain-flow">
+          <span class="chip chip-input">selection</span>
+          <span class="chain-arrow">→</span>
+          <span class="chip chip-action">Translate to German</span>
+          <span class="chain-arrow">→</span>
+          <span class="chip chip-destination">Replace Selection</span>
         </div>
       </div>
 
-      <div class="terminal-window">
-        <div class="terminal-chrome">
-          <span class="terminal-dot dot-red"></span>
-          <span class="terminal-dot dot-yellow"></span>
-          <span class="terminal-dot dot-green"></span>
-          <span class="terminal-label">cai — prompt action</span>
-        </div>
-        <div class="terminal-body">
-          <code class="terminal-line"><span class="terminal-prefix">✦</span> Translate to a git command: <span class="terminal-var">{'{{selected text}}'}</span></code>
-          <code class="terminal-line terminal-example"><span class="terminal-arrow">→</span> "undo last 2 commits" <span class="terminal-arrow">→</span> <span class="terminal-result">git reset --soft HEAD~2</span></code>
+      <div class="chain-card">
+        <p class="chain-card-title"><span class="chain-trigger">⌥C</span>Article URL → Slack TLDR</p>
+        <div class="chain-flow">
+          <span class="chip chip-input">selection</span>
+          <span class="chain-arrow">→</span>
+          <span class="chip chip-action">fetch article</span>
+          <span class="chain-arrow">→</span>
+          <span class="chip chip-llm">summarize</span>
+          <span class="chain-arrow">→</span>
+          <span class="chip chip-destination">Send to Slack</span>
         </div>
       </div>
 
-      <p class="library-caption">If it runs in Terminal or as a prompt, it runs in Cai.</p>
+      <div class="chain-card">
+        <p class="chain-card-title"><span class="chain-trigger">⌥C</span>Summarize → Save to 'My List'</p>
+        <div class="chain-flow">
+          <span class="chip chip-input">selection</span>
+          <span class="chain-arrow">→</span>
+          <span class="chip chip-action">Summarize</span>
+          <span class="chain-arrow">→</span>
+          <span class="chip chip-shortcut">Apple Shortcut: Save to My List</span>
+        </div>
+      </div>
+
+      <p class="chain-caption">If you can describe it in steps, Cai can run it.</p>
     </div>
   </section>
 
@@ -164,20 +173,20 @@ const customFeatures = [
     font-size: 0.85em;
   }
 
-  /* Your own action library section */
-  .library-section {
+  /* Action chains section */
+  .chain-section {
     background: #0F0F0F;
     padding: 7rem 0;
     text-align: center;
   }
 
-  .library-container {
-    max-width: 820px;
+  .chain-container {
+    max-width: 880px;
     margin: 0 auto;
     padding: 0 1.5rem;
   }
 
-  .library-eyebrow {
+  .chain-eyebrow {
     text-transform: uppercase;
     letter-spacing: 0.14em;
     font-size: 0.78rem;
@@ -186,7 +195,7 @@ const customFeatures = [
     margin: 0 0 1rem;
   }
 
-  .library-title {
+  .chain-title {
     font-family: 'Outfit', sans-serif;
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     color: #FFFFFF;
@@ -196,122 +205,143 @@ const customFeatures = [
     line-height: 1.15;
   }
 
-  .library-title :global(.highlight) {
+  .chain-title :global(.highlight) {
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .library-subtitle {
+  .chain-subtitle {
     color: #909090;
     font-size: clamp(1.05rem, 2vw, 1.2rem);
-    max-width: 580px;
-    margin: 0 auto 3rem;
+    max-width: 620px;
+    margin: 0 auto 3.25rem;
     line-height: 1.65;
   }
 
-  .terminal-window {
-    max-width: 620px;
-    margin: 0 auto 2rem;
-    background: #0A0A0A;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.3);
-    text-align: left;
+  .chain-card {
+    max-width: 720px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
   }
 
-  .terminal-chrome {
+  .chain-card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #B0B0B0;
+    margin: 0 0 1rem;
     display: flex;
     align-items: center;
-    gap: 0.45rem;
-    padding: 0.7rem 1rem;
-    background: rgba(255, 255, 255, 0.04);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    position: relative;
+    justify-content: center;
+    gap: 0.6rem;
   }
 
-  .terminal-dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-
-  .dot-red { background: #FF5F56; }
-  .dot-yellow { background: #FFBD2E; }
-  .dot-green { background: #27C93F; }
-
-  .terminal-label {
-    position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center;
+  .chain-trigger {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    background: rgba(167, 139, 250, 0.1);
+    border: 1px solid rgba(167, 139, 250, 0.28);
+    border-radius: 5px;
     font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.75rem;
-    color: #707070;
-    pointer-events: none;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #C7B6FF;
+    letter-spacing: 0;
+    text-transform: none;
+    flex-shrink: 0;
   }
 
-  .terminal-body {
-    padding: 1rem 1.25rem;
+  .chain-flow {
     display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-  }
-
-  .terminal-line {
-    display: block;
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.9rem;
-    color: #C0C0C0;
-    white-space: pre;
-    overflow-x: auto;
-  }
-
-  .terminal-var {
-    color: #A78BFA;
-  }
-
-  .terminal-prefix {
-    color: #A78BFA;
-    margin-right: 0.35rem;
-  }
-
-  .terminal-example {
-    color: #707070;
-    font-size: 0.82rem;
-    padding-left: 1.1rem;
-  }
-
-  .terminal-arrow {
-    color: #505050;
-    margin: 0 0.35rem;
-  }
-
-  .terminal-result {
-    color: #8EC07C;
-  }
-
-  .library-caption {
-    color: #707070;
-    font-size: 0.95rem;
-    font-style: italic;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem 0.4rem;
     margin: 0;
   }
 
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.85rem;
+    border-radius: 8px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.86rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  /* Selection (entry point): outlined ghost */
+  .chip-input {
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    color: #909090;
+    font-style: italic;
+  }
+
+  /* Action: solid neutral */
+  .chip-action {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #E0E0E0;
+  }
+
+  /* Inline LLM: italic with subtle indigo glow */
+  .chip-llm {
+    background: rgba(167, 139, 250, 0.08);
+    border: 1px solid rgba(167, 139, 250, 0.25);
+    color: #C7B6FF;
+    font-style: italic;
+  }
+
+  /* Destination: soft green tint — reads as "lands here / endpoint" */
+  .chip-destination {
+    background: rgba(110, 200, 130, 0.08);
+    border: 1px solid rgba(110, 200, 130, 0.25);
+    color: #9BD9AD;
+  }
+
+  /* Apple Shortcut: subtle warm accent (Shortcuts.app vibe) */
+  .chip-shortcut {
+    background: rgba(255, 159, 10, 0.08);
+    border: 1px solid rgba(255, 159, 10, 0.25);
+    color: #FFC074;
+  }
+  .chip-shortcut::before {
+    content: "⚡";
+    margin-right: 0.4rem;
+  }
+
+  .chain-arrow {
+    color: #505050;
+    font-size: 1rem;
+    user-select: none;
+  }
+
+  .chain-caption {
+    color: #707070;
+    font-size: 0.95rem;
+    font-style: italic;
+    margin: 1.5rem 0 0;
+  }
+
   @media (max-width: 640px) {
-    .library-section {
+    .chain-section {
       padding: 5rem 0;
     }
 
-    .terminal-line {
-      font-size: 0.78rem;
+    .chain-card {
+      margin-bottom: 2rem;
     }
 
-    .terminal-label {
-      display: none;
+    .chip {
+      font-size: 0.78rem;
+      padding: 0.35rem 0.7rem;
     }
   }
 

@@ -38,6 +38,8 @@ Cai is context-aware: it detects what app you're in (email, Slack, code editor, 
 
 The default action list is focused per content type. You won't see Reply on a meeting invite, or Fix Grammar on a single word. When you need an action that isn't shown, just **start typing its name**: filter-to-reveal surfaces every applicable action regardless of detection.
 
+You can also explicitly hide built-in actions you don't use under **Settings → Actions → Built-in**. Hidden actions stay reachable by typing to filter — they just stop crowding the default view.
+
 ## Examples
 
 - Select `"serendipity"` → Define, Explain, Translate, Search
@@ -71,6 +73,10 @@ After any AI action returns a result, press **Tab** to ask a follow-up question.
 
 Press **⌘N** to start a new chat — ask anything without clipboard content.
 
+### Action Chaining
+
+Every custom action and destination has a **"Then run"** field that pipes its output into another step: another action, a destination, an inline LLM directive, or an Apple Shortcut. Build multi-step workflows from the building blocks you already have. See [Chaining Actions](/docs/usage/saved-actions/#chaining-actions) for details.
+
 ## Clipboard History
 
 Press **⌘0** in the action window to open clipboard history. Features include:
@@ -81,7 +87,13 @@ Press **⌘0** in the action window to open clipboard history. Features include:
 
 ## Settings
 
-Left-click the Cai menu bar icon to access Preferences:
+Left-click the Cai menu bar icon to access Preferences. Top-level screens:
+
+- **General** — translation language, search URL, maps provider, model provider, "About You", launch at login
+- **Actions** — tabbed: **Custom** (your prompts, URLs, shell scripts) and **Built-in** (toggle visibility of Define, Search, etc.). Pin, drag-to-reorder, and chain via "Then run"
+- **Destinations** — webhooks, AppleScript, URL schemes, shell commands. Same chaining surface as Actions
+- **Connectors** — GitHub, Linear, and other MCP-backed integrations
+- **Context Snippets** — per-app system-prompt overrides
 
 | Setting | Description | Default |
 |---|---|---|

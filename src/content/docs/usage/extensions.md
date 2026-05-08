@@ -149,7 +149,7 @@ type: shell
 shell: lsof -ti :{{result}} | xargs kill -9 && echo "Killed process on port {{result}}"
 ```
 
-Use `{{result}}` for your selected text. Note: substitution is **raw**, not escaped — always quote it (`'{{result}}'`) when the text may contain spaces or special characters.
+Use `{{result}}` for your selected text. As of v1.5, `{{result}}` is **single-quote-wrapped and escaped automatically** in shell extensions — write it bare. For explicit transforms, use the [filter pipeline](/docs/usage/saved-actions/#filter-pipeline-advanced): `{{result|raw}}`, `{{result|url_encode}}`, `{{result|llm:"summarize"}}`.
 
 ### Deeplink Destination
 
@@ -170,13 +170,14 @@ deeplink: "bear://x-callback-url/create?text={{result}}"
 
 ### Template Placeholders
 
-| Placeholder     | Used in                               | Description                                                                                                                                                                |
-| --------------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `%s`            | URL actions (`type: url`)             | Replaced with selected text, **URL-encoded** automatically                                                                                                                 |
-| `{{result}}`    | Shell, webhook, deeplink, AppleScript | Replaced with selected text. Escaping varies by type: JSON for webhooks, percent-encoding for deeplinks, AppleScript escaping for AppleScript, **raw/unescaped for shell** |
-| `{{field_key}}` | Any destination with `setup:`         | Replaced with user-configured setup field value (from Keychain or UserDefaults)                                                                                            |
+| Placeholder     | Used in                               | Description                                                                                                                              |
+| --------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `%s`            | URL actions (`type: url`)             | Replaced with selected text, **URL-encoded** automatically                                                                               |
+| `{{result}}`    | Shell, webhook, deeplink, AppleScript | Replaced with selected text. Escaping is **automatic per type**: JSON for webhooks, percent-encoding for deeplinks, AppleScript escaping for AppleScript, single-quote wrapping for shell |
+| `{{result\|filter}}` | Same as above                    | Explicit filter pipeline. Filters: `raw`, `shell`, `json`, `url_encode`, `llm:"directive"`. See [filter pipeline](/docs/usage/saved-actions/#filter-pipeline-advanced) |
+| `{{field_key}}` | Any destination with `setup:`         | Replaced with user-configured setup field value (from Keychain or UserDefaults)                                                          |
 
-> **Shell actions are raw.** `{{result}}` is substituted verbatim into shell commands. Always wrap it in quotes (`"{{result}}"` or `'{{result}}'`), and for URL-encoded use cases prefer a URL action over a shell action. See [cai-extensions shell examples](https://github.com/cai-layer/cai-extensions/tree/main/extensions) for working patterns.
+> **Safe-by-default substitution.** `{{result}}` picks the right escaping for the surface — JSON for webhooks, percent-encoding for deeplinks, single-quote wrapping for shell. To opt out, use `{{result|raw}}`. For URL building, prefer a URL action (`%s`) over shell. See [cai-extensions shell examples](https://github.com/cai-layer/cai-extensions/tree/main/extensions) for working patterns.
 
 ### Setup Fields
 

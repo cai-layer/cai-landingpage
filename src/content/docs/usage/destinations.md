@@ -42,9 +42,25 @@ Use these placeholders in your destination templates:
 - **`{{result}}`**: your selected text or AI-processed text (auto-escaped for the destination type)
 - **`{{field_key}}`**: value from a setup field (e.g. `{{api_key}}` for API tokens)
 
-Text is automatically escaped based on the destination type — JSON encoding for webhooks, percent-encoding for URL schemes, AppleScript string escaping for AppleScript, and single-quote wrapping for shell commands.
+Text is automatically escaped based on the destination type — JSON encoding for webhooks, percent-encoding for URL schemes, AppleScript string escaping for AppleScript, and single-quote wrapping for shell commands. Just write `{{result}}`; Cai picks the right escaping for the surface.
 
-> **Shell destinations differ from Shell custom actions.** In **destinations**, `{{result}}` is auto-wrapped in single quotes — write `curl -d {{result}}`, not `curl -d '{{result}}'`. In **custom actions**, you wrap the placeholder yourself (see [Custom Actions](/docs/usage/saved-actions/)).
+### Filter pipeline (advanced)
+
+For explicit transforms — or to inject an LLM step inline — use the filter syntax: `{{var|filter|filter:"arg"}}`.
+
+| Filter | What it does |
+|---|---|
+| `raw` | Pass through unchanged (opt out of auto-escaping) |
+| `shell` | Single-quote wrap and escape |
+| `json` | Escape for JSON string contexts |
+| `url_encode` | Percent-encode for URLs |
+| `llm:"directive"` | Run the value through the local LLM with the directive as the system prompt |
+
+Useful patterns:
+
+- `{"text": "{{result|llm:\"summarize in one sentence\"}}"}` — webhook body that summarizes before sending
+- `bear://x-callback-url/create?text={{result|llm:\"format as markdown notes\"}}` — Bear deeplink that reformats first
+- `{{result|raw}}` — opt out of escaping when the value is already safe
 
 ## Setup Fields
 
@@ -56,16 +72,23 @@ To add a setup field, click **Add Field** when creating a destination. Reference
 
 Enable **"Show in action list"** to make a destination appear as a direct action in the Cai action window. This skips the AI step entirely. Useful for quick-send workflows like "Send to Slack" or "Save to Bear" directly from your selection.
 
+## Then Run (Chaining)
+
+Destinations have a **"Then run"** field, just like custom actions. After the destination fires, Cai pipes its output into the next step — another action, another destination, an inline LLM directive, or an Apple Shortcut. See [Chaining Actions](/docs/usage/saved-actions/#chaining-actions) for the full syntax and step types.
+
+A destination's output is what its template produced (or, for webhooks/AppleScript, the response/return value). For most destinations the input passes through unchanged, so you can chain them like Unix pipes: **Selection → "Save to Bear" → "Append to journal" → "Slack ping"**, all in one trigger.
+
 ## Creating a Destination
 
 1. Left-click the **Cai menu bar icon** to open Preferences
-2. Go to **Custom Destinations**
+2. Click **Destinations**
 3. Click **+** to add a new destination
 4. Choose a **type** (Webhook, AppleScript, URL Scheme, or Shell Command)
 5. Give it a **name** and configure the template
 6. Optionally add **setup fields** for API keys or tokens
 7. Optionally enable **"Show in action list"** for direct access
-8. Click **Save**
+8. Optionally add steps under **"Then run"** to chain into another action or destination
+9. Click **Save**
 
 ## Examples
 

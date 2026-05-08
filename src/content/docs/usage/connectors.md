@@ -7,6 +7,8 @@ description: "Connect Cai to GitHub and Linear to create issues directly from yo
 
 Connectors let Cai create issues and tickets in external services, directly from whatever you select. Select an error, press **Option+C**, and create a GitHub or Linear issue in seconds.
 
+> **As of v1.5**, issue and ticket bodies are sent as **Markdown** to GitHub and Linear — code fences, lists, and headings render properly in the destination, instead of arriving as plain text.
+
 ---
 
 ## GitHub
