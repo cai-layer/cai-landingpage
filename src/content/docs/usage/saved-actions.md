@@ -50,6 +50,8 @@ Shell actions use `{{result}}` as the placeholder for your selected text. **Cai 
 
 > **Migration note.** If your action was authored before v1.5 with `'{{result}}'` or `"{{result}}"` (manually wrapped), Cai rewrites it to the new safe-by-default form on first launch. No action needed; your shortcut keeps working identically.
 
+> **Homebrew tools work directly.** Cai puts `/opt/homebrew/bin` (Apple Silicon) and `/usr/local/bin` (Intel) on PATH for shell actions, so `gh`, `jq`, `kubectl`, `rg`, etc. resolve without hardcoded paths. Tools managed by **nvm**, **pyenv**, **conda**, or **asdf** are not on PATH (they require interactive shell hooks) — use the absolute path or a wrapper script for those.
+
 > **Caution:** Shell actions execute with your user-level permissions and can modify files, send network requests, and control other applications. Only create shell actions if you understand exactly what the command does. Never paste commands from untrusted sources.
 
 #### Filter pipeline (advanced)
