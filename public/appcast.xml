@@ -35,6 +35,28 @@
     </item>
 
     <item>
+      <title>Version 1.5.1</title>
+      <description><![CDATA[
+        <h3>Highlights</h3>
+        <ul>
+          <li><strong>Cloud LLM responses now stream</strong> — token-by-token for OpenRouter, LM Studio, Ollama, and custom providers. No more 5–60 second spinner.</li>
+          <li><strong>Long cloud outputs no longer truncated</strong> — Proofread and rewrite-style actions run to completion on cloud providers.</li>
+        </ul>
+        <p>Plus better cancellation UX, longer cloud timeouts, higher token caps for thinking models, and shell tools find Homebrew binaries again.</p>
+        <p>Thanks to <a href="https://github.com/akl773">@akl773</a> for the cloud-truncation fix.</p>
+        <p><a href="https://github.com/cai-layer/cai/releases/tag/v1.5.1">Full release notes →</a></p>
+      ]]></description>
+      <pubDate>Fri, 05 Jun 2026 16:43:19 +0000</pubDate>
+      <enclosure
+        url="https://github.com/cai-layer/cai/releases/download/v1.5.1/Cai-1.5.1-macos.dmg"
+        sparkle:version="9"
+        sparkle:shortVersionString="1.5.1"
+        length="20227993"
+        type="application/octet-stream"
+        sparkle:edSignature="J9DqHl0B+cCx3B0VxWn+4BuTFqu4UDIRdW6K9KHGe2Y1mnCS8APd1/juA0MFrgBhS0Ntq92t6bCocuc9qsD5AQ==" />
+    </item>
+
+    <item>
       <title>Version 1.5.0</title>
       <description><![CDATA[
         <h3>Highlights</h3>
