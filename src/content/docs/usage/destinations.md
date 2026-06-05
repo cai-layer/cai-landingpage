@@ -97,6 +97,8 @@ Destinations have a **"Then run"** field, just like custom actions. After the de
 
 Appends the result to a Markdown file with a timestamp — great for logging quick notes, ideas, or AI-generated summaries throughout the day.
 
+> **Homebrew tools work directly.** Cai puts `/opt/homebrew/bin` and `/usr/local/bin` on PATH for shell destinations, so `gh`, `jq`, `kubectl`, etc. resolve without hardcoded paths. Tools managed by nvm/pyenv/conda/asdf still need absolute paths or a wrapper script.
+>
 > **Sending to GitHub or Linear?** Use the [GitHub or Linear connector](/docs/usage/connectors/) instead of shelling out to `gh` — they provide structured forms, duplicate detection, and proper API integration.
 
 ### Save to Bear
