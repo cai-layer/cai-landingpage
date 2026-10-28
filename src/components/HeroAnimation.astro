@@ -12,6 +12,7 @@
 
 <div class="ha" role="img" aria-label="Demo: an AI agent proposes a Cai action called Calm it down and you approve it. In Slack you select an angry reply, press Option+C, and Cai rewrites it politely in place and saves the original to Notes, running on your Mac with no agent and no tokens.">
     <div class="stage" id="ha-stage" aria-hidden="true">
+      <div class="cam" id="ha-cam">
 
       <!-- 1. Claude Code proposes the action -->
       <div class="win term fx" id="ha-term">
@@ -68,7 +69,7 @@
               <div class="msg"><span class="av">P</span><div><b>Pat Rivera<small>10:41</small></b><p>quick q: why is the button green in the build? 🙂</p></div></div>
               <div class="msg sent fx" id="ha-sent"><span class="av av-me">A</span><div><b>Alex Morgan<small>10:43</small></b><p id="ha-sentText"></p></div></div>
             </div>
-            <div class="compose">
+            <div class="compose" id="ha-compose">
               <div class="toolbar"><b>B</b><i>I</i><u>U</u><s>S</s><span>🔗</span><span>≡</span><span>&lt;/&gt;</span></div>
               <div class="draft-row"><span class="draft" id="ha-draft"></span><span class="thin-caret" id="ha-draftCaret"></span></div>
               <div class="compose-foot"><span class="tool">+</span><span class="tool">Aa</span><span class="tool">☺</span><span class="tool">@</span><span class="send empty" id="ha-send"><span>➤</span><span class="chev">⌄</span></span></div>
@@ -89,7 +90,6 @@
         <div class="p-foot"><span><kbd>↑↓</kbd>Navigate</span><span><kbd>↵</kbd>Select</span><span><kbd>Esc</kbd>Close</span><span class="model">▣ Qwen3-4B-I…</span></div>
       </div>
 
-      <span class="keycap fx" id="ha-keycap">⌥C</span>
 
       <!-- 4. Notes -->
       <div class="win notes fx" id="ha-notes">
@@ -113,6 +113,9 @@
         </div>
       </div>
 
+      </div>
+
+      <span class="keycap fx" id="ha-keycap">⌥C</span>
       <p class="badge fx" id="ha-badge">Ran on your Mac · no agent · no tokens</p>
 
       <div class="endcard on" id="ha-endcard"><svg viewBox="0 0 217 127" aria-hidden="true"><path d="M189.405 83.9031L216.831 83.9031C216.379 92.3868 214.066 99.8806 209.89 106.385C205.77 112.832 200.042 117.894 192.706 121.57C185.37 125.19 176.651 127 166.55 127C158.48 127 151.257 125.614 144.88 122.843C138.504 120.072 133.086 116.113 128.628 110.966C124.227 105.763 120.841 99.513 118.471 92.2171C116.157 84.8646 115 76.5789 115 67.3601L115 59.8096C115 50.5907 116.213 42.3051 118.64 34.9526C121.066 27.6001 124.537 21.3222 129.051 16.1189C133.566 10.9156 138.983 6.9283 145.304 4.15698C151.624 1.38566 158.678 0 166.466 0C176.962 0 185.822 1.89468 193.045 5.68403C200.268 9.47339 205.855 14.6767 209.805 21.2939C213.812 27.9112 216.21 35.4616 217 43.9452L189.49 43.9452C189.264 39.1378 188.361 35.094 186.781 31.8136C185.201 28.4767 182.774 25.9599 179.501 24.2632C176.228 22.5665 171.883 21.7181 166.466 21.7181C162.515 21.7181 159.045 22.4534 156.054 23.9238C153.119 25.3943 150.665 27.6849 148.69 30.7956C146.771 33.9063 145.332 37.8653 144.373 42.6727C143.413 47.4235 142.934 53.0793 142.934 59.6399L142.934 67.3601C142.934 73.8642 143.357 79.4916 144.203 84.2425C145.05 88.9933 146.404 92.9241 148.266 96.0347C150.185 99.1454 152.64 101.464 155.631 102.991C158.622 104.518 162.261 105.282 166.55 105.282C171.46 105.282 175.551 104.518 178.824 102.991C182.097 101.408 184.608 99.0323 186.358 95.8651C188.107 92.6978 189.123 88.7105 189.405 83.9031ZM32.7051 29.5L32.8506 29.7383L73.29 95.5781L101.5 95.5781L101.5 110.5L69.2949 110.5L69.1494 110.262L28.71 44.4219L0.5 44.4219L0.5 29.5ZM101.5 29.5L101.5 44.4219L69.0752 44.4219L69.0752 29.5Z"/></svg></div>
@@ -163,6 +166,16 @@
     cursor.classList.remove('down');
     el && el.classList.remove('pressed');
   }
+  const cam = $('cam');
+  async function zoom(el: HTMLElement | null, scale: number, ms: number, id: number) {
+    if (el) {
+      const s = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
+      cam.style.transformOrigin = `${r.left - s.left + r.width / 2}px ${r.top - s.top + r.height / 2}px`;
+    }
+    cam.style.transitionDuration = ms + 'ms';
+    cam.style.transform = el ? `scale(${scale})` : 'none';
+    await wait(ms, id);
+  }
   // Human-ish typing: jittered speed, longer pause after punctuation.
   async function type(el: HTMLElement, text: string, perChar: number, id: number) {
     el.textContent = '';
@@ -188,6 +201,8 @@
     $('sentText').textContent = '';
     $('newNote').classList.remove('settled');
     $('slack').classList.remove('shift');
+    cam.style.transitionDuration = '0ms';
+    cam.style.transform = 'none';
     cursor.classList.remove('on');
   }
 
@@ -199,7 +214,8 @@
     beat('1 · agent');
     off($('endcard'));
     on($('term'));
-    await wait(500, id);
+    await wait(400, id);
+    await zoom($('term'), 1.3, 700, id);
     await type($('termTyped'), PROMPT, 38, id);
     await wait(350, id);
     $('echoText').textContent = PROMPT;
@@ -214,7 +230,8 @@
     }
     hide($('calling'), $('spinner'));
     show($('done'));
-    await wait(2500, id);
+    await wait(2300, id);
+    await zoom(null, 1, 600, id);
 
     // 2. Approve in Cai
     beat('2 · approve');
@@ -231,7 +248,8 @@
     // 3. Slack: rage typing
     beat('3 · rage typing');
     on($('slack'));
-    await wait(600, id);
+    await wait(500, id);
+    await zoom($('compose'), 1.35, 700, id);
     $('send').classList.remove('empty');
     await type($('draft'), ANGRY, 36, id);
     await wait(250, id);
@@ -242,12 +260,8 @@
     on(cursor);
     await move(at($('send'), 0.15, 0.5), 850, id);
     await wait(200, id);
-    const sx = cx, sy = cy;
-    await move([sx - 40, sy + 10], 380, id);
-    await wait(250, id);
-    await move([sx - 4, sy + 1], 300, id);
-    await wait(350, id);
-    await move([sx - 70, sy + 18], 420, id);
+    await wait(300, id);
+    await move([cx - 70, cy + 18], 450, id);
     await wait(300, id);
 
     // select it, ⌥C
@@ -284,6 +298,7 @@
     $('draftCaret').style.display = '';
     await wait(700, id);
     off(cursor);
+    await zoom(null, 1, 600, id);
 
     // the original lands in Notes
     beat('7 · notes');
@@ -341,12 +356,13 @@
     --indigo: #6366F2;
     --mac-blue: #3478F6;
     position: relative; aspect-ratio: 1280 / 804; overflow: hidden;
-    font-size: 1.45cqw; color: #1d1d1f;
+    font-size: 1.55cqw; color: #1d1d1f;
     background: linear-gradient(155deg, #A68CF8 0%, #C08ADB 40%, #DE88B4 75%, #F2899A 100%);
   }
   .stage * { box-sizing: border-box; }
   .stage p, .stage h3, .stage h4, .stage ul { margin: 0; }
 
+  .cam { position: absolute; inset: 0; transition-property: transform; transition-timing-function: cubic-bezier(.45,.05,.25,1); }
   .fx { opacity: 0; transition: opacity .4s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
   .fx.on { opacity: 1; }
   .gone { display: none !important; }
@@ -359,12 +375,12 @@
   .lights i:nth-child(3) { background: #28c840; }
 
   /* ---------- 1. Claude Code in Terminal ---------- */
-  .term { left: 9%; top: 8%; width: 62%; height: 62%; background: #282a36; transform: translateY(1.2em); display: flex; flex-direction: column; }
+  .term { left: 19%; top: 14%; width: 62%; height: 62%; background: #282a36; transform: translateY(1.2em); display: flex; flex-direction: column; }
   .term.on { transform: none; }
   .term.back { opacity: .0; transform: scale(.96); }
   .term-bar { flex: none; height: 2.1em; display: flex; align-items: center; gap: .8em; padding: 0 .9em; background: #f6f6f6; border-bottom: 1px solid #d8d8d8; font-size: .85em; font-weight: 600; color: #3a3a3a; }
   .term-bar span { opacity: .85; }
-  .term-body { flex: 1; position: relative; padding: .9em 1.2em; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: .78em; line-height: 1.55; color: #e6e6e6; display: flex; flex-direction: column; gap: .8em; }
+  .term-body { flex: 1; position: relative; padding: .9em 1.2em; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: .9em; line-height: 1.5; color: #e6e6e6; display: flex; flex-direction: column; gap: .8em; }
   .cc-head { display: flex; gap: 1em; align-items: center; }
   .crab { width: 3.2em; height: 2.6em; position: relative; }
   .crab::before { content: ''; position: absolute; inset: 0 .25em .6em; background: #D97757; }
@@ -519,7 +535,7 @@
   /* ---------- end card: logo on the background ---------- */
   .endcard { position: absolute; inset: 0; display: grid; place-items: center; z-index: 20; background: linear-gradient(155deg, #A68CF8 0%, #C08ADB 40%, #DE88B4 75%, #F2899A 100%); opacity: 0; transition: opacity .6s ease; pointer-events: none; }
   .endcard.on { opacity: 1; }
-  .endcard svg { width: 30%; fill: #fff; transform: scale(.94); transition: transform 2.4s ease-out; }
+  .endcard svg { width: 21%; fill: #fff; transform: scale(.94); transition: transform 2.4s ease-out; }
   .endcard.on svg { transform: scale(1); }
 
   /* ---------- cursor ---------- */
