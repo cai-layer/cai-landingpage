@@ -160,6 +160,10 @@ import HeroAnimation from './HeroAnimation.astro';
   }
 
   .container {
+    /* .hero is a flex row, so without this the container shrinks to its
+       content; the animation has no intrinsic width (container-type) and
+       would collapse to the width of the CTA row. */
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -477,7 +481,7 @@ import HeroAnimation from './HeroAnimation.astro';
   }
 
   .hero-demo {
-    max-width: 920px;
+    max-width: 980px;
     margin: 0 auto;
     border-radius: 20px;
     overflow: hidden;
