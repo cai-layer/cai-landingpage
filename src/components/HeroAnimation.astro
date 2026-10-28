@@ -1,0 +1,534 @@
+---
+// Hero loop: Claude Code proposes a Cai action ("Calm it down"), you approve
+// it, then in Slack a rage reply is selected, ⌥C turns it polite, and the
+// original lands in Notes. Ends on the ⌥C logo, which is also the first paint
+// (the loading state, no poster image needed).
+// HTML/CSS instead of a video so copy and UI can change without re-recording.
+// Source prototype: cai/_docs/_temp/hero-prototype/index-v3.html (private).
+// The review sheet is deliberately simpler than the app's (no shell step, no
+// warning or acknowledgment); the Notes list is one note with bullets, while
+// the real Save to Notes makes a new note per run.
+---
+
+<div class="ha" role="img" aria-label="Demo: an AI agent proposes a Cai action called Calm it down and you approve it. In Slack you select an angry reply, press Option+C, and Cai rewrites it politely in place and saves the original to Notes, running on your Mac with no agent and no tokens.">
+    <div class="stage" id="ha-stage" aria-hidden="true">
+
+      <!-- 1. Claude Code proposes the action -->
+      <div class="win term fx" id="ha-term">
+        <div class="term-bar"><span class="lights"><i></i><i></i><i></i></span><span>Claude Code</span></div>
+        <div class="term-body">
+          <div class="cc-head">
+            <div class="crab"><i></i><i></i></div>
+            <div><b>Claude Code</b><br><span class="muted">~/projects</span></div>
+          </div>
+          <p class="echo gone" id="ha-echo">❯ <span id="ha-echoText"></span></p>
+          <p class="gone" id="ha-calling"><span class="bullet-grey">●</span> Calling cai…</p>
+          <p class="gone" id="ha-done"><span class="bullet">●</span> Proposed <b>"Calm it down"</b> in Cai. Nothing runs until you approve it.</p>
+          <p class="spin gone" id="ha-spinner"><span id="ha-spinGlyph">✱</span> <span id="ha-spinWord">Thundering…</span> <span class="muted">(6s · ↓ 224 tokens)</span></p>
+          <div class="term-input">❯ <span id="ha-termTyped"></span><span class="bcaret"></span></div>
+                  </div>
+      </div>
+
+      <!-- 2. Cai review sheet (labels copied from the app) -->
+      <div class="sheet fx" id="ha-sheet">
+        <p class="sheet-title"><span>New action ·</span> Calm it down</p>
+        <p class="sheet-sub">claude-code · today 10:42</p>
+        <div class="chips"><span class="chip">Runs on-device AI</span><span class="chip">Writes to Notes</span><span class="chip">Replaces your selection</span></div>
+        <ol class="steps">
+          <li><small>1</small><span>Save to Notes</span></li>
+          <li><small>2</small><span>Rewrite calmly</span></li>
+          <li><small>3</small><span>Replace Selection</span></li>
+        </ol>
+        <div class="buttons"><span class="btn">Reject</span><span class="btn btn-primary ready" id="ha-approve">Approve</span></div>
+      </div>
+
+      <!-- 3. Slack (aubergine) -->
+      <div class="win slack fx" id="ha-slack">
+        <div class="sl-top"><span class="lights"><i></i><i></i><i></i></span><span class="sl-search">⌕&nbsp; Search Northwind</span></div>
+        <div class="sl-main">
+          <div class="sl-rail">
+            <span class="sl-ws">N</span>
+            <span class="sl-nav on"><i>⌂</i>Home</span>
+            <span class="sl-nav"><i>✉</i>DMs</span>
+            <span class="sl-nav"><i>♢</i>Activity</span>
+          </div>
+          <div class="sl-side">
+            <p class="sl-name">Northwind ⌄</p>
+            <p class="sl-sec">Channels</p>
+            <p class="sl-item"># design-review</p>
+            <p class="sl-item"># launch</p>
+            <p class="sl-sec">Direct messages</p>
+            <p class="sl-item"><span class="av av-sam">S</span>Sam Okafor</p>
+            <p class="sl-item sl-active"><span class="av">P</span>Pat Rivera</p>
+            <p class="sl-item"><span class="av av-lee">L</span>Lee Chen</p>
+          </div>
+          <div class="sl-chat">
+            <div class="sl-head"><span class="av">P</span>Pat Rivera</div>
+            <div class="msgs">
+              <div class="msg"><span class="av">P</span><div><b>Pat Rivera<small>10:41</small></b><p>quick q: why is the button green in the build? 🙂</p></div></div>
+              <div class="msg sent fx" id="ha-sent"><span class="av av-me">A</span><div><b>Alex Morgan<small>10:43</small></b><p id="ha-sentText"></p></div></div>
+            </div>
+            <div class="compose">
+              <div class="toolbar"><b>B</b><i>I</i><u>U</u><s>S</s><span>🔗</span><span>≡</span><span>&lt;/&gt;</span></div>
+              <div class="draft-row"><span class="draft" id="ha-draft"></span><span class="thin-caret" id="ha-draftCaret"></span></div>
+              <div class="compose-foot"><span class="tool">+</span><span class="tool">Aa</span><span class="tool">☺</span><span class="tool">@</span><span class="send empty" id="ha-send"><span>➤</span><span class="chev">⌄</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cai panel -->
+      <div class="panel fx" id="ha-panel">
+        <div class="p-head"><span class="lines">≡</span><div><small>Text detected</small><p>As I said THREE TIMES already, the button is BLUE. Did anyone open the spec??</p></div></div>
+        <div class="p-search"><span class="q">⌕</span><span id="ha-search"></span><span class="hint2">type to filter</span></div>
+        <div class="p-rows">
+          <div class="p-row" data-match><span class="p-ic term-ic">✦</span><div><b>Calm it down</b><small>Runs on-device AI · Writes to Notes +1</small></div><kbd>⌘ 1</kbd></div>
+          <div class="p-row" data-other><span class="p-ic">ϟ</span><div><b>Ask AI</b><small>Ask AI anything about this content</small></div><kbd>⌘ 2</kbd></div>
+          <div class="p-row" data-other><span class="p-ic">✓</span><div><b>Fix Grammar</b><small>Fix grammar, spelling, and punctuation</small></div><kbd>⌘ 3</kbd></div>
+        </div>
+        <div class="p-foot"><span><kbd>↑↓</kbd>Navigate</span><span><kbd>↵</kbd>Select</span><span><kbd>Esc</kbd>Close</span><span class="model">▣ Qwen3-4B-I…</span></div>
+      </div>
+
+      <span class="keycap fx" id="ha-keycap">⌥C</span>
+
+      <!-- 4. Notes -->
+      <div class="win notes fx" id="ha-notes">
+        <div class="notes-bar"><span class="lights"><i></i><i></i><i></i></span><span class="round">◧</span><span class="round">‹</span><span class="ttl">All iCloud<small>386 notes</small></span></div>
+        <div class="notes-body">
+          <p class="when">29 October 2026 at 10:43</p>
+          <h4>Things I almost sent</h4>
+          <ul>
+            <li class="new" id="ha-newNote">As I said THREE TIMES already, the button is BLUE. Did anyone open the spec??</li>
+            <li>I did read the PRD. All 3 versions of it.</li>
+            <li>Per my last email, which you clearly didn't read</li>
+            <li>It works on my machine. Ship my machine.</li>
+            <li>As discussed in the meeting you left early from</li>
+            <li>Sure, let's add AI to it</li>
+            <li>The deadline was a guess. You made it a promise.</li>
+            <li>That's not a bug, that's your requirement</li>
+            <li>Happy Friday! Please stop deploying.</li>
+            <li>Re: Re: Fwd: Re: "one tiny tweak"</li>
+            <li>Who reviewed this PR? Oh. Me.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="badge fx" id="ha-badge">Ran on your Mac · no agent · no tokens</p>
+
+      <div class="endcard on" id="ha-endcard"><svg viewBox="0 0 217 127" aria-hidden="true"><path d="M189.405 83.9031L216.831 83.9031C216.379 92.3868 214.066 99.8806 209.89 106.385C205.77 112.832 200.042 117.894 192.706 121.57C185.37 125.19 176.651 127 166.55 127C158.48 127 151.257 125.614 144.88 122.843C138.504 120.072 133.086 116.113 128.628 110.966C124.227 105.763 120.841 99.513 118.471 92.2171C116.157 84.8646 115 76.5789 115 67.3601L115 59.8096C115 50.5907 116.213 42.3051 118.64 34.9526C121.066 27.6001 124.537 21.3222 129.051 16.1189C133.566 10.9156 138.983 6.9283 145.304 4.15698C151.624 1.38566 158.678 0 166.466 0C176.962 0 185.822 1.89468 193.045 5.68403C200.268 9.47339 205.855 14.6767 209.805 21.2939C213.812 27.9112 216.21 35.4616 217 43.9452L189.49 43.9452C189.264 39.1378 188.361 35.094 186.781 31.8136C185.201 28.4767 182.774 25.9599 179.501 24.2632C176.228 22.5665 171.883 21.7181 166.466 21.7181C162.515 21.7181 159.045 22.4534 156.054 23.9238C153.119 25.3943 150.665 27.6849 148.69 30.7956C146.771 33.9063 145.332 37.8653 144.373 42.6727C143.413 47.4235 142.934 53.0793 142.934 59.6399L142.934 67.3601C142.934 73.8642 143.357 79.4916 144.203 84.2425C145.05 88.9933 146.404 92.9241 148.266 96.0347C150.185 99.1454 152.64 101.464 155.631 102.991C158.622 104.518 162.261 105.282 166.55 105.282C171.46 105.282 175.551 104.518 178.824 102.991C182.097 101.408 184.608 99.0323 186.358 95.8651C188.107 92.6978 189.123 88.7105 189.405 83.9031ZM32.7051 29.5L32.8506 29.7383L73.29 95.5781L101.5 95.5781L101.5 110.5L69.2949 110.5L69.1494 110.262L28.71 44.4219L0.5 44.4219L0.5 29.5ZM101.5 29.5L101.5 44.4219L69.0752 44.4219L69.0752 29.5Z"/></svg></div>
+
+      <div class="cursor" id="ha-cursor"><svg viewBox="0 0 24 24"><path d="M4 2l16 10-7 1.5L9.5 21z" fill="#000" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+    </div>
+</div>
+
+<script>
+
+  const $ = (id: string) => document.getElementById('ha-' + id) as HTMLElement;
+  const stage = $('stage');
+  if (stage) {
+  const cursor = $('cursor');
+  const PROMPT = 'make me a Cai action that stops me from getting fired';
+  const ANGRY = 'As I said THREE TIMES already, the button is BLUE. Did anyone open the spec??';
+  const CALM = 'Great catch! The spec has it in blue 💙 Happy to walk through it anytime 🙏';
+
+  let run = 0; // bumps on restart so a stale loop stops
+  const wait = (ms: number, id: number) => new Promise<void>((res, rej) => setTimeout(() => (id === run ? res() : rej('stale')), ms));
+  const on = (...els: HTMLElement[]) => els.forEach((e) => e.classList.add('on'));
+  const off = (...els: HTMLElement[]) => els.forEach((e) => e.classList.remove('on'));
+  const show = (...els: HTMLElement[]) => els.forEach((e) => e.classList.remove('gone'));
+  const hide = (...els: HTMLElement[]) => els.forEach((e) => e.classList.add('gone'));
+  const beat = (_t: string) => {};
+
+  type Point = [number, number];
+  let cx = 0, cy = 0;
+  function at(el: HTMLElement, fx = 0.5, fy = 0.5): Point {
+    const s = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
+    return [r.left - s.left + r.width * fx, r.top - s.top + r.height * fy];
+  }
+  async function move(point: Point, ms: number, id: number) {
+    [cx, cy] = point;
+    cursor.style.transitionDuration = ms + 'ms';
+    cursor.style.transform = `translate(${cx}px, ${cy}px)`;
+    await wait(ms, id);
+  }
+  function jump(point: Point) {
+    [cx, cy] = point;
+    cursor.style.transitionDuration = '0ms';
+    cursor.style.transform = `translate(${cx}px, ${cy}px)`;
+  }
+  async function click(el: HTMLElement | null, id: number) {
+    cursor.classList.add('down');
+    el && el.classList.add('pressed');
+    await wait(140, id);
+    cursor.classList.remove('down');
+    el && el.classList.remove('pressed');
+  }
+  // Human-ish typing: jittered speed, longer pause after punctuation.
+  async function type(el: HTMLElement, text: string, perChar: number, id: number) {
+    el.textContent = '';
+    for (const ch of text) {
+      el.textContent += ch;
+      const pause = /[,.?!:]/.test(ch) ? perChar * 4 : perChar * (0.5 + Math.random());
+      await wait(pause, id);
+    }
+  }
+
+  function reset() {
+    stage.querySelectorAll('.on:not(.endcard)').forEach((e) => e.classList.remove('on'));
+    $('term').classList.remove('back');
+    $('termTyped').textContent = '';
+    hide($('echo'), $('calling'), $('done'), $('spinner'));
+    $('draft').textContent = '';
+    $('draft').classList.remove('selected', 'fade');
+    $('draftCaret').style.display = '';
+    $('send').classList.add('empty');
+    $('search').textContent = '';
+    stage.querySelectorAll('[data-other]').forEach((r) => r.classList.remove('gone'));
+    stage.querySelector('[data-match]')!.classList.add('hl');
+    $('sentText').textContent = '';
+    $('newNote').classList.remove('settled');
+    $('slack').classList.remove('shift');
+    cursor.classList.remove('on');
+  }
+
+  async function play(id: number) {
+    reset();
+    jump(at(stage, 0.8, 0.9));
+
+    // 1. Ask the agent
+    beat('1 · agent');
+    off($('endcard'));
+    on($('term'));
+    await wait(500, id);
+    await type($('termTyped'), PROMPT, 38, id);
+    await wait(350, id);
+    $('echoText').textContent = PROMPT;
+    $('termTyped').textContent = '';
+    show($('echo'), $('calling'), $('spinner'));
+    const words = ['Thundering…', 'Polishing…', 'Churning…'];
+    const glyphs = ['✱', '✳', '✶', '✻'];
+    for (let k = 0; k < 6; k++) {
+      $('spinGlyph').textContent = glyphs[k % glyphs.length];
+      $('spinWord').textContent = words[Math.floor(k / 3) % words.length];
+      await wait(220, id);
+    }
+    hide($('calling'), $('spinner'));
+    show($('done'));
+    await wait(2500, id);
+
+    // 2. Approve in Cai
+    beat('2 · approve');
+    $('term').classList.add('back');
+    on($('sheet'), cursor);
+    await wait(450, id);
+    await wait(500, id);
+    await move(at($('approve')), 700, id);
+    await click($('approve'), id);
+    await wait(300, id);
+    off($('sheet'), $('term'), cursor);
+    await wait(450, id);
+
+    // 3. Slack: rage typing
+    beat('3 · rage typing');
+    on($('slack'));
+    await wait(600, id);
+    $('send').classList.remove('empty');
+    await type($('draft'), ANGRY, 36, id);
+    await wait(250, id);
+
+    // reach for Send... hesitate... back off
+    beat('4 · hesitate');
+    jump(at($('slack'), 0.6, 1.05));
+    on(cursor);
+    await move(at($('send'), 0.15, 0.5), 850, id);
+    await wait(200, id);
+    const sx = cx, sy = cy;
+    await move([sx - 40, sy + 10], 380, id);
+    await wait(250, id);
+    await move([sx - 4, sy + 1], 300, id);
+    await wait(350, id);
+    await move([sx - 70, sy + 18], 420, id);
+    await wait(300, id);
+
+    // select it, ⌥C
+    beat('5 · select + ⌥C');
+    $('draftCaret').style.display = 'none';
+    await move(at($('draft'), 1, 0.7), 550, id);
+    cursor.classList.add('down');
+    $('draft').classList.add('selected');
+    await move(at($('draft'), 0, 0.3), 500, id);
+    cursor.classList.remove('down');
+    await wait(250, id);
+    on($('keycap'));
+    await wait(450, id);
+    on($('panel'));
+    await wait(500, id);
+    off($('keycap'));
+    await wait(900, id);
+    off($('panel'));
+
+    // replaced in place, then sent
+    beat('6 · calm, send');
+    $('draft').classList.remove('selected');
+    $('draft').classList.add('fade');
+    await wait(300, id);
+    $('draft').textContent = CALM;
+    $('draft').classList.remove('fade');
+    await wait(1200, id);
+    await move(at($('send'), 0.3, 0.5), 450, id);
+    await click($('send'), id);
+    $('sentText').textContent = CALM;
+    on($('sent'));
+    $('draft').textContent = '';
+    $('send').classList.add('empty');
+    $('draftCaret').style.display = '';
+    await wait(700, id);
+    off(cursor);
+
+    // the original lands in Notes
+    beat('7 · notes');
+    $('slack').classList.add('shift');
+    on($('notes'));
+    await wait(500, id);
+    on($('newNote'));
+    await wait(500, id);
+    on($('badge'));
+    await wait(1400, id);
+    $('newNote').classList.add('settled');
+    await wait(2600, id);
+
+    beat('end card');
+    on($('endcard'));
+    await wait(700, id);
+    reset();
+    await wait(2300, id);
+  }
+
+  async function loop() {
+    const id = ++run;
+    try { while (true) await play(id); } catch (e) { if (e !== 'stale') throw e; }
+  }
+
+  // Reduced motion: hold the closing frame (reply sent, original kept in Notes).
+  function stillFrame() {
+    reset();
+    off($('endcard'));
+    $('draft').textContent = '';
+    $('sentText').textContent = CALM;
+    $('slack').classList.add('shift');
+    on($('slack'), $('sent'), $('notes'), $('newNote'), $('badge'));
+    $('newNote').classList.add('settled');
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    stillFrame();
+  } else {
+    // Only run while on screen; start from the top each time it comes back.
+    let visible = false;
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting === visible) return;
+      visible = entry.isIntersecting;
+      if (visible) loop();
+      else { run++; on($('endcard')); }
+    }, { threshold: 0.2 }).observe(stage);
+  }
+  }
+</script>
+
+<style>
+  .ha { container-type: inline-size; width: 100%; }
+  .stage {
+    --indigo: #6366F2;
+    --mac-blue: #3478F6;
+    position: relative; aspect-ratio: 1280 / 804; overflow: hidden;
+    font-size: 1.45cqw; color: #1d1d1f;
+    background: linear-gradient(155deg, #A68CF8 0%, #C08ADB 40%, #DE88B4 75%, #F2899A 100%);
+  }
+  .stage * { box-sizing: border-box; }
+  .stage p, .stage h3, .stage h4, .stage ul { margin: 0; }
+
+  .fx { opacity: 0; transition: opacity .4s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
+  .fx.on { opacity: 1; }
+  .gone { display: none !important; }
+
+  /* ---------- macOS window chrome ---------- */
+  .win { position: absolute; border-radius: 1em; overflow: hidden; box-shadow: 0 1.6em 4em rgba(60,20,80,.35), 0 0 0 1px rgba(0,0,0,.12); }
+  .lights { display: flex; gap: .45em; }
+  .lights i { width: .8em; height: .8em; border-radius: 50%; background: #ff5f57; }
+  .lights i:nth-child(2) { background: #febc2e; }
+  .lights i:nth-child(3) { background: #28c840; }
+
+  /* ---------- 1. Claude Code in Terminal ---------- */
+  .term { left: 9%; top: 8%; width: 62%; height: 62%; background: #282a36; transform: translateY(1.2em); display: flex; flex-direction: column; }
+  .term.on { transform: none; }
+  .term.back { opacity: .0; transform: scale(.96); }
+  .term-bar { flex: none; height: 2.1em; display: flex; align-items: center; gap: .8em; padding: 0 .9em; background: #f6f6f6; border-bottom: 1px solid #d8d8d8; font-size: .85em; font-weight: 600; color: #3a3a3a; }
+  .term-bar span { opacity: .85; }
+  .term-body { flex: 1; position: relative; padding: .9em 1.2em; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: .78em; line-height: 1.55; color: #e6e6e6; display: flex; flex-direction: column; gap: .8em; }
+  .cc-head { display: flex; gap: 1em; align-items: center; }
+  .crab { width: 3.2em; height: 2.6em; position: relative; }
+  .crab::before { content: ''; position: absolute; inset: 0 .25em .6em; background: #D97757; }
+  .crab::after { content: ''; position: absolute; left: .4em; right: .4em; bottom: 0; height: .5em; background: repeating-linear-gradient(90deg, #D97757 0 .35em, transparent .35em 1.1em); }
+  .crab i { position: absolute; top: .55em; width: .3em; height: .55em; background: #1b1b1b; z-index: 1; }
+  .crab i:first-child { left: 1em; } .crab i:last-child { right: 1em; }
+  .cc-head b { color: #fff; }
+  .muted { color: #9a9cab; }
+  .echo { background: #3a3c48; padding: .3em .6em; margin: 0 -.6em; }
+  .bullet { color: #fff; }
+  .bullet-grey { color: #9a9cab; }
+  .spin { color: #D97757; }
+  .term-input { margin-top: auto; border-top: 1px solid #555867; border-bottom: 1px solid #555867; padding: .45em 0; min-height: 2.3em; }
+  .term-foot { color: #e5b93f; font-size: .95em; }
+  .term-foot .muted { color: #9a9cab; }
+  .bcaret { display: inline-block; width: .55em; height: 1.1em; vertical-align: -.2em; background: #cfcfcf; }
+  .thin-caret { display: inline-block; width: 1.5px; height: 1.1em; vertical-align: -.2em; background: #1d1d1f; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ---------- 2. Cai review sheet ---------- */
+  .sheet {
+    position: absolute; left: 50%; top: 50%; width: 46%;
+    padding: 1.3em 1.4em 1.2em; border-radius: 1.4em;
+    background: linear-gradient(170deg, rgba(232,190,240,.92), rgba(242,182,214,.92));
+    backdrop-filter: blur(24px);
+    box-shadow: 0 2em 5em rgba(60,20,80,.35), 0 0 0 1px rgba(255,255,255,.35);
+    transform: translate(-50%, -46%) scale(.96); z-index: 3;
+    font-size: 1.12em;
+  }
+  .sheet.on { transform: translate(-50%, -50%); }
+  .sheet-title { font-size: 1.2em; font-weight: 600; color: #3a2d40; }
+  .sheet-title span { color: #7a6680; font-weight: 600; }
+  .sheet-sub { font-size: .8em; color: #8a7a90; margin: .25em 0 .5em !important; }
+  .chips { margin-bottom: .9em; display: flex; flex-wrap: wrap; gap: .35em; }
+  .chip { background: rgba(255,255,255,.65); border-radius: 1em; padding: .2em .65em; font-size: .78em; color: #6c5b72; }
+  .sheet-note { font-size: .75em; color: #8a7a90; margin: .4em 0 .8em !important; }
+  .code { background: rgba(255,255,255,.55); border-radius: .7em; padding: .7em .9em; font-family: ui-monospace, Menlo, monospace; font-size: .85em; color: #2b2330; margin-bottom: .8em; }
+  .label { font-size: .82em; color: #7a6a80; margin-bottom: .45em !important; }
+  .steps { list-style: none; padding: 0; display: grid; gap: .4em; margin-bottom: .8em !important; }
+  .steps li { display: grid; grid-template-columns: 1.4em 1fr auto; gap: .4em; align-items: start; background: rgba(255,255,255,.55); border-radius: .7em; padding: .55em .8em; font-family: ui-monospace, Menlo, monospace; font-size: .82em; color: #2b2330; }
+  .steps li small { font-size: .65em; color: #8d8094; margin-top: .25em; }
+  .steps li em { font-family: -apple-system, sans-serif; font-style: normal; font-size: .9em; color: #8d8094; white-space: nowrap; }
+  .steps .more { grid-column: 2; font-family: -apple-system, sans-serif; font-size: .85em; color: #8d8094; }
+  .steps .clip { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .callout { border: 1px solid rgba(240,140,90,.7); background: rgba(246,170,180,.45); border-radius: .7em; padding: .6em .85em; font-size: .82em; color: #3a2d40; margin-bottom: .8em; }
+  .callout ul { padding-left: 1.5em; margin-top: .2em; color: #4a3d50; }
+  .callout b { font-weight: 500; }
+  .warn { color: #f19b38; margin-right: .35em; }
+  .ack { display: flex; gap: .5em; align-items: center; font-size: .85em; margin-bottom: .9em; color: #2b2330; }
+  .check { width: 1.15em; height: 1.15em; border-radius: .3em; background: rgba(200,150,210,.6); display: grid; place-items: center; color: #fff; font-size: .8em; transition: background .15s; }
+  .check::after { content: '✓'; opacity: 0; font-weight: 700; }
+  .check.ticked { background: var(--mac-blue); }
+  .check.ticked::after { opacity: 1; }
+  .buttons { display: flex; justify-content: flex-end; gap: .55em; }
+  .btn { padding: .45em 1.1em; border-radius: 2em; background: rgba(200,150,190,.55); font-size: .95em; color: #2b2330; transition: transform .12s, opacity .15s; }
+  .btn-primary { background: var(--indigo); color: #fff; opacity: .45; }
+  .btn-primary.ready { opacity: 1; }
+  .pressed { transform: scale(.93); }
+
+  /* ---------- 3. Slack (aubergine) ---------- */
+  .slack { left: 5%; top: 9%; width: 68%; height: 64%; transform-origin: left center; background: #3f0e40; transform: translateY(1.5em); display: flex; flex-direction: column; }
+  .slack.on { transform: none; }
+  .slack.on.shift { transform: translateX(-3%) scale(.9); }
+  .sl-top { flex: none; height: 2.4em; display: flex; align-items: center; padding: 0 .9em; }
+  .sl-search { margin: 0 auto; width: 45%; height: 1.55em; border-radius: .4em; background: rgba(255,255,255,.18); color: rgba(255,255,255,.75); font-size: .72em; display: flex; align-items: center; padding: 0 .8em; }
+  .sl-main { flex: 1; display: grid; grid-template-columns: 3.6em 12em 1fr; min-height: 0; }
+  .sl-rail { display: grid; align-content: start; justify-items: center; gap: .9em; padding-top: .3em; }
+  .sl-ws { width: 2.1em; height: 2.1em; border-radius: .5em; background: #fff; color: #3f0e40; display: grid; place-items: center; font-weight: 800; font-size: .95em; }
+  .sl-nav { display: grid; justify-items: center; gap: .15em; font-size: .55em; color: rgba(255,255,255,.85); }
+  .sl-nav i { font-style: normal; width: 2.6em; height: 2.6em; border-radius: .6em; display: grid; place-items: center; font-size: 1.3em; }
+  .sl-nav.on i { background: rgba(255,255,255,.2); }
+  .sl-side { background: #5b2a5c; border-radius: .7em 0 0 0; padding: .8em .55em; color: rgba(255,255,255,.8); font-size: .78em; display: grid; align-content: start; gap: .15em; }
+  .sl-name { font-weight: 800; font-size: 1.15em; color: #fff; padding: 0 .45em .5em !important; }
+  .sl-sec { padding: .7em .45em .2em !important; font-size: .92em; }
+  .sl-item { display: flex; align-items: center; gap: .45em; padding: .3em .45em !important; border-radius: .4em; }
+  .sl-item .av { width: 1.35em; height: 1.35em; font-size: .7em; border-radius: .3em; }
+  .sl-active { background: #f9edf9; color: #3f0e40; font-weight: 600; }
+  .sl-chat { background: #fff; display: flex; flex-direction: column; min-height: 0; }
+  .sl-head { padding: .7em 1.1em; font-weight: 800; display: flex; align-items: center; gap: .5em; border-bottom: 1px solid #ebebeb; }
+  .av { display: inline-grid; place-items: center; width: 1.6em; height: 1.6em; border-radius: .4em; font-size: .85em; font-weight: 700; color: #fff; background: #2f7d6d; flex: none; }
+  .av-me { background: linear-gradient(135deg, #A68CF8, #F2899A); }
+  .av-sam { background: #b35c2e; }
+  .av-lee { background: #2e6db3; }
+  .msgs { flex: 1; padding: 1em 1.1em .7em; display: flex; flex-direction: column; justify-content: flex-end; gap: .9em; font-size: .88em; }
+  .msg { display: flex; gap: .7em; }
+  .msg .av { width: 2.3em; height: 2.3em; border-radius: .5em; font-size: .9em; }
+  .msg b small { font-weight: 400; color: #888; margin-left: .4em; font-size: .85em; }
+  .msg p { margin-top: .15em !important; color: #1d1c1d; line-height: 1.4; }
+  .sent { max-height: 0; overflow: hidden; transition: max-height .4s ease, opacity .4s; }
+  .sent.on { max-height: 6em; }
+  .compose { margin: 0 1.1em 1.1em; border: 1px solid #c4c4c7; border-radius: .6em; font-size: .88em; }
+  .toolbar { display: flex; gap: 1.1em; padding: .4em .85em; background: #f8f8f8; border-radius: .6em .6em 0 0; color: #9a9a9e; font-size: .85em; }
+  .toolbar b, .toolbar i, .toolbar u, .toolbar s { font-weight: 600; }
+  .draft-row { padding: .6em .85em .2em; min-height: 3.2em; line-height: 1.45; color: #1d1c1d; }
+  .draft { border-radius: .15em; transition: background .2s, opacity .3s; }
+  .draft.selected { background: #b4d5fe; }
+  .draft.fade { opacity: 0; }
+  .compose-foot { display: flex; align-items: center; gap: .9em; padding: .2em .55em .5em; color: #616061; font-size: .9em; }
+  .compose-foot .tool:first-child { width: 1.6em; height: 1.6em; border-radius: 50%; background: #f0f0f0; display: grid; place-items: center; }
+  .send { margin-left: auto; display: flex; border-radius: .35em; overflow: hidden; background: #007a5a; color: #fff; transition: transform .12s, background .2s; }
+  .send span { padding: .2em .6em; }
+  .send .chev { border-left: 1px solid rgba(255,255,255,.35); padding: .2em .4em; font-size: .75em; display: grid; place-items: center; }
+  .send.empty { background: #ececec; color: #aaa; }
+  .send.empty .chev { border-color: #d5d5d5; }
+
+  /* ---------- ⌥C keycap ---------- */
+  .keycap { position: absolute; left: 50%; bottom: 6%; padding: .3em .7em; border-radius: .45em; font-size: 1.7em; font-weight: 600; background: #fff; color: #1d1d1f; box-shadow: 0 .2em 0 #c9c4d6, 0 1em 2em rgba(60,20,80,.3); transform: translate(-50%, .5em); z-index: 6; }
+  .keycap.on { transform: translate(-50%, 0); }
+
+  /* ---------- Cai action panel ---------- */
+  .panel { position: absolute; left: 30%; top: 22%; width: 46%; border-radius: 1.2em; overflow: hidden; background: rgba(238,232,248,.94); backdrop-filter: blur(30px); box-shadow: 0 2em 5em rgba(60,20,80,.35), 0 0 0 1px rgba(255,255,255,.4); transform: scale(.96); z-index: 5; font-size: .9em; }
+  .panel.on { transform: none; }
+  .p-head { display: flex; gap: .9em; padding: .9em 1.2em; align-items: flex-start; }
+  .p-head .lines { color: var(--indigo); font-size: 1.2em; line-height: 1; }
+  .p-head small { display: block; color: #7d7686; font-size: .85em; }
+  .p-head p { font-weight: 600; color: #2a2530; line-height: 1.35; }
+  .p-search { display: flex; align-items: center; gap: .6em; padding: .55em 1.2em; background: rgba(255,255,255,.35); border-top: 1px solid rgba(0,0,0,.05); border-bottom: 1px solid rgba(0,0,0,.08); font-family: ui-monospace, Menlo, monospace; color: #2a2530; }
+  .p-search .q { color: #8a8494; font-family: -apple-system, sans-serif; }
+  .p-search .hint2 { margin-left: auto; color: #a39cab; font-size: .8em; font-family: -apple-system, sans-serif; }
+  .p-rows { padding: .4em; min-height: 9em; }
+  .p-row { display: flex; align-items: center; gap: .8em; padding: .55em .7em; border-radius: .7em; }
+  .p-row.hl { background: rgba(170,150,230,.35); }
+  .p-ic { width: 2.2em; height: 2.2em; border-radius: .5em; background: rgba(255,255,255,.7); display: grid; place-items: center; color: #555; flex: none; }
+  .p-ic.term-ic { background: #6c7cf0; color: #fff; font-family: ui-monospace, monospace; font-size: .8em; }
+  .p-row b { display: block; font-weight: 500; color: #2a2530; }
+  .p-row small { color: #7d7686; font-size: .82em; }
+  .p-row kbd { margin-left: auto; font: inherit; font-size: .75em; color: #8a8494; background: rgba(255,255,255,.6); padding: .15em .45em; border-radius: .3em; }
+  .p-foot { display: flex; gap: 1em; align-items: center; padding: .6em 1.2em; border-top: 1px solid rgba(0,0,0,.08); font-size: .75em; color: #8a8494; }
+  .p-foot kbd { font: inherit; background: rgba(255,255,255,.6); padding: .1em .4em; border-radius: .3em; margin-right: .3em; }
+  .p-foot .model { margin-left: auto; }
+
+  /* ---------- 4. Notes ---------- */
+  .notes { right: 3%; top: 14%; width: 40%; height: 74%; background: #fff; transform: translateX(2em); z-index: 4; }
+  .notes.on { transform: none; }
+  .notes-bar { display: flex; align-items: center; gap: 1em; padding: .9em 1.1em .4em; }
+  .notes-bar .round { width: 2.1em; height: 2.1em; border-radius: 50%; background: #f3f3f3; display: grid; place-items: center; color: #555; font-size: .85em; }
+  .notes-bar .ttl { font-weight: 700; font-size: .95em; line-height: 1.2; }
+  .notes-bar .ttl small { display: block; font-weight: 400; color: #8a8a8e; font-size: .85em; }
+  .notes-body { padding: .2em 1.6em 1em; font-size: .85em; color: #333; }
+  .notes-body .when { text-align: center; color: #9a9a9e; font-size: .85em; margin-bottom: .4em !important; }
+  .notes-body h4 { font-size: 1.6em; color: #4a4a4a; margin-bottom: .5em; }
+  .notes-body ul { list-style: none; padding: 0; display: grid; gap: .12em; line-height: 1.45; }
+  .notes-body li { position: relative; padding-left: 1.3em; }
+  .notes-body li::before { content: '•'; position: absolute; left: .35em; }
+  .notes-body li.new { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .4s ease, opacity .4s ease, background 1.2s ease; border-radius: .2em; }
+  .notes-body li.new.on { max-height: 3em; opacity: 1; background: rgba(248,217,119,.65); }
+  .notes-body li.new.settled { background: transparent; }
+
+  .badge { position: absolute; left: 4%; bottom: 5%; padding: .45em 1em; border-radius: 2em; font-size: .95em; font-weight: 600; background: rgba(255,255,255,.85); color: #3a2d40; box-shadow: 0 .5em 1.5em rgba(60,20,80,.25); transform: translateY(.4em); z-index: 6; }
+  .badge.on { transform: none; }
+
+  /* ---------- end card: logo on the background ---------- */
+  .endcard { position: absolute; inset: 0; display: grid; place-items: center; z-index: 20; background: linear-gradient(155deg, #A68CF8 0%, #C08ADB 40%, #DE88B4 75%, #F2899A 100%); opacity: 0; transition: opacity .6s ease; pointer-events: none; }
+  .endcard.on { opacity: 1; }
+  .endcard svg { width: 30%; fill: #fff; transform: scale(.94); transition: transform 2.4s ease-out; }
+  .endcard.on svg { transform: scale(1); }
+
+  /* ---------- cursor ---------- */
+  .cursor { position: absolute; left: 0; top: 0; width: 1.5em; height: 1.5em; z-index: 10; pointer-events: none; transition-property: transform, opacity; transition-timing-function: cubic-bezier(.45,.05,.25,1); opacity: 0; }
+  .cursor.on { opacity: 1; }
+  .cursor svg { width: 100%; height: 100%; filter: drop-shadow(0 .1em .15em rgba(0,0,0,.35)); transition: transform .1s; transform-origin: 0 0; }
+  .cursor.down svg { transform: scale(.85); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stage *, .stage *::after { transition: none !important; animation: none !important; }
+  }
+</style>

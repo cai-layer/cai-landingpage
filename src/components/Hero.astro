@@ -1,5 +1,6 @@
 ---
 import { CAI_VERSION, CAI_DMG_URL } from '../version';
+import HeroAnimation from './HeroAnimation.astro';
 ---
 
 <section class="hero" id="hero">
@@ -73,20 +74,7 @@ import { CAI_VERSION, CAI_DMG_URL } from '../version';
     </div>
 
     <div class="hero-demo">
-      <video
-        class="demo-video"
-        autoplay
-        loop
-        muted
-        playsinline
-        poster="/videos/cai-hero-poster.webp"
-        aria-label="Cai action layer demo"
-        title="Cai demo, run custom actions on any selected text"
-        data-lazy-video
-      >
-        <source src="/videos/cai-hero.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <HeroAnimation />
     </div>
   </div>
 </section>
@@ -503,12 +491,6 @@ import { CAI_VERSION, CAI_DMG_URL } from '../version';
     transform: translateY(-8px) scale(1.01);
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 15px 40px rgba(0, 0, 0, 0.4);
     border-color: rgba(255, 255, 255, 0.2);
-  }
-
-  .demo-video {
-    width: 100%;
-    height: auto;
-    display: block;
   }
 
   @media (max-width: 768px) {
