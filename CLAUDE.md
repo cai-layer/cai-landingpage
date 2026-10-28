@@ -7,8 +7,8 @@ Framework: Astro (static), hosted on GitHub Pages.
 
 Read these files first. They contain positioning rules, keyword strategy, copy guidelines, and maintenance checklists that must be followed:
 
-1. `/Users/xyz/Documents/repos/cai/cai-clipboard-macos/_docs/research/SEO.md` — SEO reference (keywords, meta tag conventions, structured data, maintenance checklists)
-2. `/Users/xyz/Documents/repos/cai/cai-clipboard-macos/_docs/research/competitive-landscape.md` — competitor analysis, positioning, prepared answers
+1. `../cai/_docs/research/SEO.md` — SEO reference (keywords, meta tag conventions, structured data, maintenance checklists)
+2. `../cai/_docs/research/competitive-landscape.md` — competitor analysis, positioning, prepared answers
 3. `public/llms.txt` — current product description for AI crawlers (must stay in sync with SEO.md)
 
 Key rules from those docs:
