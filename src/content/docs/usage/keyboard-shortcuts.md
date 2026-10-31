@@ -47,4 +47,6 @@ Cai is designed to be used entirely from the keyboard.
 | -------------------------------- | --------------------------------- |
 | Open Settings                    | Left-click the Cai menu bar icon  |
 | Context menu                     | Right-click the Cai menu bar icon |
+| Open Settings from the menu      | **Cai Settings…** (⌘,) in the right-click menu |
 | Open Settings from action window | Click the Cai logo in the footer  |
+| Start or stop Keep Awake         | Left-click the icon, once [Keep Awake](/docs/usage/menu-bar-tools/) is enabled (it then replaces Open Settings) |
