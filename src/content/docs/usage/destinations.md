@@ -26,7 +26,7 @@ This is perfect for "fix grammar and replace," "translate in place," or any acti
 
 ## Show in Cai
 
-**Show in Cai** is the default result sink: an action or chain that doesn't send its output anywhere ends here, and the result opens in Cai's result view instead of vanishing. You can also pick it explicitly as a chain step or destination when you want to see a result before deciding what to do with it. Kept results can be paged with **←/→**.
+**Show in Cai** is the default result sink: an action or chain that doesn't send its output anywhere ends here, and the result opens in Cai's result view instead of vanishing. You can also pick it explicitly as a chain step or destination when you want to see a result before deciding what to do with it. Kept results are listed in Cai, newest first: click the result pill, then **↵** to copy one or **→** to open it.
 
 ## Custom Destination Types
 

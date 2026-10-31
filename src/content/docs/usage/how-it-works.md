@@ -13,7 +13,9 @@ description: "Learn how Cai detects clipboard content, offers smart actions, and
 4. Pick an action with **↑↓** arrows or **⌘1–9**
 5. The result is auto-copied to your clipboard. Just **⌘V** to paste. Or press **⌘1** to replace your original selection inline. You can also send it to an [output destination](/docs/usage/destinations/) like Slack, Bear, or a webhook.
 
-While an action works, a **Running** pill shows progress. Results are never lost: if an action doesn't send its output anywhere, it shows in Cai, and you can page through kept results with **←/→**.
+While an action works, a **Running** pill shows progress. Start another one meanwhile and it waits its turn: the pill reads **Running · 1 queued**, and clicking it lists what runs and what waits. If a queued action replaces your selection, it copies its result instead (press **⌘V** to paste), since you have moved on from that selection.
+
+Results are never lost: if an action doesn't send its output anywhere, Cai keeps it. Click the pill to see your recent results, newest first. **↵** copies one, **→** opens it in full.
 
 ## Content Types & Actions
 
@@ -95,7 +97,11 @@ Press **⌘0** in the action window to open clipboard history. Features include:
 
 - **Search**: type to filter your history
 - **Pinning**: pin important items so they stay at the top
+- **Most recent first**: picking an earlier clip copies it and moves it back to the top
+- **Source app**: each clip shows the icon of the app it was copied from
 - **Configurable size**: adjust the history limit in settings
+
+Your pinned and recent clips are also one right-click away: right-click the Cai menu bar icon and start typing to search them.
 
 ## Settings
 

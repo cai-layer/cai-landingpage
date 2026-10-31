@@ -38,15 +38,26 @@ Cai is designed to be used entirely from the keyboard.
 | **↵**    | Copy result and exit                           |
 | **⌘1**   | Replace your original selection with the result |
 | **Tab**  | Ask a follow-up question on the result         |
-| **← →**  | Page through kept results                      |
+| **← →**  | Page through kept results (when one is open)   |
 | **Esc**  | Back to action list                            |
+
+## Results
+
+Click the pill in the action window header to see what runs, what waits, and your recent results.
+
+| Shortcut | Action                          |
+| -------- | ------------------------------- |
+| **↑ ↓**  | Choose a result                 |
+| **↵**    | Copy it and close               |
+| **→**    | Open it in full                 |
+| **Esc**  | Back to the list, then close    |
 
 ## Menu Bar
 
 | Action                           | How                               |
 | -------------------------------- | --------------------------------- |
 | Open Settings                    | Left-click the Cai menu bar icon  |
-| Context menu                     | Right-click the Cai menu bar icon |
+| Pinned and recent clips, with search | Right-click the Cai menu bar icon |
 | Open Settings from the menu      | **Cai Settings…** (⌘,) in the right-click menu |
 | Open Settings from action window | Click the Cai logo in the footer  |
 | Start or stop Keep Awake         | Left-click the Cai logo, once [Keep Awake](/docs/usage/menu-bar-tools/) is enabled (it then replaces Open Settings) |
