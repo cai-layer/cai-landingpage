@@ -12,7 +12,7 @@ Two small tools live in the Cai menu bar icon: **Keep Awake** stops your Mac fro
 ## Keep Awake
 
 1. Open Cai → **Settings** → **Menu Bar** and turn on **Keep Awake**
-2. Click the Cai menu bar icon to start it. Click again to stop it
+2. Click the Cai logo in the menu bar to start it. Click again to stop it
 
 A click starts Keep Awake with the duration you used last (30 minutes the first time). To pick another one, right-click the icon and choose **Keep Awake For**: Indefinitely, 15 Minutes, 30 Minutes, 1 Hour, 2 Hours or 5 Hours. **Turn Off** in the same submenu stops it.
 
@@ -36,19 +36,36 @@ A minimal Pomodoro timer: 25 minutes of focus, then a 5-minute break, and a 30-m
 1. Open Cai → **Settings** → **Menu Bar** and turn on **Focus Timer**
 2. Right-click the Cai menu bar icon and choose **Start Focus**
 
-While a session runs, the time left shows next to the Cai icon, for example `24:13`. The right-click menu has the controls:
+While a session runs, the time left shows next to the Cai logo, for example `24:13`.
+
+### Quick controls
+
+Click the countdown to open a small panel right under it:
+
+| Control | What it does |
+| --- | --- |
+| **↺** | Starts the whole cycle over: session 1, focus, full length. Press it again within 5 seconds (it shows as **■**) to stop the timer |
+| **⏸** / **▶** | Pauses, or carries on where it was |
+| **⏭** | Moves on: from focus to the break, from a break straight into the next focus session |
+
+The four dots under the controls show where you are in the cycle: solid for finished sessions, a ring for the one you're in, faint for the ones to come. A click on the Cai logo keeps its own job (Keep Awake, or Settings), and right-clicking anywhere opens the full menu.
+
+### In the menu
+
+The right-click menu has the same controls as plain items, plus two more:
 
 | Item | What it does |
 | --- | --- |
-| **Pause** / **Resume** | Stops and restarts the countdown where it was |
-| **Restart Focus** / **Restart Break** | Starts the current session again from the full length |
-| **Skip to Break** / **Skip Break** | Ends the current session now |
+| **Restart Focus** / **Restart Break** | Starts only the current session again |
+| **Stop Timer** | Ends the session and clears the cycle; the countdown leaves the menu bar |
 
-When a focus session ends, a notification says it's time for a break, and the break starts on its own. **Snooze 5 min** on the notification gives you five more minutes of focus before the same break comes back. After a break, the next focus session waits until you start it.
+### When a session ends
 
-The lengths are adjustable in **Settings** → **Menu Bar**: **Focus** (5 to 90 minutes), **Short break** (1 to 30) and **Long break, every 4th** (5 to 60). A change applies from the next session.
+A short chime plays when a focus session or a break runs out on its own, and a notification says it's time for a break. **Snooze 5 min** on the notification gives you five more minutes of focus before the same break comes back. After a break that runs out, the next focus session waits until you start it.
 
-The break notification needs notifications allowed for Cai. If they are off, Settings says so and links to **Open Notification Settings**.
+The lengths are adjustable in **Settings** → **Menu Bar**: **Focus** (5 to 90 minutes), **Short break** (1 to 30) and **Long break, every 4th** (5 to 60). A change applies from the next session. **Play a sound when a session ends** turns the chime off.
+
+The chime works with notifications off. The break notification needs notifications allowed for Cai; if they are off, Settings says so and links to **Open Notification Settings**.
 
 ---
 
