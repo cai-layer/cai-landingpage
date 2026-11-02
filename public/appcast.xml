@@ -12,6 +12,29 @@
          Then fill in the enclosure attributes below. -->
 
     <item>
+      <title>Version 1.7.0</title>
+      <description><![CDATA[
+        <h3>Highlights</h3>
+        <ul>
+          <li><strong>Today</strong> — press ⌘T for a ranked daily brief of what needs you across Slack, email, GitHub and more, built locally by your coding agent.</li>
+          <li><strong>Action queue</strong> — start an action while another runs and it waits in line; a results list keeps what just finished.</li>
+          <li><strong>Cai in your menu bar</strong> — Keep Awake, a focus timer and clipboard search from the Cai icon.</li>
+          <li><strong>⌥-number quick run</strong> — hold ⌥ after ⌥C and press 1–9 to run a pinned action in one move.</li>
+        </ul>
+        <p>Plus a clearer logo and dark mode, smarter clipboard history, and fixes for chained-action results and Esc while Ask AI writes.</p>
+        <p><a href="https://github.com/cai-layer/cai/releases/tag/v1.7.0">Full release notes →</a></p>
+      ]]></description>
+      <pubDate>Mon, 02 Nov 2026 22:33:39 +0000</pubDate>
+      <enclosure
+        url="https://github.com/cai-layer/cai/releases/download/v1.7.0/Cai-1.7.0-update.dmg"
+        sparkle:version="13"
+        sparkle:shortVersionString="1.7.0"
+        length="25238705"
+        type="application/octet-stream"
+        sparkle:edSignature="wu4X+HWs1HVTSf2TF9QnAy1AILuxqwcoDi6QV28zicJrUqpYgJr0JGlZTwf3Zr64ahxmJzjbXCBg64GE1/ftAQ==" />
+    </item>
+
+    <item>
       <title>Version 1.6.0</title>
       <description><![CDATA[
         <h3>Highlights</h3>
