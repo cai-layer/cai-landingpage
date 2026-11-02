@@ -20,6 +20,7 @@ Key rules from those docs:
 
 ## Workflow preferences
 
+- **Work directly on `master`; don't create branches or worktrees** in this repo unless Asís asks for one. Commits and pushes still need his go each time, and `master` is protected, so he pushes it himself. Pushing `master` deploys getcai.app, so don't leave commits for an unreleased feature sitting on it: say so and ask first.
 - **Do NOT start the dev/preview server by default.** Use `npm run build` to verify changes. Only start the preview server (`preview_start`) when the user explicitly asks for a visual check.
 - **`npm` isn't on default PATH** — prefix bash commands with `export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH" && ...`
 - **Comparison pages (`/vs/*`) reorders and edits**: the user frequently tunes these; changes are intentional, don't revert.
