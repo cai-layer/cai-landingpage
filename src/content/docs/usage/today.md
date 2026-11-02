@@ -15,7 +15,7 @@ A run only reads your tools. It never sends, replies, comments or changes anythi
 
 ## Setup
 
-Cai builds and refreshes the list with [Claude Code](https://claude.com/claude-code), installed and signed in. It runs in the background; you don't need to keep a terminal open. The skill is a standard agent skill, so you can also run it from another agent yourself: the list shows in Cai as soon as it's written.
+Cai builds and refreshes the list with [Claude Code](https://claude.com/claude-code), installed and signed in.[^agents] It runs in the background; you don't need to keep a terminal open.
 
 1. Press **⌥C**, then **⌘T** (or choose **Today** in the Cai menu bar icon's right-click menu)
 2. Choose **Set Up Today** and follow the three steps:
@@ -100,3 +100,5 @@ Everything Today keeps is on your Mac, in `~/Library/Application Support/Cai/`:
 | `TodayState/` | `priorities.md`, and what you marked done, dismissed or snoozed |
 
 The skill itself is in `~/.claude/skills/cai-today`. When a newer Cai comes with a different version, **Settings** → **Today** → **cai-today Skill** offers **Update Skill**. If you edited your copy, Cai leaves it as it is.
+
+[^agents]: cai-today is a standard agent skill, so another agent that supports skills can run it too, and the list shows in Cai as soon as it's written. ⌘R and the daily refresh still use Claude Code.
