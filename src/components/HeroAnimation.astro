@@ -30,15 +30,17 @@
                   </div>
       </div>
 
-      <!-- 2. Cai review sheet (labels copied from the app) -->
+      <!-- 2. Cai review sheet: header, byline and chips as in ActionReviewView; the step kinds are the app's own labels -->
       <div class="sheet fx" id="ha-sheet">
-        <p class="sheet-title"><span>New action ·</span> Calm it down</p>
-        <p class="sheet-sub">claude-code · today 10:42</p>
-        <div class="chips"><span class="chip">Runs on-device AI</span><span class="chip">Writes to Notes</span><span class="chip">Replaces your selection</span></div>
+        <div class="sh-head">
+          <p class="sheet-title"><span>New action · </span>Calm it down</p>
+          <p class="sheet-sub">Claude Code · today 10:42</p>
+          <div class="chips"><span class="chip">Runs on-device AI</span><span class="chip">Writes to Notes</span><span class="chip">Replaces your selection</span></div>
+        </div>
         <ol class="steps">
-          <li><small>1</small><span>Save to Notes</span></li>
-          <li><small>2</small><span>Rewrite calmly</span></li>
-          <li><small>3</small><span>Replace Selection</span></li>
+          <li><small>1</small><span>Save to Notes</span><em>Notes destination</em></li>
+          <li><small>2</small><span>Rewrite calmly</span><em>Inline AI step</em></li>
+          <li><small>3</small><span>Replace Selection</span><em>Replace Selection destination</em></li>
         </ol>
         <div class="buttons"><span class="btn">Reject</span><span class="btn btn-primary ready" id="ha-approve">Approve</span></div>
       </div>
@@ -78,16 +80,15 @@
         </div>
       </div>
 
-      <!-- Cai panel -->
+      <!-- Cai panel: built like the app's action list (see the Today demo frames in cai/_docs) -->
       <div class="panel fx" id="ha-panel">
-        <div class="p-head"><span class="lines">≡</span><div><small>Text detected</small><p>As I said THREE TIMES already, the button is BLUE. Did anyone open the spec??</p></div></div>
-        <div class="p-search"><span class="q">⌕</span><span id="ha-search"></span><span class="hint2">type to filter</span></div>
+        <div class="p-head"><svg class="p-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2.5 4h11M2.5 8h11M2.5 12h7"/></svg><div><small>Text detected</small><p>As I said THREE TIMES already, the button is BLUE. Did anyone open the spec??</p></div></div>
         <div class="p-rows">
-          <div class="p-row" data-match><span class="p-ic term-ic">✦</span><div><b>Calm it down</b><small>Runs on-device AI · Writes to Notes +1</small></div><kbd>⌘ 1</kbd></div>
-          <div class="p-row" data-other><span class="p-ic">ϟ</span><div><b>Ask AI</b><small>Ask AI anything about this content</small></div><kbd>⌘ 2</kbd></div>
-          <div class="p-row" data-other><span class="p-ic">✓</span><div><b>Fix Grammar</b><small>Fix grammar, spelling, and punctuation</small></div><kbd>⌘ 3</kbd></div>
+          <div class="p-row" data-match><span class="p-ic"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5l1.6 4.2 4.4.3-3.4 2.8 1.1 4.3L8 10.7l-3.7 2.4 1.1-4.3L2 6l4.4-.3z"/></svg></span><div><b>Calm it down</b><small>Runs on-device AI · Writes to Notes +1</small></div><kbd>⌘ 1</kbd></div>
+          <div class="p-row" data-other><span class="p-ic"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M9.2 1 3 9.2h4.3L6.6 15 13 6.7H8.6z"/></svg></span><div><b>Ask AI</b><small>Ask AI anything about this content</small></div><kbd>⌘ 2</kbd></div>
+          <div class="p-row" data-other><span class="p-ic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span><div><b>Fix Grammar</b><small>Fix grammar, spelling, and punctuation</small></div><kbd>⌘ 3</kbd></div>
         </div>
-        <div class="p-foot"><span><kbd>↑↓</kbd>Navigate</span><span><kbd>↵</kbd>Select</span><span><kbd>Esc</kbd>Close</span><span class="model">▣ Qwen3-4B-I…</span></div>
+        <div class="p-foot"><span><kbd>Esc</kbd>Close</span><span><kbd>⌘0</kbd>History</span><span><kbd>⌘N</kbd>New</span><span class="model"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="8" height="8" rx="1.2"/><path d="M5 1v2M9 1v2M5 11v2M9 11v2M1 5h2M1 9h2M11 5h2M11 9h2"/></svg>Ministral 3B</span><svg class="gear" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7" cy="7" r="2"/><path d="M7 1v1.6M7 11.4V13M1 7h1.6M11.4 7H13M2.8 2.8l1.1 1.1M10.1 10.1l1.1 1.1M2.8 11.2l1.1-1.1M10.1 3.9l1.1-1.1"/></svg></div>
       </div>
 
 
@@ -195,7 +196,6 @@
     $('draft').classList.remove('selected', 'fade');
     $('draftCaret').style.display = '';
     $('send').classList.add('empty');
-    $('search').textContent = '';
     stage.querySelectorAll('[data-other]').forEach((r) => r.classList.remove('gone'));
     stage.querySelector('[data-match]')!.classList.add('hl');
     $('sentText').textContent = '';
@@ -402,27 +402,26 @@
 
   /* ---------- 2. Cai review sheet ---------- */
   .sheet {
-    position: absolute; left: 50%; top: 50%; width: 46%;
-    padding: 1.3em 1.4em 1.2em; border-radius: 1.4em;
-    background: linear-gradient(170deg, rgba(232,190,240,.92), rgba(242,182,214,.92));
-    backdrop-filter: blur(24px);
-    box-shadow: 0 2em 5em rgba(60,20,80,.35), 0 0 0 1px rgba(255,255,255,.35);
-    transform: translate(-50%, -46%) scale(.96); z-index: 3;
-    font-size: 1.12em;
+    position: absolute; left: 50%; top: 50%; width: 54%; border-radius: 1.54em; overflow: hidden; z-index: 3; font-size: 1em;
+    background: rgba(250,232,255,.55); backdrop-filter: blur(30px) saturate(1.5); -webkit-backdrop-filter: blur(30px) saturate(1.5);
+    border: 1px solid rgba(255,255,255,.55); box-shadow: 0 2.5em 6em rgba(70,30,100,.3);
+    transform: translate(-50%, -46%) scale(.96);
   }
   .sheet.on { transform: translate(-50%, -50%); }
-  .sheet-title { font-size: 1.2em; font-weight: 600; color: #3a2d40; }
-  .sheet-title span { color: #7a6680; font-weight: 600; }
-  .sheet-sub { font-size: .8em; color: #8a7a90; margin: .25em 0 .5em !important; }
-  .chips { margin-bottom: .9em; display: flex; flex-wrap: wrap; gap: .35em; }
-  .chip { background: rgba(255,255,255,.65); border-radius: 1em; padding: .2em .65em; font-size: .78em; color: #6c5b72; }
+  .sh-head { padding: 1.23em 1.23em .92em; border-bottom: 1px solid rgba(110,70,140,.22); }
+  .sheet-title { font-weight: 600; color: #1d1d1f; }
+  .sheet-title span { color: #6a5a72; }
+  .sheet-sub { font-size: .846em; color: #6a5a72; opacity: .75; margin-top: .25em !important; }
+  .chips { margin-top: .6em; display: flex; flex-wrap: wrap; gap: .4em; }
+  .chip { background: rgba(255,255,255,.55); border-radius: 1em; padding: .2em .7em; font-size: .77em; font-weight: 500; color: #6a5a72; }
   .sheet-note { font-size: .75em; color: #8a7a90; margin: .4em 0 .8em !important; }
   .code { background: rgba(255,255,255,.55); border-radius: .7em; padding: .7em .9em; font-family: ui-monospace, Menlo, monospace; font-size: .85em; color: #2b2330; margin-bottom: .8em; }
   .label { font-size: .82em; color: #7a6a80; margin-bottom: .45em !important; }
-  .steps { list-style: none; padding: 0; display: grid; gap: .4em; margin-bottom: .8em !important; }
-  .steps li { display: grid; grid-template-columns: 1.4em 1fr auto; gap: .4em; align-items: start; background: rgba(255,255,255,.55); border-radius: .7em; padding: .55em .8em; font-family: ui-monospace, Menlo, monospace; font-size: .82em; color: #2b2330; }
-  .steps li small { font-size: .65em; color: #8d8094; margin-top: .25em; }
-  .steps li em { font-family: -apple-system, sans-serif; font-style: normal; font-size: .9em; color: #8d8094; white-space: nowrap; }
+  .steps { list-style: none; padding: .92em 1.23em; display: grid; gap: .3em; border-bottom: 1px solid rgba(110,70,140,.22); }
+  .steps li { display: flex; align-items: center; gap: .77em; background: rgba(255,255,255,.55); border-radius: .62em; padding: .55em .92em; font-size: .92em; font-weight: 500; color: #1d1d1f; }
+  .steps li small { font: 500 .75em ui-rounded, -apple-system, sans-serif; color: #6a5a72; background: rgba(255,255,255,.7); border-radius: 1em; width: 1.6em; height: 1.6em; display: grid; place-items: center; flex: none; }
+  .steps li span { flex: 1; }
+  .steps li em { font-style: normal; font-weight: 400; font-size: .92em; color: #6a5a72; white-space: nowrap; }
   .steps .more { grid-column: 2; font-family: -apple-system, sans-serif; font-size: .85em; color: #8d8094; }
   .steps .clip { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .callout { border: 1px solid rgba(240,140,90,.7); background: rgba(246,170,180,.45); border-radius: .7em; padding: .6em .85em; font-size: .82em; color: #3a2d40; margin-bottom: .8em; }
@@ -434,9 +433,9 @@
   .check::after { content: '✓'; opacity: 0; font-weight: 700; }
   .check.ticked { background: var(--mac-blue); }
   .check.ticked::after { opacity: 1; }
-  .buttons { display: flex; justify-content: flex-end; gap: .55em; }
-  .btn { padding: .45em 1.1em; border-radius: 2em; background: rgba(200,150,190,.55); font-size: .95em; color: #2b2330; transition: transform .12s, opacity .15s; }
-  .btn-primary { background: var(--indigo); color: #fff; opacity: .45; }
+  .buttons { display: flex; justify-content: flex-end; gap: .62em; padding: .92em 1.23em 1.23em; }
+  .btn { padding: .35em 1.25em; border-radius: .55em; background: rgba(255,255,255,.7); border: 1px solid rgba(0,0,0,.1); font-size: 1em; font-weight: 500; color: #1d1d1f; transition: transform .12s, opacity .15s, background .15s; }
+  .btn-primary { background: var(--indigo); border-color: transparent; color: #fff; opacity: .45; }
   .btn-primary.ready { opacity: 1; }
   .pressed { transform: scale(.93); }
 
@@ -490,27 +489,28 @@
   .keycap { position: absolute; left: 50%; bottom: 6%; padding: .3em .7em; border-radius: .45em; font-size: 1.7em; font-weight: 600; background: #fff; color: #1d1d1f; box-shadow: 0 .2em 0 #c9c4d6, 0 1em 2em rgba(60,20,80,.3); transform: translate(-50%, .5em); z-index: 6; }
   .keycap.on { transform: translate(-50%, 0); }
 
-  /* ---------- Cai action panel ---------- */
-  .panel { position: absolute; left: 30%; top: 22%; width: 46%; border-radius: 1.2em; overflow: hidden; background: rgba(238,232,248,.94); backdrop-filter: blur(30px); box-shadow: 0 2em 5em rgba(60,20,80,.35), 0 0 0 1px rgba(255,255,255,.4); transform: scale(.96); z-index: 5; font-size: .9em; }
+  /* ---------- Cai action panel (sizes are the app's points over a 13pt base) ---------- */
+  .panel { position: absolute; left: 25%; top: 17%; width: 50%; border-radius: 1.54em; overflow: hidden; z-index: 5; font-size: .82em;
+    background: rgba(250,232,255,.55); backdrop-filter: blur(30px) saturate(1.5); -webkit-backdrop-filter: blur(30px) saturate(1.5);
+    border: 1px solid rgba(255,255,255,.55); box-shadow: 0 2.5em 6em rgba(70,30,100,.3); transform: scale(.96); }
   .panel.on { transform: none; }
-  .p-head { display: flex; gap: .9em; padding: .9em 1.2em; align-items: flex-start; }
-  .p-head .lines { color: var(--indigo); font-size: 1.2em; line-height: 1; }
-  .p-head small { display: block; color: #7d7686; font-size: .85em; }
-  .p-head p { font-weight: 600; color: #2a2530; line-height: 1.35; }
-  .p-search { display: flex; align-items: center; gap: .6em; padding: .55em 1.2em; background: rgba(255,255,255,.35); border-top: 1px solid rgba(0,0,0,.05); border-bottom: 1px solid rgba(0,0,0,.08); font-family: ui-monospace, Menlo, monospace; color: #2a2530; }
-  .p-search .q { color: #8a8494; font-family: -apple-system, sans-serif; }
-  .p-search .hint2 { margin-left: auto; color: #a39cab; font-size: .8em; font-family: -apple-system, sans-serif; }
-  .p-rows { padding: .4em; min-height: 9em; }
-  .p-row { display: flex; align-items: center; gap: .8em; padding: .55em .7em; border-radius: .7em; }
-  .p-row.hl { background: rgba(170,150,230,.35); }
-  .p-ic { width: 2.2em; height: 2.2em; border-radius: .5em; background: rgba(255,255,255,.7); display: grid; place-items: center; color: #555; flex: none; }
-  .p-ic.term-ic { background: #6c7cf0; color: #fff; font-family: ui-monospace, monospace; font-size: .8em; }
-  .p-row b { display: block; font-weight: 500; color: #2a2530; }
-  .p-row small { color: #7d7686; font-size: .82em; }
-  .p-row kbd { margin-left: auto; font: inherit; font-size: .75em; color: #8a8494; background: rgba(255,255,255,.6); padding: .15em .45em; border-radius: .3em; }
-  .p-foot { display: flex; gap: 1em; align-items: center; padding: .6em 1.2em; border-top: 1px solid rgba(0,0,0,.08); font-size: .75em; color: #8a8494; }
-  .p-foot kbd { font: inherit; background: rgba(255,255,255,.6); padding: .1em .4em; border-radius: .3em; margin-right: .3em; }
-  .p-foot .model { margin-left: auto; }
+  .p-head { display: flex; gap: .77em; padding: .92em 1.23em; align-items: flex-start; border-bottom: 1px solid rgba(110,70,140,.22); }
+  .p-glyph { width: 1.25em; height: 1.25em; color: var(--indigo); flex: none; margin-top: .15em; }
+  .p-head small { display: block; color: #6a5a72; font-size: .85em; font-weight: 500; }
+  .p-head p { font-weight: 500; color: #1d1d1f; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .p-rows { padding: .46em .3em; min-height: 11em; display: grid; align-content: start; gap: .15em; }
+  .p-row { display: flex; align-items: center; gap: .92em; padding: .46em .92em; border-radius: .62em; min-height: 3.4em; }
+  .p-row.hl { background: rgba(150,105,215,.2); }
+  .p-ic { width: 2.15em; height: 2.15em; border-radius: .46em; background: rgba(255,255,255,.55); display: grid; place-items: center; color: #3c3640; flex: none; }
+  .p-ic svg { width: 1.2em; height: 1.2em; }
+  .p-row.hl .p-ic { background: rgba(99,102,242,.16); color: var(--indigo); }
+  .p-row b { display: block; font-weight: 500; color: #1d1d1f; }
+  .p-row small { color: #6a5a72; font-size: .85em; }
+  .p-row kbd { margin-left: auto; font: 500 .77em ui-rounded, -apple-system, sans-serif; color: #6a5a72; background: rgba(255,255,255,.5); padding: .2em .5em; border-radius: .3em; }
+  .p-foot { display: flex; gap: .77em; align-items: center; padding: .62em 1.23em; border-top: 1px solid rgba(110,70,140,.22); font-size: .77em; font-weight: 500; color: #6a5a72; }
+  .p-foot kbd { font: 500 1em ui-rounded, -apple-system, sans-serif; background: rgba(255,255,255,.5); padding: .1em .35em; border-radius: .25em; margin-right: .35em; }
+  .p-foot .model { margin-left: auto; display: flex; align-items: center; gap: .35em; }
+  .p-foot svg { width: 1.2em; height: 1.2em; }
 
   /* ---------- 4. Notes ---------- */
   .notes { right: 3%; top: 14%; width: 40%; height: 74%; background: #fff; transform: translateX(2em); z-index: 4; }

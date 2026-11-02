@@ -22,7 +22,24 @@ Cai is designed to be used entirely from the keyboard.
 | **⌘1–9**      | Jump directly to an action by number               |
 | **⌘N**        | New chat (ask anything, without clipboard content) |
 | **⌘0**        | Open clipboard history (searchable, with pinning)  |
+| **⌘T**        | Open [Today](/docs/usage/today/)                   |
 | **Esc**       | Go back / Dismiss the window                       |
+
+## Today
+
+| Shortcut | Action |
+| -------- | ------ |
+| **↵** or **⌘↵** | Copy the item's prompt and close Cai |
+| **→** | Open the item's details (**←** goes back) |
+| **⌘C** | Copy the prompt and keep Cai open |
+| **⌘O** | Open the item's first link |
+| **⌘D** | Mark done |
+| **⌘⌫** | Dismiss |
+| **⌘S** | Snooze until tomorrow, or unsnooze |
+| **⌘Z** | Undo the last done, dismiss or snooze |
+| **⌘R** | Refresh the list |
+
+To open Cai straight on Today from any app, record a **Today Shortcut** in **Settings** → **Today**. See [Today](/docs/usage/today/#today-shortcut).
 
 ## Ask AI
 
@@ -47,6 +64,7 @@ Cai is designed to be used entirely from the keyboard.
 | -------------------------------- | --------------------------------- |
 | Open Settings                    | Left-click the Cai menu bar icon  |
 | Context menu                     | Right-click the Cai menu bar icon |
+| Open Today                       | **Today** in the right-click menu |
 | Open Settings from the menu      | **Cai Settings…** (⌘,) in the right-click menu |
 | Open Settings from action window | Click the Cai logo in the footer  |
 | Start or stop Keep Awake         | Left-click the Cai logo, once [Keep Awake](/docs/usage/menu-bar-tools/) is enabled (it then replaces Open Settings) |

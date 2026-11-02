@@ -34,6 +34,7 @@ const actionTypes = [
   { name: "URL", description: "Any URL with %s becomes an action: search Jira, Maps, Stack Overflow", secondary: true },
   { name: "...", description: "Deeplinks, Apple Shortcuts, and more", secondary: true },
 ];
+
 ---
 
 <Layout title="Cai — Local AI Action Layer for macOS | Free & Open Source">
@@ -128,6 +129,20 @@ const actionTypes = [
     backgroundColor="#0F0F0F"
     linkHref="https://github.com/cai-layer/cai-extensions"
     linkText="Browse community extensions →"
+  />
+
+  <!-- Demo Section 3: Today. Built by the user's agent and its cloud connectors, so it stays out of on-device claims -->
+  <DemoSection
+    id="today"
+    title='What needs you <span class="highlight">today</span>.'
+    subtitle="A daily brief across Slack, email, GitHub and your other tools, ranked by priority. Your agent builds it with a skill, and every item comes with a prompt to hand straight back."
+    mediaType="video"
+    mediaSrc="/videos/cai-today.mp4"
+    posterSrc="/videos/cai-today-poster.webp"
+    mediaAlt="Today list demo"
+    backgroundColor="#111111"
+    linkHref="/docs/usage/today/"
+    linkText="How Today works →"
   />
 
   <FeatureBento />
