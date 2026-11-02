@@ -99,4 +99,4 @@ Everything Today keeps is on your Mac, in `~/Library/Application Support/Cai/`:
 | `Today/` | `items.jsonl`, the list the skill writes |
 | `TodayState/` | `priorities.md`, and what you marked done, dismissed or snoozed |
 
-The skill itself is in `~/.claude/skills/cai-today`. When a newer Cai comes with a different version, **Settings** → **Today** → **cai-today Skill** offers **Update Skill**. If you edited your copy, Cai leaves it as it is.
+The skill itself is in `~/.claude/skills/cai-today`. **Settings** → **Today** → **cai-today Skill** shows whether it's added and up to date. If a different version is there, for example one you edited, Cai leaves it as it is.
