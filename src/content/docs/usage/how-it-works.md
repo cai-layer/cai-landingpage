@@ -99,7 +99,7 @@ Press **⌘0** in the action window to open clipboard history. Features include:
 
 ## Settings
 
-Left-click the Cai menu bar icon to access Settings. Main screens:
+Left-click the Cai menu bar icon to access Settings, or choose **Cai Settings…** (⌘,) in its right-click menu. With [Keep Awake](/docs/usage/menu-bar-tools/) enabled, the left-click starts Keep Awake instead. Main screens:
 
 - **General** — translation language (default English), search URL (default Brave Search), maps provider (Apple or Google Maps), model provider (Built-in by default), launch at login
 - **Personalization** — "About You" (global context for AI responses) and [Context Snippets](/docs/usage/context-snippets/) (per-app context)
@@ -108,6 +108,7 @@ Left-click the Cai menu bar icon to access Settings. Main screens:
 - **Connections** — tabbed: **Agents** ([agent-authored actions](/docs/usage/agent-actions/) via Claude Code, Cursor, or Codex), **Tools** ([GitHub and Linear connectors](/docs/usage/connectors/)), and **System Access** ([macOS grants](/docs/usage/system-access/): Calendar, Contacts, Reminders, Accessibility, Automation)
 - **Secrets** — Keychain-backed tokens for shell actions, referenced as [`{{secrets.NAME}}`](/docs/usage/secrets/)
 - **Extensions** — browse and install [community extensions](/docs/usage/extensions/)
+- **Menu Bar** — [Keep Awake and the Focus Timer](/docs/usage/menu-bar-tools/), both off by default
 
 ## Limits
 
