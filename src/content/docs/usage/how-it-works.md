@@ -91,6 +91,10 @@ Press **⌘N** to start a new chat — ask anything without clipboard content.
 
 Every custom action and destination has a **"Then run"** field. Pipe a selection through a sequence of actions, destinations, inline LLM steps, and Apple Shortcuts in one keystroke. See [Action Chains](/docs/usage/action-chains/) for the full syntax and recipes.
 
+## Today
+
+Press **⌘T** in the action window to open [Today](/docs/usage/today/): the few work items that need you today, ranked P0 to P3. Your Claude Code builds the list with the cai-today skill from Slack, Gmail, GitHub and your other connected tools, reading only. The list and your done and snoozed state stay on your Mac.
+
 ## Clipboard History
 
 Press **⌘0** in the action window to open clipboard history. Features include:
@@ -109,6 +113,7 @@ Left-click the Cai menu bar icon to access Settings, or choose **Cai Settings…
 
 - **General** — translation language (default English), search URL (default Brave Search), maps provider (Apple or Google Maps), model provider (Built-in by default), launch at login
 - **Personalization** — "About You" (global context for AI responses) and [Context Snippets](/docs/usage/context-snippets/) (per-app context)
+- **Today**: [Today](/docs/usage/today/)'s priorities file, tools, skill, shortcut and refresh options
 - **Actions** — tabbed: **Custom** (your prompts, URLs, shell scripts) and **Built-in** (toggle visibility of Define, Search, etc.). Pin, drag-to-reorder, and chain via ["Then run"](/docs/usage/action-chains/)
 - **Destinations** — webhooks, AppleScript, URL schemes, shell commands. Same chaining surface as Actions
 - **Connections** — tabbed: **Agents** ([agent-authored actions](/docs/usage/agent-actions/) via Claude Code, Cursor, or Codex), **Tools** ([GitHub and Linear connectors](/docs/usage/connectors/)), and **System Access** ([macOS grants](/docs/usage/system-access/): Calendar, Contacts, Reminders, Accessibility, Automation)

@@ -108,3 +108,13 @@ See [System Access](/docs/usage/system-access/) for what each grant is used for.
 ## "{{secrets.NAME}} can't be used here"
 
 Secrets work only in **shell commands** for now. Referencing one in a prompt, URL, webhook, or through a template filter is blocked so the value can't leave the Keychain path Cai protects. Move the secret into a shell step, or see [Secrets](/docs/usage/secrets/) for the details.
+
+## Today won't build or refresh
+
+[Today](/docs/usage/today/) runs your Claude Code in the background. When a refresh fails, the header turns orange and reads **Couldn't refresh**; hover it for the reason, and press **⌘R** to try again.
+
+- **"Claude Code isn't installed"**: install [Claude Code](https://claude.com/claude-code) and sign in, then press ⌘R. Cai looks for the `claude` command on your login shell's PATH
+- **"Install the cai-today skill first"**: the skill is missing from `~/.claude/skills/cai-today`. Open Today and run **Set Up Today** again, which adds it back
+- **"Check Settings → Today → Tools"**: Cai can't read which tools you turned on. Open **Settings** → **Today** → **Tools** and switch any tool to save the choice again
+- **A tool is missing from the list**: open **Settings** → **Today** → **Tools** and choose **Check again**. A tool that needs sign-in has to be signed in from Claude first; GitHub needs `gh auth login`
+- **"Took longer than 20 minutes and was stopped"**, or another error from Claude Code: press ⌘R to run it again. If it keeps failing, run `/cai-today` in Claude Code in a terminal to see the full error

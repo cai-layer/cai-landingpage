@@ -34,6 +34,7 @@ const actionTypes = [
   { name: "URL", description: "Any URL with %s becomes an action: search Jira, Maps, Stack Overflow", secondary: true },
   { name: "...", description: "Deeplinks, Apple Shortcuts, and more", secondary: true },
 ];
+
 ---
 
 <Layout title="Cai — Local AI Action Layer for macOS | Free & Open Source">
@@ -44,7 +45,7 @@ const actionTypes = [
   <section class="definition">
     <div class="definition-container">
       <p class="definition-text">
-        <strong>Cai</strong> is a free, open-source AI action layer for macOS. Select any text or image, press <kbd>⌥C</kbd>, and instantly run custom actions: AI prompts, terminal scripts, URL shortcuts, summaries, translations, OCR, GitHub issues, Linear tickets. Cai is also an MCP server: coding agents like Claude Code, Cursor, and Codex can author actions over MCP. The agent can only propose. Every action waits for your approval as a reviewable diff, then runs locally from ⌥C with no agent and no tokens involved. Save chains of actions: pipe a selection through an AI prompt, a script, and a destination (Slack, webhook, AppleScript, Apple Shortcut) with one keystroke. Named secrets stay in the macOS Keychain, never visible to the model or the agent. Unlike clipboard managers, Cai acts on your selection, not just stores it. Unlike AI chat apps, it works inline without app switching. Ships with a built-in local AI model (Ministral 3B via MLX). No API key, no account, no setup. Also supports Apple Intelligence on macOS 26+, LM Studio, Ollama, and cloud APIs. Local by default. Cloud optional. MIT licensed.
+        <strong>Cai</strong> is a free, open-source AI action layer for macOS. Select any text or image, press <kbd>⌥C</kbd>, and instantly run custom actions: AI prompts, terminal scripts, URL shortcuts, summaries, translations, OCR, GitHub issues, Linear tickets. Cai is also an MCP server: coding agents like Claude Code, Cursor, and Codex can author actions over MCP. The agent can only propose. Every action waits for your approval as a reviewable diff, then runs locally from ⌥C with no agent and no tokens involved. <strong>Today</strong> is a ranked daily brief Claude Code builds from Slack, email and GitHub: what needs you, one keystroke away. Save chains of actions: pipe a selection through an AI prompt, a script, and a destination (Slack, webhook, AppleScript, Apple Shortcut) with one keystroke. Named secrets stay in the macOS Keychain, never visible to the model or the agent. Unlike clipboard managers, Cai acts on your selection, not just stores it. Unlike AI chat apps, it works inline without app switching. Ships with a built-in local AI model (Ministral 3B via MLX). No API key, no account, no setup. Also supports Apple Intelligence on macOS 26+, LM Studio, Ollama, and cloud APIs. Local by default. Cloud optional. MIT licensed.
       </p>
     </div>
   </section>
@@ -128,6 +129,20 @@ const actionTypes = [
     backgroundColor="#0F0F0F"
     linkHref="https://github.com/cai-layer/cai-extensions"
     linkText="Browse community extensions →"
+  />
+
+  <!-- Demo Section 3: Today. Built by the user's agent and its cloud connectors, so it stays out of on-device claims -->
+  <DemoSection
+    id="today"
+    title='What needs you <span class="highlight">today</span>.'
+    subtitle="A daily brief across Slack, email, GitHub and your other tools, ranked by priority. Claude Code reads them with the connectors you already allow, and every item comes with a prompt to hand straight back."
+    mediaType="video"
+    mediaSrc="/videos/cai-today.mp4"
+    posterSrc="/videos/cai-today-poster.webp"
+    mediaAlt="Today list demo"
+    backgroundColor="#111111"
+    linkHref="/docs/usage/today/"
+    linkText="How Today works →"
   />
 
   <FeatureBento />
