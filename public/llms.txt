@@ -21,7 +21,7 @@ Ships with a built-in local AI model (Ministral 3B via MLX). No API key, no acco
 - Agent-authored actions: Claude Code, Cursor, or Codex write actions over MCP; you approve a diff once, then the action runs locally from ⌥C forever, no agent and no tokens involved
 - Named secrets: store API tokens once, reference them in terminal scripts as {{secrets.NAME}}; values stay in the macOS Keychain, never visible to the model or the agent
 - On-demand macOS permissions: actions can use Calendar, Contacts, and Reminders; Cai asks the first time an action needs access
-- Today: press ⌘T for the few work items that need you today, ranked P0 to P3, each with a prompt to hand to your agent. Your agent builds the list with Cai's cai-today skill, reading Slack, Gmail, GitHub and your other tools without changing anything. Cai runs it with Claude Code; other agents can run the skill too. The list and your done and snoozed state stay on your Mac.
+- Today: press ⌘T for the few work items that need you today, ranked P0 to P3, each with a prompt to hand to your agent. Claude Code builds the list with Cai's cai-today skill, reading Slack, Gmail, GitHub and your other tools without changing anything. Requires Claude Code. The list and your done and snoozed state stay on your Mac.
 - Create GitHub issues and Linear tickets from any app (built-in connectors)
 - Image to text (OCR) from screenshots and images
 - Replace Selection: paste AI results back over your original selection, in place
